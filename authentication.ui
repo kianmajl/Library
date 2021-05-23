@@ -57,7 +57,7 @@ QPushButton:hover#pushButton_signup
 }
 QCheckBox
 {
-	border: 0px
+	border: 0px;
 }</string>
   </property>
   <widget class="QGroupBox" name="groupBox_login">
@@ -179,7 +179,7 @@ QCheckBox
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
-      <widget class="QCheckBox" name="checkBox">
+      <widget class="QCheckBox" name="checkBox_admin">
        <property name="text">
         <string>Register as Admin</string>
        </property>
@@ -248,7 +248,7 @@ color: rgb(255, 255, 255);</string>
    <widget class="QFrame" name="frame_logo">
     <property name="geometry">
      <rect>
-      <x>11</x>
+      <x>20</x>
       <y>20</y>
       <width>60</width>
       <height>60</height>
@@ -267,7 +267,7 @@ color: rgb(255, 255, 255);</string>
    <widget class="QLabel" name="label_title">
     <property name="geometry">
      <rect>
-      <x>80</x>
+      <x>89</x>
       <y>25</y>
       <width>381</width>
       <height>31</height>
@@ -283,7 +283,7 @@ color: rgb(255, 255, 255);</string>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>80</x>
+      <x>89</x>
       <y>55</y>
       <width>311</width>
       <height>21</height>
