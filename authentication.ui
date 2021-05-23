@@ -81,7 +81,7 @@ QCheckBox
       <height>81</height>
      </rect>
     </property>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>40</x>
@@ -104,7 +104,7 @@ QCheckBox
         </property>
         <layout class="QFormLayout" name="formLayout_Login">
          <item row="0" column="0">
-          <widget class="QLabel" name="label_2">
+          <widget class="QLabel" name="label_user">
            <property name="styleSheet">
             <string notr="true"/>
            </property>
@@ -114,17 +114,17 @@ QCheckBox
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QLineEdit" name="lineEdit"/>
+          <widget class="QLineEdit" name="lineEdit_user"/>
          </item>
          <item row="1" column="0">
-          <widget class="QLabel" name="label_3">
+          <widget class="QLabel" name="label_pass">
            <property name="text">
             <string>Password:</string>
            </property>
           </widget>
          </item>
          <item row="1" column="1">
-          <widget class="QLineEdit" name="lineEdit_2">
+          <widget class="QLineEdit" name="lineEdit_pass">
            <property name="echoMode">
             <enum>QLineEdit::Password</enum>
            </property>
@@ -156,7 +156,7 @@ QCheckBox
     </widget>
    </widget>
   </widget>
-  <widget class="QGroupBox" name="groupBox_2">
+  <widget class="QGroupBox" name="groupBox_register">
    <property name="geometry">
     <rect>
      <x>11</x>
@@ -166,9 +166,9 @@ QCheckBox
     </rect>
    </property>
    <property name="title">
-    <string>Register | About</string>
+    <string>Register</string>
    </property>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget1">
     <property name="geometry">
      <rect>
       <x>50</x>
