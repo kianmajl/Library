@@ -11,11 +11,13 @@ CONFIG += c++11
 SOURCES += \
     authentication.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    user.cpp
 
 HEADERS += \
     authentication.h \
-    mainwindow.h
+    mainwindow.h \
+    user.h
 
 FORMS += \
     authentication.ui \
