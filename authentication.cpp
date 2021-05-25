@@ -18,7 +18,8 @@ void authentication::on_pushButton_signin_clicked()
 {
     QString username = ui->lineEdit_user->text();
     QString hashed_pass = QString(QCryptographicHash::hash((ui->lineEdit_pass->text().toLocal8Bit()), QCryptographicHash::Sha256).toHex());
-    QString login_res = User::Login(username, hashed_pass);
+
+    QString login_res = (username.length() && ui->lineEdit_pass->text().length()) ? User::Login(username, hashed_pass) : "Please complete the form";
 
     if (login_res == "ok")
     {
@@ -38,7 +39,7 @@ void authentication::on_pushButton_signup_clicked()
     QString hashed_pass = QString(QCryptographicHash::hash((ui->lineEdit_pass->text().toLocal8Bit()), QCryptographicHash::Sha256).toHex());
     bool checkAdmin = ui->checkBox_admin->isChecked();
 
-    QString register_res = User::Register(username, hashed_pass, checkAdmin);
+    QString register_res = (username.length() && ui->lineEdit_pass->text().length()) ? User::Register(username, hashed_pass, checkAdmin) : "Please complete the form";
 
     if (register_res == "ok")
     {
