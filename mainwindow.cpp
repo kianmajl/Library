@@ -6,7 +6,7 @@ MainWindow::MainWindow(QWidget *parent, QString user_logged_in)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    ui->statusbar->showMessage("Welcome " + user_logged_in, 5000);
+    ui->label_username->setText("Hi " + user_logged_in);
     ui->label_time->setText(QDateTime::currentDateTime().toString("dddd, MMMM dd, yyyy"));
 }
 

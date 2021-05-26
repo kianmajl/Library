@@ -27,6 +27,7 @@ void authentication::on_pushButton_signin_clicked()
     {
         MainWindow * mw_admin = new MainWindow(nullptr, username);
         this->close();
+        mw_admin->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
         mw_admin->show();
     }
     else if (login_res == "ok")
