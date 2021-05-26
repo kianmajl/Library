@@ -2,5 +2,6 @@
     <qresource prefix="/icons">
         <file>icons/library.png</file>
         <file>icons/member-card.png</file>
+        <file>icons/admin-dash.png</file>
     </qresource>
 </RCC>

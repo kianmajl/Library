@@ -1,6 +1,7 @@
 #include "authentication.h"
 #include "ui_authentication.h"
 #include "user.h"
+#include "mainwindow.h"
 
 authentication::authentication(QWidget *parent) :
     QWidget(parent),
@@ -22,9 +23,13 @@ void authentication::on_pushButton_signin_clicked()
 
     QString login_res = (username.length() && password.length()) ? User::Login(username, hashed_pass) : "Please complete the form";
 
-    if (login_res == "ok")
+    if (login_res == "ok_admin")
     {
-        QMessageBox::information(nullptr, "Hi", "test\t" + username); // for testing
+        QMessageBox::information(nullptr, "Hi", login_res); // for testing
+    }
+    else if (login_res == "ok")
+    {
+        QMessageBox::information(nullptr, "Hi", login_res); // for testing
     }
     else
     {
@@ -46,7 +51,7 @@ void authentication::on_pushButton_signup_clicked()
     if (register_res == "ok")
     {
         QMessageBox::information(nullptr, "Registered Successfully", "Thanks for signing up : " + username);
-        ui->checkBox_admin->setChecked(false);
+        authentication::on_pushButton_signin_clicked();
     }
     else
     {

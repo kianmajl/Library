@@ -17,7 +17,7 @@ QString User::Login(QString user, QString hashed_pass)
         if (data[0] == user && data[1] == hashed_pass)
         {
             user_data.close();
-            return "ok";
+            return (data[2].toInt()) ? "ok_admin" : "ok";
         }
     }
 
