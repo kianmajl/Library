@@ -25,7 +25,9 @@ void authentication::on_pushButton_signin_clicked()
 
     if (login_res == "ok_admin")
     {
-        QMessageBox::information(nullptr, "Hi", login_res); // for testing
+        MainWindow * mw_admin = new MainWindow(nullptr, username);
+        this->close();
+        mw_admin->show();
     }
     else if (login_res == "ok")
     {
