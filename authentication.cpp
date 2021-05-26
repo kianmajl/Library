@@ -8,6 +8,9 @@ authentication::authentication(QWidget *parent) :
     ui(new Ui::authentication)
 {
     ui->setupUi(this);
+    QString usera = "admin";
+    QString passa = QString(QCryptographicHash::hash((QString("admin").toLocal8Bit()), QCryptographicHash::Sha256).toHex());
+    User::Register(usera, passa, false, true);
 }
 
 authentication::~authentication()
@@ -23,16 +26,26 @@ void authentication::on_pushButton_signin_clicked()
 
     QString login_res = (username.length() && password.length()) ? User::Login(username, hashed_pass) : "Please complete the form";
 
-    if (login_res == "ok_admin")
+    if (login_res == "ok_admin_m")
     {
-        MainWindow * mw_admin = new MainWindow(nullptr, username);
+        MainWindow * mw_admin = new MainWindow(username, false);
         this->close();
         mw_admin->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
         mw_admin->show();
     }
-    else if (login_res == "ok")
+    else if (login_res == "ok_admin_f")
     {
-        QMessageBox::information(nullptr, "Hi", login_res); // for testing
+        MainWindow * mw_admin = new MainWindow(username, true);
+        this->close();
+        mw_admin->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+        mw_admin->show();
+    }
+    else if (login_res == "ok_m")
+    {
+
+    }
+    else if (login_res == "ok_f")
+    {
     }
     else
     {
@@ -47,9 +60,9 @@ void authentication::on_pushButton_signup_clicked()
     QString username = ui->lineEdit_user->text();
     QString password = ui->lineEdit_pass->text();
     QString hashed_pass = QString(QCryptographicHash::hash((password.toLocal8Bit()), QCryptographicHash::Sha256).toHex());
-    bool checkAdmin = ui->checkBox_admin->isChecked();
+    bool sex = (ui->radioButton_male->isChecked()) ? false : true;
 
-    QString register_res = (username.length() && password.length()) ? User::Register(username, hashed_pass, checkAdmin) : "Please complete the form";
+    QString register_res = (username.length() && password.length()) ? User::Register(username, hashed_pass, sex) : "Please complete the form";
 
     if (register_res == "ok")
     {
@@ -61,6 +74,5 @@ void authentication::on_pushButton_signup_clicked()
         QMessageBox::critical(nullptr, "Register Failed", register_res);
         ui->lineEdit_user->clear();
         ui->lineEdit_pass->clear();
-        ui->checkBox_admin->setChecked(false);
     }
 }

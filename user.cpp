@@ -17,7 +17,10 @@ QString User::Login(QString user, QString hashed_pass)
         if (data[0] == user && data[1] == hashed_pass)
         {
             user_data.close();
-            return (data[2].toInt()) ? "ok_admin" : "ok";
+            if (data[2].toInt()) // Check Sex
+                return (data[3].toInt()) ? "ok_admin_f" : "ok_f";
+            else
+                return (data[3].toInt()) ? "ok_admin_m" : "ok_m";
         }
     }
 
@@ -25,7 +28,7 @@ QString User::Login(QString user, QString hashed_pass)
     return "Invalid Username or Password";
 }
 
-QString User::Register(QString user, QString hashed_pass, bool isAdmin)
+QString User::Register(QString user, QString hashed_pass, bool sex, bool isAdmin)
 {
     QFile user_data(USER_FILE);
 
@@ -48,26 +51,22 @@ QString User::Register(QString user, QString hashed_pass, bool isAdmin)
         }
     }
 
-    User new_user(user, hashed_pass, isAdmin);
+    User new_user(user, hashed_pass, sex, isAdmin);
     out << new_user.toString();
     return "ok";
 }
 
-User::User(QString username, QString password, bool admin)
+User::User(QString username, QString password, bool sex, bool admin)
 {
     this->username = username;
     this->password = password;
+    this->sex = sex;
     this->isAdmin = admin;
-}
-
-QString User::getUsername()
-{
-    return this->username;
 }
 
 QString User::toString()
 {
     QStringList qsl;
-    qsl << this->username << this->password << QString::number(this->isAdmin);
+    qsl << this->username << this->password << QString::number(this->sex) << QString::number(this->isAdmin);
     return qsl.join(SEP_DATA) + "\n";
 }

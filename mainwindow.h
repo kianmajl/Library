@@ -13,7 +13,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr, QString user_logged_in = "");
+    MainWindow(QString user_logged_in, bool sex, QWidget *parent = nullptr);
     ~MainWindow();
 
 private:

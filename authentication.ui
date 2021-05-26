@@ -55,7 +55,7 @@ QPushButton:hover#pushButton_signup
 {
 	background-color: rgb(242, 204, 143);
 }
-QCheckBox
+QRadioButton
 {
 	border: 0px;
 }</string>
@@ -179,9 +179,22 @@ QCheckBox
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
-      <widget class="QCheckBox" name="checkBox_admin">
+      <widget class="QRadioButton" name="radioButton_male">
+       <property name="toolTip">
+        <string>Please Select Your Sex</string>
+       </property>
        <property name="text">
-        <string>Register as Admin</string>
+        <string>Male</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="radioButton_female">
+       <property name="toolTip">
+        <string>Please Select Your Sex</string>
+       </property>
+       <property name="text">
+        <string>Female</string>
        </property>
       </widget>
      </item>
@@ -195,8 +208,8 @@ QCheckBox
        </property>
        <property name="sizeHint" stdset="0">
         <size>
-         <width>80</width>
-         <height>20</height>
+         <width>84</width>
+         <height>10</height>
         </size>
        </property>
       </spacer>

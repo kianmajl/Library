@@ -4,5 +4,6 @@
         <file>icons/member-card.png</file>
         <file>icons/admin-dash.png</file>
         <file>icons/librarian.png</file>
+        <file>icons/librarian-m.png</file>
     </qresource>
 </RCC>
