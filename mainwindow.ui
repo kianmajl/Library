@@ -46,6 +46,26 @@ QPushButton
 QPushButton:hover
 {
 	background-color: rgb(242, 204, 143);
+}
+QPushButton#pushButton_logout
+{
+	background-color: rgb(129, 178, 154);
+}
+QPushButton#pushButton_totalb
+{
+	background-color: rgb(95, 121, 123);
+}
+QPushButton#pushButton_totalbissued
+{
+	background-color: rgb(95, 121, 123);
+}
+QPushButton#pushButton_totaluser
+{
+	background-color: rgb(95, 121, 123);
+}
+QPushButton:hover#pushButton_logout
+{
+	background-color: rgb(242, 204, 143);
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -182,6 +202,64 @@ color: rgb(255, 255, 255);</string>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
+      <widget class="QGroupBox" name="groupBox_3">
+       <property name="title">
+        <string>Messages</string>
+       </property>
+       <widget class="QWidget" name="verticalLayoutWidget_4">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>30</y>
+          <width>161</width>
+          <height>351</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_4">
+         <item>
+          <widget class="QPushButton" name="pushButton_13">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Compose</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_12">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="MinimumExpanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Inbox</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_14">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Sent</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+     </item>
+     <item>
       <widget class="QGroupBox" name="groupBox">
        <property name="title">
         <string>Books</string>
@@ -191,15 +269,34 @@ color: rgb(255, 255, 255);</string>
          <rect>
           <x>10</x>
           <y>30</y>
-          <width>161</width>
+          <width>173</width>
           <height>351</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_2">
          <item>
-          <widget class="QPushButton" name="pushButton_7">
+          <widget class="QPushButton" name="pushButton_10">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="text">
             <string>View Book List</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_7">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Add / Edit / Delete</string>
            </property>
           </widget>
          </item>
@@ -212,13 +309,44 @@ color: rgb(255, 255, 255);</string>
        <property name="title">
         <string>Users</string>
        </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QGroupBox" name="groupBox_3">
-       <property name="title">
-        <string>Messages</string>
-       </property>
+       <widget class="QWidget" name="verticalLayoutWidget_3">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>30</y>
+          <width>173</width>
+          <height>351</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_3">
+         <item>
+          <widget class="QPushButton" name="pushButton_11">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>View User List</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_8">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Add / Edit / Delete</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
       </widget>
      </item>
      <item>
@@ -229,15 +357,45 @@ color: rgb(255, 255, 255);</string>
        <widget class="QWidget" name="verticalLayoutWidget">
         <property name="geometry">
          <rect>
-          <x>10</x>
+          <x>13</x>
           <y>30</y>
-          <width>168</width>
+          <width>161</width>
           <height>351</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout">
          <item>
-          <widget class="QPushButton" name="pushButton_2">
+          <widget class="QPushButton" name="pushButton_totalbissued">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string>Total Books Issued : 5</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_totalb">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string>Total Books : 6</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_totaluser">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string>Total Users : 3</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_editprofile">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
              <horstretch>0</horstretch>
@@ -250,7 +408,7 @@ color: rgb(255, 255, 255);</string>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton">
+          <widget class="QPushButton" name="pushButton_logout">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
              <horstretch>0</horstretch>
