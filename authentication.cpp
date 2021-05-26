@@ -17,13 +17,14 @@ authentication::~authentication()
 void authentication::on_pushButton_signin_clicked()
 {
     QString username = ui->lineEdit_user->text();
-    QString hashed_pass = QString(QCryptographicHash::hash((ui->lineEdit_pass->text().toLocal8Bit()), QCryptographicHash::Sha256).toHex());
+    QString password = ui->lineEdit_pass->text();
+    QString hashed_pass = QString(QCryptographicHash::hash((password.toLocal8Bit()), QCryptographicHash::Sha256).toHex());
 
-    QString login_res = (username.length() && ui->lineEdit_pass->text().length()) ? User::Login(username, hashed_pass) : "Please complete the form";
+    QString login_res = (username.length() && password.length()) ? User::Login(username, hashed_pass) : "Please complete the form";
 
     if (login_res == "ok")
     {
-        QMessageBox::information(nullptr, "Hi", "test\t" + username);
+        QMessageBox::information(nullptr, "Hi", "test\t" + username); // for testing
     }
     else
     {
@@ -36,14 +37,16 @@ void authentication::on_pushButton_signin_clicked()
 void authentication::on_pushButton_signup_clicked()
 {
     QString username = ui->lineEdit_user->text();
-    QString hashed_pass = QString(QCryptographicHash::hash((ui->lineEdit_pass->text().toLocal8Bit()), QCryptographicHash::Sha256).toHex());
+    QString password = ui->lineEdit_pass->text();
+    QString hashed_pass = QString(QCryptographicHash::hash((password.toLocal8Bit()), QCryptographicHash::Sha256).toHex());
     bool checkAdmin = ui->checkBox_admin->isChecked();
 
-    QString register_res = (username.length() && ui->lineEdit_pass->text().length()) ? User::Register(username, hashed_pass, checkAdmin) : "Please complete the form";
+    QString register_res = (username.length() && password.length()) ? User::Register(username, hashed_pass, checkAdmin) : "Please complete the form";
 
     if (register_res == "ok")
     {
-        QMessageBox::information(nullptr, "Hi", "test\t" + username);
+        QMessageBox::information(nullptr, "Registered Successfully", "Thanks for signing up : " + username);
+        ui->checkBox_admin->setChecked(false);
     }
     else
     {

@@ -53,11 +53,6 @@ QString User::Register(QString user, QString hashed_pass, bool isAdmin)
     return "ok";
 }
 
-User::User()
-{
-
-}
-
 User::User(QString username, QString password, bool admin)
 {
     this->username = username;
