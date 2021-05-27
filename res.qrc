@@ -5,5 +5,8 @@
         <file>icons/admin-dash.png</file>
         <file>icons/librarian.png</file>
         <file>icons/librarian-m.png</file>
+        <file>icons/user-dash.png</file>
+        <file>icons/reading.png</file>
+        <file>icons/reading-m.png</file>
     </qresource>
 </RCC>

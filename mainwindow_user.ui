@@ -13,6 +13,25 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget
+{
+	background-color: rgb(244, 241, 222);
+	color: rgb(61, 64, 91);
+}
+QPushButton
+{
+	font: 10pt &quot;IRANYekan&quot;;
+	background-color: rgb(224, 122, 95);
+	color: rgb(255, 255, 255);
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 6px;
+}
+QPushButton:hover
+{
+	background-color: rgb(242, 204, 143);
+}</string>
+  </property>
   <widget class="QWidget" name="centralwidget"/>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
