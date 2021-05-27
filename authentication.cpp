@@ -2,6 +2,7 @@
 #include "ui_authentication.h"
 #include "user.h"
 #include "mainwindow.h"
+#include "mainwindow_user.h"
 
 authentication::authentication(QWidget *parent) :
     QWidget(parent),
@@ -42,10 +43,17 @@ void authentication::on_pushButton_signin_clicked()
     }
     else if (login_res == "ok_m")
     {
-
+        MainWindow_user * mw_user = new MainWindow_user(username, false);
+        this->close();
+        mw_user->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+        mw_user->show();
     }
     else if (login_res == "ok_f")
     {
+        MainWindow_user * mw_user = new MainWindow_user(username, true);
+        this->close();
+        mw_user->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+        mw_user->show();
     }
     else
     {
