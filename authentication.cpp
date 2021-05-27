@@ -70,7 +70,7 @@ void authentication::on_pushButton_signup_clicked()
     QString hashed_pass = QString(QCryptographicHash::hash((password.toLocal8Bit()), QCryptographicHash::Sha256).toHex());
     bool sex = (ui->radioButton_male->isChecked()) ? false : true;
 
-    QString register_res = (username.length() && password.length()) ? User::Register(username, hashed_pass, sex) : "Please complete the form";
+    QString register_res = (username.length() && password.length() && (ui->radioButton_female->isChecked() || ui->radioButton_male->isChecked())) ? User::Register(username, hashed_pass, sex) : "Please complete the form";
 
     if (register_res == "ok")
     {
