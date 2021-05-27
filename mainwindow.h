@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "authentication.h"
 #include <QMainWindow>
 #include <QDateTime>
 
@@ -15,6 +16,9 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QString user_logged_in, bool sex, QWidget *parent = nullptr);
     ~MainWindow();
+
+private slots:
+    void on_pushButton_logout_clicked();
 
 private:
     Ui::MainWindow *ui;

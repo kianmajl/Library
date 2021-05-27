@@ -16,3 +16,14 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+
+void MainWindow::on_pushButton_logout_clicked()
+{
+    int ret = QMessageBox::question(nullptr, "Confirm Logout", "Are you sure you want to logout?");
+    if (ret == QMessageBox::Yes)
+    {
+        authentication * aui = new authentication();
+        this->close();
+        aui->show();
+    }
+}

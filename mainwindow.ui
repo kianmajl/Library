@@ -269,7 +269,7 @@ color: rgb(255, 255, 255);</string>
          <rect>
           <x>10</x>
           <y>30</y>
-          <width>173</width>
+          <width>161</width>
           <height>351</height>
          </rect>
         </property>
@@ -296,7 +296,22 @@ color: rgb(255, 255, 255);</string>
             </sizepolicy>
            </property>
            <property name="text">
-            <string>Add / Edit / Delete</string>
+            <string>Add / Edit / Delete
+Book</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Add / Edit / Delete
+Group</string>
            </property>
           </widget>
          </item>
