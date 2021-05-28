@@ -17,6 +17,9 @@ public:
     explicit MainWindow_user(QString user_logged_in, bool sex, QWidget *parent = nullptr);
     ~MainWindow_user();
 
+private slots:
+    void on_pushButton_logout_clicked();
+
 private:
     Ui::MainWindow_user *ui;
 };
