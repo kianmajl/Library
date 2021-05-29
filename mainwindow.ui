@@ -211,7 +211,7 @@ color: rgb(255, 255, 255);</string>
          <rect>
           <x>10</x>
           <y>30</y>
-          <width>161</width>
+          <width>231</width>
           <height>351</height>
          </rect>
         </property>
@@ -243,20 +243,6 @@ color: rgb(255, 255, 255);</string>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_7">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="text">
-            <string>Add / Edit / Delete
-Book</string>
-           </property>
-          </widget>
-         </item>
-         <item>
           <widget class="QPushButton" name="pushButton">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -265,8 +251,7 @@ Book</string>
             </sizepolicy>
            </property>
            <property name="text">
-            <string>Add / Edit / Delete
-Group</string>
+            <string>View Group List</string>
            </property>
           </widget>
          </item>
@@ -284,7 +269,7 @@ Group</string>
          <rect>
           <x>10</x>
           <y>30</y>
-          <width>161</width>
+          <width>231</width>
           <height>351</height>
          </rect>
         </property>
@@ -333,51 +318,6 @@ Group</string>
       </widget>
      </item>
      <item>
-      <widget class="QGroupBox" name="groupBox_2">
-       <property name="title">
-        <string>Users</string>
-       </property>
-       <widget class="QWidget" name="verticalLayoutWidget_3">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>30</y>
-          <width>173</width>
-          <height>351</height>
-         </rect>
-        </property>
-        <layout class="QVBoxLayout" name="verticalLayout_3">
-         <item>
-          <widget class="QPushButton" name="pushButton_11">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="text">
-            <string>View User List</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="pushButton_8">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="text">
-            <string>Add / Edit / Delete</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </widget>
-     </item>
-     <item>
       <widget class="QGroupBox" name="groupBox_4">
        <property name="title">
         <string>My Account</string>
@@ -385,9 +325,9 @@ Group</string>
        <widget class="QWidget" name="verticalLayoutWidget">
         <property name="geometry">
          <rect>
-          <x>13</x>
+          <x>10</x>
           <y>30</y>
-          <width>161</width>
+          <width>231</width>
           <height>351</height>
          </rect>
         </property>
@@ -396,6 +336,9 @@ Group</string>
           <widget class="QPushButton" name="pushButton_totalbissued">
            <property name="enabled">
             <bool>false</bool>
+           </property>
+           <property name="toolTip">
+            <string>Total Books Issued by Users</string>
            </property>
            <property name="text">
             <string>Total Books Issued : 5</string>
@@ -431,7 +374,7 @@ Group</string>
             </sizepolicy>
            </property>
            <property name="text">
-            <string>Edit Profile</string>
+            <string>Edit Users Profile</string>
            </property>
           </widget>
          </item>
@@ -457,6 +400,19 @@ Group</string>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <tabstops>
+  <tabstop>pushButton_10</tabstop>
+  <tabstop>pushButton_2</tabstop>
+  <tabstop>pushButton</tabstop>
+  <tabstop>pushButton_13</tabstop>
+  <tabstop>pushButton_12</tabstop>
+  <tabstop>pushButton_14</tabstop>
+  <tabstop>pushButton_editprofile</tabstop>
+  <tabstop>pushButton_logout</tabstop>
+  <tabstop>pushButton_totalbissued</tabstop>
+  <tabstop>pushButton_totalb</tabstop>
+  <tabstop>pushButton_totaluser</tabstop>
+ </tabstops>
  <resources>
   <include location="res.qrc"/>
  </resources>
