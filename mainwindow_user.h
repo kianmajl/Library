@@ -15,6 +15,7 @@ class MainWindow_user : public QMainWindow
 
 public:
     explicit MainWindow_user(QString user_logged_in, bool sex, QWidget *parent = nullptr);
+    QString getUser();
     ~MainWindow_user();
 
 private slots:
@@ -22,6 +23,7 @@ private slots:
 
 private:
     Ui::MainWindow_user *ui;
+    QString user;
 };
 
 #endif // MAINWINDOW_USER_H

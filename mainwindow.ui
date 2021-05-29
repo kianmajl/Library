@@ -217,7 +217,7 @@ color: rgb(255, 255, 255);</string>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_2">
          <item>
-          <widget class="QPushButton" name="pushButton_10">
+          <widget class="QPushButton" name="pushButton_viewblist">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
              <horstretch>0</horstretch>
@@ -401,7 +401,7 @@ color: rgb(255, 255, 255);</string>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <tabstops>
-  <tabstop>pushButton_10</tabstop>
+  <tabstop>pushButton_viewblist</tabstop>
   <tabstop>pushButton_2</tabstop>
   <tabstop>pushButton</tabstop>
   <tabstop>pushButton_13</tabstop>

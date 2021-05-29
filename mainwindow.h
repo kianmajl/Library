@@ -15,12 +15,16 @@ class MainWindow : public QMainWindow
 
 public:
     MainWindow(QString user_logged_in, bool sex, QWidget *parent = nullptr);
+    QString getUser();
     ~MainWindow();
 
 private slots:
     void on_pushButton_logout_clicked();
 
+    void on_pushButton_viewblist_clicked();
+
 private:
     Ui::MainWindow *ui;
+    QString user;
 };
 #endif // MAINWINDOW_H

@@ -6,9 +6,15 @@ MainWindow_user::MainWindow_user(QString user_logged_in, bool sex, QWidget *pare
     ui(new Ui::MainWindow_user)
 {
     ui->setupUi(this);
-    ui->label_username->setText("Hi " + user_logged_in);
+    this->user = user_logged_in;
+    ui->label_username->setText("Hi " + this->user);
     ui->label->setText("User Dashboard | " + QDateTime::currentDateTime().toString("dddd, MMMM dd, yyyy"));
     ui->frame_2->setStyleSheet((sex) ? "image: url(:/icons/icons/reading.png);" : "image: url(:/icons/icons/reading-m.png);");
+}
+
+QString MainWindow_user::getUser()
+{
+    return this->user;
 }
 
 MainWindow_user::~MainWindow_user()
