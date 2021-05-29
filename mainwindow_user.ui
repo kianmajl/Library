@@ -43,10 +43,6 @@ QPushButton:hover#pushButton_logout
 {
 	background-color: rgb(242, 204, 143);
 }
-QPushButton#pushButton_totalb
-{
-	background-color: rgb(95, 121, 123);
-}
 QPushButton#pushButton_totalbissued
 {
 	background-color: rgb(95, 121, 123);
@@ -326,22 +322,6 @@ color: rgb(255, 255, 255);</string>
            </property>
            <property name="text">
             <string>Total Books Issued : 5</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="pushButton_totalb">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="text">
-            <string>Total Books : 5</string>
            </property>
           </widget>
          </item>

@@ -10,6 +10,7 @@ CONFIG += c++11
 
 SOURCES += \
     authentication.cpp \
+    booklist_admin.cpp \
     main.cpp \
     mainwindow.cpp \
     mainwindow_user.cpp \
@@ -17,12 +18,14 @@ SOURCES += \
 
 HEADERS += \
     authentication.h \
+    booklist_admin.h \
     mainwindow.h \
     mainwindow_user.h \
     user.h
 
 FORMS += \
     authentication.ui \
+    booklist_admin.ui \
     mainwindow.ui \
     mainwindow_user.ui
 
