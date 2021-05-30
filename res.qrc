@@ -10,5 +10,6 @@
         <file>icons/reading-m.png</file>
         <file>icons/bookshelves.png</file>
         <file>icons/searching.png</file>
+        <file>icons/stairs.png</file>
     </qresource>
 </RCC>

@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include "authentication.h"
+#include "groupbooks.h"
 #include <QMainWindow>
 #include <QDateTime>
 
@@ -22,6 +23,8 @@ private slots:
     void on_pushButton_logout_clicked();
 
     void on_pushButton_viewblist_clicked();
+
+    void on_pushButton_viewgrouplist_clicked();
 
 private:
     Ui::MainWindow *ui;
