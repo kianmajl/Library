@@ -42,5 +42,6 @@ void MainWindow::on_pushButton_viewgrouplist_clicked()
 {
     groupBooks * gp = new groupBooks();
     this->hide();
+    gp->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
     gp->show();
 }

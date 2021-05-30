@@ -16,8 +16,13 @@ class groupBooks : public QWidget
 
 public:
     explicit groupBooks(QWidget *parent = nullptr);
-    void LoadData();
+    int LoadData();
     ~groupBooks();
+
+private slots:
+    void on_lineEdit_textChanged(const QString &arg1);
+
+    void on_listWidget_currentTextChanged(const QString &currentText);
 
 private:
     Ui::groupBooks *ui;

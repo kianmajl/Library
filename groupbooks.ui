@@ -87,7 +87,7 @@ color: rgb(255, 255, 255);</string>
      <string notr="true">font: 25 10pt &quot;IRANYekan Light&quot;;</string>
     </property>
     <property name="text">
-     <string>Book Groups</string>
+     <string>Group Books</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_title">
@@ -120,6 +120,22 @@ color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>© by: Kian Majlessi</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_copyright_2">
+    <property name="geometry">
+     <rect>
+      <x>640</x>
+      <y>80</y>
+      <width>91</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 25 7pt &quot;IRANYekan Light&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Quick Search </string>
     </property>
    </widget>
   </widget>
@@ -159,7 +175,7 @@ color: rgb(255, 255, 255);</string>
       </widget>
      </item>
      <item row="0" column="0">
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="pushButton_add">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
          <horstretch>0</horstretch>
@@ -196,6 +212,9 @@ color: rgb(255, 255, 255);</string>
      <height>27</height>
     </rect>
    </property>
+   <property name="toolTip">
+    <string>Enter Your Group Title</string>
+   </property>
   </widget>
   <widget class="QListWidget" name="listWidget">
    <property name="geometry">
@@ -205,6 +224,9 @@ color: rgb(255, 255, 255);</string>
      <width>501</width>
      <height>401</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
    </property>
    <property name="sortingEnabled">
     <bool>true</bool>

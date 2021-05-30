@@ -8,15 +8,16 @@ groupBooks::groupBooks(QWidget *parent) :
     ui(new Ui::groupBooks)
 {
     ui->setupUi(this);
-    this->LoadData();
+    int num_loaded_data = this->LoadData();
+    ui->label->setText("Group Books | " + QString::number(num_loaded_data) + " Records Loaded");
 }
 
-void groupBooks::LoadData()
+int groupBooks::LoadData()
 {
     QFile group_data(GROUP_FILE);
 
     if (!group_data.open(QIODevice::ReadWrite | QIODevice::Text))
-        return;
+        return 0;
 
     QTextStream in(&group_data);
 
@@ -29,9 +30,22 @@ void groupBooks::LoadData()
     ui->lineEdit->setCompleter(completer);
 
     group_data.close();
+    return this->data.length();
 }
 
 groupBooks::~groupBooks()
 {
     delete ui;
+}
+
+void groupBooks::on_lineEdit_textChanged(const QString &arg1)
+{
+    QList<QListWidgetItem *> qlwi = ui->listWidget->findItems(arg1, Qt::MatchExactly);
+    for (const auto &i : qlwi)
+        ui->listWidget->setCurrentItem(i);
+}
+
+void groupBooks::on_listWidget_currentTextChanged(const QString &currentText)
+{
+    ui->lineEdit->setText(currentText);
 }
