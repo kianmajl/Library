@@ -29,6 +29,7 @@ void MainWindow::on_pushButton_logout_clicked()
     {
         authentication * aui = new authentication();
         this->close();
+        aui->setWindowFlags(Qt::Window | Qt::WindowCloseButtonHint);
         aui->show();
     }
 }
@@ -41,7 +42,7 @@ void MainWindow::on_pushButton_viewblist_clicked()
 void MainWindow::on_pushButton_viewgrouplist_clicked()
 {
     groupBooks * gp = new groupBooks();
-    this->hide();
+    this->showMinimized();
     gp->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
     gp->show();
 }

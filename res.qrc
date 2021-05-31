@@ -11,5 +11,6 @@
         <file>icons/bookshelves.png</file>
         <file>icons/searching.png</file>
         <file>icons/stairs.png</file>
+        <file>icons/book-club.png</file>
     </qresource>
 </RCC>

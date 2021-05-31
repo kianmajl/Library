@@ -16,7 +16,7 @@ int groupBooks::LoadData()
 {
     QFile group_data(GROUP_FILE);
 
-    if (!group_data.open(QIODevice::ReadWrite | QIODevice::Text))
+    if (!group_data.open(QIODevice::ReadOnly | QIODevice::Text))
         return 0;
 
     QTextStream in(&group_data);

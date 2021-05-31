@@ -30,6 +30,7 @@ void MainWindow_user::on_pushButton_logout_clicked()
     {
         authentication * auth = new authentication();
         this->close();
+        auth->setWindowFlags(Qt::Window | Qt::WindowCloseButtonHint);
         auth->show();
     }
 }

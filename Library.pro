@@ -11,6 +11,7 @@ CONFIG += c++11
 SOURCES += \
     authentication.cpp \
     booklist_admin.cpp \
+    edit_user_profile.cpp \
     groupbooks.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -20,6 +21,7 @@ SOURCES += \
 HEADERS += \
     authentication.h \
     booklist_admin.h \
+    edit_user_profile.h \
     groupbooks.h \
     mainwindow.h \
     mainwindow_user.h \
@@ -28,6 +30,7 @@ HEADERS += \
 FORMS += \
     authentication.ui \
     booklist_admin.ui \
+    edit_user_profile.ui \
     groupbooks.ui \
     mainwindow.ui \
     mainwindow_user.ui
