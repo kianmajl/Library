@@ -106,22 +106,6 @@ color: rgb(255, 255, 255);</string>
      <string>Library Management System</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_copyright">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>105</y>
-      <width>151</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 25 7pt &quot;IRANYekan Light&quot;;</string>
-    </property>
-    <property name="text">
-     <string>© by: Kian Majlessi</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_search">
     <property name="geometry">
      <rect>
@@ -136,6 +120,26 @@ color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>Quick Search </string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>105</y>
+      <width>121</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 25 7pt &quot;IRANYekan Light&quot;;
+border: 0px</string>
+    </property>
+    <property name="text">
+     <string>&amp;Back to Dashboard</string>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
     </property>
    </widget>
   </widget>
@@ -170,7 +174,7 @@ color: rgb(255, 255, 255);</string>
         </sizepolicy>
        </property>
        <property name="text">
-        <string>Edit</string>
+        <string>&amp;Edit</string>
        </property>
       </widget>
      </item>
@@ -183,7 +187,7 @@ color: rgb(255, 255, 255);</string>
         </sizepolicy>
        </property>
        <property name="text">
-        <string>Add</string>
+        <string>&amp;Add</string>
        </property>
       </widget>
      </item>
@@ -196,7 +200,7 @@ color: rgb(255, 255, 255);</string>
         </sizepolicy>
        </property>
        <property name="text">
-        <string>Delete</string>
+        <string>&amp;Delete</string>
        </property>
       </widget>
      </item>

@@ -6,6 +6,7 @@
 #include <QFile>
 #include <QTextStream>
 #include <QCompleter>
+#include "mainwindow.h"
 
 namespace Ui {
 class groupBooks;
@@ -16,7 +17,7 @@ class groupBooks : public QWidget
     Q_OBJECT
 
 public:
-    explicit groupBooks(QWidget *parent = nullptr);
+    explicit groupBooks(QWidget *admin_dash, QWidget *parent = nullptr);
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
     int LoadData();
@@ -27,8 +28,11 @@ private slots:
 
     void on_listWidget_currentTextChanged(const QString &currentText);
 
+    void on_pushButton_clicked();
+
 private:
     Ui::groupBooks *ui;
+    QWidget *admin_dash;
     QPointF oldPos;
     QStringList data; // for saving data from file
 };

@@ -3,10 +3,11 @@
 
 #define GROUP_FILE "groupdb.txt"
 
-groupBooks::groupBooks(QWidget *parent) :
+groupBooks::groupBooks(QWidget *admin_dash, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::groupBooks)
 {
+    this->admin_dash = admin_dash;
     ui->setupUi(this);
     int num_loaded_data = this->LoadData();
     ui->label->setText("Group Books | " + QString::number(num_loaded_data) + " Records Loaded");
@@ -60,4 +61,10 @@ void groupBooks::on_lineEdit_textChanged(const QString &arg1)
 void groupBooks::on_listWidget_currentTextChanged(const QString &currentText)
 {
     ui->lineEdit->setText(currentText);
+}
+
+void groupBooks::on_pushButton_clicked()
+{
+    this->close();
+    admin_dash->show();
 }

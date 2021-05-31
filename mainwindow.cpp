@@ -53,8 +53,8 @@ void MainWindow::on_pushButton_viewblist_clicked()
 
 void MainWindow::on_pushButton_viewgrouplist_clicked()
 {
-    groupBooks * gp = new groupBooks();
-    this->setWindowState(Qt::WindowMinimized);
+    groupBooks * gp = new groupBooks(this);
+    this->hide();
     gp->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
     gp->show();
 }
