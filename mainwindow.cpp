@@ -12,6 +12,18 @@ MainWindow::MainWindow(QString user_logged_in, bool sex, QWidget *parent)
     ui->frame_2->setStyleSheet((sex) ? "image: url(:/icons/icons/librarian.png);" : "image: url(:/icons/icons/librarian-m.png);");
 }
 
+void MainWindow::mousePressEvent(QMouseEvent *event)
+{
+    oldPos = event->globalPosition();
+}
+
+void MainWindow::mouseMoveEvent(QMouseEvent *event)
+{
+    const QPointF delta = event->globalPosition() - oldPos;
+    move(x()+delta.x(), y()+delta.y());
+    oldPos = event->globalPosition();
+}
+
 QString MainWindow::getUser()
 {
     return this->user;
@@ -42,7 +54,7 @@ void MainWindow::on_pushButton_viewblist_clicked()
 void MainWindow::on_pushButton_viewgrouplist_clicked()
 {
     groupBooks * gp = new groupBooks();
-    this->showMinimized();
+    this->setWindowState(Qt::WindowMinimized);
     gp->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
     gp->show();
 }

@@ -12,6 +12,18 @@ groupBooks::groupBooks(QWidget *parent) :
     ui->label->setText("Group Books | " + QString::number(num_loaded_data) + " Records Loaded");
 }
 
+void groupBooks::mousePressEvent(QMouseEvent *event)
+{
+    oldPos = event->globalPosition();
+}
+
+void groupBooks::mouseMoveEvent(QMouseEvent *event)
+{
+    const QPointF delta = event->globalPosition() - oldPos;
+    move(x()+delta.x(), y()+delta.y());
+    oldPos = event->globalPosition();
+}
+
 int groupBooks::LoadData()
 {
     QFile group_data(GROUP_FILE);

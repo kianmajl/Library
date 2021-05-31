@@ -4,6 +4,7 @@
 #include "authentication.h"
 #include "groupbooks.h"
 #include <QMainWindow>
+#include <QMouseEvent>
 #include <QDateTime>
 
 QT_BEGIN_NAMESPACE
@@ -16,6 +17,8 @@ class MainWindow : public QMainWindow
 
 public:
     MainWindow(QString user_logged_in, bool sex, QWidget *parent = nullptr);
+    void mousePressEvent(QMouseEvent *event);
+    void mouseMoveEvent(QMouseEvent *event);
     QString getUser();
     ~MainWindow();
 
@@ -28,6 +31,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    QPointF oldPos;
     QString user;
 };
 #endif // MAINWINDOW_H

@@ -2,6 +2,7 @@
 #define GROUPBOOKS_H
 
 #include <QWidget>
+#include <QMouseEvent>
 #include <QFile>
 #include <QTextStream>
 #include <QCompleter>
@@ -16,6 +17,8 @@ class groupBooks : public QWidget
 
 public:
     explicit groupBooks(QWidget *parent = nullptr);
+    void mousePressEvent(QMouseEvent *event);
+    void mouseMoveEvent(QMouseEvent *event);
     int LoadData();
     ~groupBooks();
 
@@ -26,6 +29,7 @@ private slots:
 
 private:
     Ui::groupBooks *ui;
+    QPointF oldPos;
     QStringList data; // for saving data from file
 };
 

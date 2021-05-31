@@ -12,6 +12,18 @@ MainWindow_user::MainWindow_user(QString user_logged_in, bool sex, QWidget *pare
     ui->frame_2->setStyleSheet((sex) ? "image: url(:/icons/icons/reading.png);" : "image: url(:/icons/icons/reading-m.png);");
 }
 
+void MainWindow_user::mousePressEvent(QMouseEvent *event)
+{
+    oldPos = event->globalPosition();
+}
+
+void MainWindow_user::mouseMoveEvent(QMouseEvent *event)
+{
+    const QPointF delta = event->globalPosition() - oldPos;
+    move(x()+delta.x(), y()+delta.y());
+    oldPos = event->globalPosition();
+}
+
 QString MainWindow_user::getUser()
 {
     return this->user;

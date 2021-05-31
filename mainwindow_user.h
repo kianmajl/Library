@@ -3,6 +3,7 @@
 
 #include "authentication.h"
 #include <QMainWindow>
+#include <QMouseEvent>
 #include <QDateTime>
 
 namespace Ui {
@@ -15,6 +16,8 @@ class MainWindow_user : public QMainWindow
 
 public:
     explicit MainWindow_user(QString user_logged_in, bool sex, QWidget *parent = nullptr);
+    void mousePressEvent(QMouseEvent *event);
+    void mouseMoveEvent(QMouseEvent *event);
     QString getUser();
     ~MainWindow_user();
 
@@ -23,6 +26,7 @@ private slots:
 
 private:
     Ui::MainWindow_user *ui;
+    QPointF oldPos;
     QString user;
 };
 
