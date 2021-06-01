@@ -148,7 +148,7 @@ QRadioButton
          </size>
         </property>
         <property name="text">
-         <string>&amp;Sign in</string>
+         <string>Sign in</string>
         </property>
        </widget>
       </item>
@@ -232,7 +232,7 @@ QRadioButton
         <string notr="true"/>
        </property>
        <property name="text">
-        <string>&amp;Sign up</string>
+        <string>Sign up</string>
        </property>
       </widget>
      </item>

@@ -63,7 +63,7 @@ void groupBooks::on_listWidget_currentTextChanged(const QString &currentText)
     ui->lineEdit->setText(currentText);
 }
 
-void groupBooks::on_pushButton_clicked()
+void groupBooks::on_pushButton_backtodash_clicked()
 {
     this->close();
     admin_dash->show();

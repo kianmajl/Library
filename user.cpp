@@ -56,6 +56,25 @@ QString User::Register(QString user, QString hashed_pass, bool sex, bool isAdmin
     return "ok";
 }
 
+int User::LoadData()
+{
+    int cnt = 0;
+    QFile user_data(USER_FILE);
+
+    if (!user_data.open(QIODevice::ReadOnly | QIODevice::Text))
+        return 0;
+
+    QTextStream in(&user_data);
+    while (!in.atEnd())
+    {
+        in.readLine();
+        cnt++;
+    }
+
+    user_data.close();
+    return cnt;
+}
+
 User::User(QString username, QString password, bool sex, bool admin)
 {
     this->username = username;

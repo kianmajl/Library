@@ -225,7 +225,7 @@ color: rgb(255, 255, 255);</string>
             </sizepolicy>
            </property>
            <property name="text">
-            <string>View Book List</string>
+            <string>&amp;View Book List</string>
            </property>
           </widget>
          </item>
@@ -283,7 +283,7 @@ color: rgb(255, 255, 255);</string>
             </sizepolicy>
            </property>
            <property name="text">
-            <string>Compose</string>
+            <string>&amp;Compose</string>
            </property>
           </widget>
          </item>
@@ -296,7 +296,7 @@ color: rgb(255, 255, 255);</string>
             </sizepolicy>
            </property>
            <property name="text">
-            <string>Inbox</string>
+            <string>&amp;Inbox</string>
            </property>
           </widget>
          </item>
@@ -309,7 +309,7 @@ color: rgb(255, 255, 255);</string>
             </sizepolicy>
            </property>
            <property name="text">
-            <string>Sent</string>
+            <string>&amp;Sent</string>
            </property>
           </widget>
          </item>
@@ -374,7 +374,7 @@ color: rgb(255, 255, 255);</string>
             </sizepolicy>
            </property>
            <property name="text">
-            <string>Edit Users Profile</string>
+            <string>&amp;Edit Users Profile</string>
            </property>
           </widget>
          </item>
@@ -387,7 +387,7 @@ color: rgb(255, 255, 255);</string>
             </sizepolicy>
            </property>
            <property name="text">
-            <string>Logout</string>
+            <string>&amp;Logout</string>
            </property>
           </widget>
          </item>

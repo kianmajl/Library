@@ -6,7 +6,6 @@
 #include <QFile>
 #include <QTextStream>
 #include <QCompleter>
-#include "mainwindow.h"
 
 namespace Ui {
 class groupBooks;
@@ -28,13 +27,13 @@ private slots:
 
     void on_listWidget_currentTextChanged(const QString &currentText);
 
-    void on_pushButton_clicked();
+    void on_pushButton_backtodash_clicked();
 
 private:
     Ui::groupBooks *ui;
-    QWidget *admin_dash;
-    QPointF oldPos;
-    QStringList data; // for saving data from file
+    QWidget *admin_dash; // pointer of admin dashboard
+    QPointF oldPos; // for draggable
+    QStringList data; // saving data from file
 };
 
 #endif // GROUPBOOKS_H

@@ -10,6 +10,7 @@ CONFIG += c++11
 
 SOURCES += \
     authentication.cpp \
+    book.cpp \
     booklist_admin.cpp \
     edit_user_profile.cpp \
     groupbooks.cpp \
@@ -20,6 +21,7 @@ SOURCES += \
 
 HEADERS += \
     authentication.h \
+    book.h \
     booklist_admin.h \
     edit_user_profile.h \
     groupbooks.h \

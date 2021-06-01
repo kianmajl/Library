@@ -2,7 +2,9 @@
 #define MAINWINDOW_H
 
 #include "authentication.h"
+#include "user.h"
 #include "groupbooks.h"
+#include "edit_user_profile.h"
 #include <QMainWindow>
 #include <QMouseEvent>
 #include <QDateTime>
@@ -29,9 +31,11 @@ private slots:
 
     void on_pushButton_viewgrouplist_clicked();
 
+    void on_pushButton_editprofile_clicked();
+
 private:
     Ui::MainWindow *ui;
-    QPointF oldPos;
-    QString user;
+    QPointF oldPos; // for draggable
+    QString user; // logged in user
 };
 #endif // MAINWINDOW_H

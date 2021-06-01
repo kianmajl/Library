@@ -9,9 +9,12 @@ authentication::authentication(QWidget *parent) :
     ui(new Ui::authentication)
 {
     ui->setupUi(this);
-    QString usera = "admin";
-    QString passa = QString(QCryptographicHash::hash((QString("admin").toLocal8Bit()), QCryptographicHash::Sha256).toHex());
-    User::Register(usera, passa, false, true);
+    // Create Admin User
+    {
+        QString usera = "admin";
+        QString passa = QString(QCryptographicHash::hash((QString("admin").toLocal8Bit()), QCryptographicHash::Sha256).toHex());
+        User::Register(usera, passa, false, true);
+    }
 }
 
 authentication::~authentication()

@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Users List</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="res.qrc">
+    <normaloff>:/icons/icons/library.png</normaloff>:/icons/icons/library.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">QWidget
@@ -118,20 +122,25 @@ color: rgb(255, 255, 255);</string>
      <string>Users List</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_copyright">
+   <widget class="QPushButton" name="pushButton_backtodash">
     <property name="geometry">
      <rect>
-      <x>30</x>
+      <x>10</x>
       <y>105</y>
-      <width>151</width>
+      <width>121</width>
       <height>20</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">font: 25 7pt &quot;IRANYekan Light&quot;;</string>
+     <string notr="true">border: 0px;
+text-decoration: underline;
+font: 25 7pt &quot;IRANYekan Light&quot;;</string>
     </property>
     <property name="text">
-     <string>© by: Kian Majlessi</string>
+     <string>&amp;Back to Dashboard</string>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
     </property>
    </widget>
   </widget>
@@ -145,7 +154,40 @@ color: rgb(255, 255, 255);</string>
     </rect>
    </property>
   </widget>
+  <widget class="QTableWidget" name="tableWidget">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>170</y>
+     <width>751</width>
+     <height>311</height>
+    </rect>
+   </property>
+   <attribute name="horizontalHeaderDefaultSectionSize">
+    <number>243</number>
+   </attribute>
+   <column>
+    <property name="text">
+     <string>Username</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Password</string>
+    </property>
+    <property name="toolTip">
+     <string>Passwords are Hashed with SHA-256 algorithm</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Gender</string>
+    </property>
+   </column>
+  </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="res.qrc"/>
+ </resources>
  <connections/>
 </ui>

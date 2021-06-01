@@ -26,8 +26,8 @@ private slots:
 
 private:
     Ui::MainWindow_user *ui;
-    QPointF oldPos;
-    QString user;
+    QPointF oldPos; // for draggable
+    QString user; // logged in user
 };
 
 #endif // MAINWINDOW_USER_H
