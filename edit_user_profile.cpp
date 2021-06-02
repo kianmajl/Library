@@ -38,7 +38,7 @@ int Edit_User_profile::LoadData()
     while (!in.atEnd())
     {
         QStringList data = in.readLine().split(SEP_DATA);
-        user_data[data[0]] << data[1] << data[2];
+        user_data[data[0]] << data[1] << data[2] << data[3];
     }
 
     userfile.close();
@@ -59,6 +59,19 @@ int Edit_User_profile::LoadData()
     completer->setCaseSensitivity(Qt::CaseInsensitive);
     ui->lineEdit->setCompleter(completer);
     return user_data.size();
+}
+
+bool Edit_User_profile::saveChanges()
+{
+    QFile userfile(USER_FILE);
+
+    if (!userfile.open(QIODevice::WriteOnly | QIODevice::Text))
+        return false;
+
+    QTextStream out(&userfile);
+    for (auto it = user_data.constBegin(); it != user_data.constEnd(); ++it)
+        out << it.key() << SEP_DATA << it.value().join(SEP_DATA);
+    return true;
 }
 
 Edit_User_profile::~Edit_User_profile()
@@ -83,4 +96,11 @@ void Edit_User_profile::on_tableWidget_currentCellChanged(int currentRow)
 {
     QTableWidgetItem *tmp = ui->tableWidget->item(currentRow, 0);
     ui->lineEdit->setText(tmp->text());
+}
+
+void Edit_User_profile::on_pushButton_edit_clicked()
+{
+    Edit_User_Data * eud = new Edit_User_Data(ui->tableWidget->selectedItems()[0]->text(), user_data);
+    eud->setWindowFlags(Qt::Window | Qt::WindowCloseButtonHint);
+    eud->show();
 }

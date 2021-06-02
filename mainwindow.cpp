@@ -1,10 +1,17 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-MainWindow::MainWindow(QString user_logged_in, bool sex, QWidget *parent)
+#define GROUP_LIST_FORM "grouplist"
+#define ISSUED_BOOK_LIST_FORM "isbooklist"
+#define BOOK_LIST_FORM "booklist"
+#define USERS_LIST_FORM "userlist"
+#define AUTHENTICATION_FORM "auth"
+
+MainWindow::MainWindow(QWidget *auth, QString user_logged_in, bool sex, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
+    forms.append(qMakePair(AUTHENTICATION_FORM, auth));
     ui->setupUi(this);
     this->user = user_logged_in;
     ui->label_username->setText("Hi " + this->user);
@@ -25,9 +32,12 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
     oldPos = event->globalPosition();
 }
 
-QString MainWindow::getUser()
+QWidget *MainWindow::searchForms(QString name)
 {
-    return this->user;
+    for (auto i = forms.constBegin(); i != forms.constEnd(); ++i)
+        if (i->first == name)
+            return i->second;
+    return nullptr;
 }
 
 MainWindow::~MainWindow()
@@ -40,9 +50,8 @@ void MainWindow::on_pushButton_logout_clicked()
     int ret = QMessageBox::question(nullptr, "Confirm Logout", "Are you sure you want to logout?");
     if (ret == QMessageBox::Yes)
     {
-        authentication * aui = new authentication();
+        QWidget *aui = searchForms(AUTHENTICATION_FORM);
         this->close();
-        aui->setWindowFlags(Qt::Window | Qt::WindowCloseButtonHint);
         aui->show();
     }
 }
@@ -54,16 +63,28 @@ void MainWindow::on_pushButton_viewblist_clicked()
 
 void MainWindow::on_pushButton_viewgrouplist_clicked()
 {
-    groupBooks * gp = new groupBooks(this);
     this->hide();
-    gp->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
-    gp->show();
+    QWidget * gp_list = searchForms(GROUP_LIST_FORM);
+    if (!gp_list)
+    {
+        groupBooks *gp = new groupBooks(this);
+        gp->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+        forms.append(qMakePair(GROUP_LIST_FORM, gp));
+        gp_list = gp;
+    }
+    gp_list->show();
 }
 
 void MainWindow::on_pushButton_editprofile_clicked()
 {
-    Edit_User_profile * eup = new Edit_User_profile(this);
     this->hide();
-    eup->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
-    eup->show();
+    QWidget * us_list = searchForms(USERS_LIST_FORM);
+    if (!us_list)
+    {
+        Edit_User_profile *eup = new Edit_User_profile(this);
+        eup->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+        forms.append(qMakePair(USERS_LIST_FORM, eup));
+        us_list = eup;
+    }
+    us_list->show();
 }

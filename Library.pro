@@ -12,6 +12,7 @@ SOURCES += \
     authentication.cpp \
     book.cpp \
     booklist_admin.cpp \
+    edit_user_data.cpp \
     edit_user_profile.cpp \
     groupbooks.cpp \
     main.cpp \
@@ -23,6 +24,7 @@ HEADERS += \
     authentication.h \
     book.h \
     booklist_admin.h \
+    edit_user_data.h \
     edit_user_profile.h \
     groupbooks.h \
     mainwindow.h \
@@ -32,6 +34,7 @@ HEADERS += \
 FORMS += \
     authentication.ui \
     booklist_admin.ui \
+    edit_user_data.ui \
     edit_user_profile.ui \
     groupbooks.ui \
     mainwindow.ui \

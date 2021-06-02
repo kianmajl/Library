@@ -32,14 +32,14 @@ void authentication::on_pushButton_signin_clicked()
 
     if (login_res == "ok_admin_m")
     {
-        MainWindow * mw_admin = new MainWindow(username, false);
+        MainWindow * mw_admin = new MainWindow(this, username, false);
         this->close();
         mw_admin->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
         mw_admin->show();
     }
     else if (login_res == "ok_admin_f")
     {
-        MainWindow * mw_admin = new MainWindow(username, true);
+        MainWindow * mw_admin = new MainWindow(this, username, true);
         this->close();
         mw_admin->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
         mw_admin->show();

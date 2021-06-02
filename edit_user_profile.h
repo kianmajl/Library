@@ -7,6 +7,7 @@
 #include <QFile>
 #include <QTextStream>
 #include <QCompleter>
+#include "edit_user_data.h"
 
 namespace Ui {
 class Edit_User_profile;
@@ -21,6 +22,7 @@ public:
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
     int LoadData();
+    bool saveChanges();
     ~Edit_User_profile();
 
 private slots:
@@ -29,6 +31,8 @@ private slots:
     void on_lineEdit_textChanged(const QString &arg1);
 
     void on_tableWidget_currentCellChanged(int currentRow);
+
+    void on_pushButton_edit_clicked();
 
 private:
     Ui::Edit_User_profile *ui;

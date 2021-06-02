@@ -12,5 +12,6 @@
         <file>icons/searching.png</file>
         <file>icons/stairs.png</file>
         <file>icons/book-club.png</file>
+        <file>icons/conspectus.png</file>
     </qresource>
 </RCC>

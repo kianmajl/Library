@@ -8,6 +8,8 @@
 #include <QMainWindow>
 #include <QMouseEvent>
 #include <QDateTime>
+#include <QVector>
+#include <QPair>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -18,10 +20,10 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(QString user_logged_in, bool sex, QWidget *parent = nullptr);
+    MainWindow(QWidget *auth, QString user_logged_in, bool sex, QWidget *parent = nullptr);
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
-    QString getUser();
+    QWidget *searchForms(QString name);
     ~MainWindow();
 
 private slots:
@@ -35,6 +37,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    QVector<QPair<QString, QWidget *>> forms;
     QPointF oldPos; // for draggable
     QString user; // logged in user
 };

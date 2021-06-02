@@ -374,7 +374,7 @@ color: rgb(255, 255, 255);</string>
             </sizepolicy>
            </property>
            <property name="text">
-            <string>&amp;Edit Users Profile</string>
+            <string>&amp;Users List</string>
            </property>
           </widget>
          </item>
