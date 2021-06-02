@@ -10,8 +10,7 @@ Edit_User_profile::Edit_User_profile(QWidget *admin_dash, QWidget *parent) :
 {
     this->admin_dash = admin_dash;
     ui->setupUi(this);
-    int num_loaded_data = this->LoadData();
-    ui->label->setText("Users List | " + QString::number(num_loaded_data) + " Records Loaded");
+    this->LoadData();
     ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
 }
 
@@ -29,10 +28,12 @@ void Edit_User_profile::mouseMoveEvent(QMouseEvent *event)
 
 int Edit_User_profile::LoadData()
 {
+    int ld = 0;
+    ui->tableWidget->setRowCount(0);
     QFile userfile(USER_FILE);
 
     if (!userfile.open(QIODevice::ReadOnly | QIODevice::Text))
-        return 0;
+        return ld;
 
     QTextStream in(&userfile);
     while (!in.atEnd())
@@ -58,7 +59,9 @@ int Edit_User_profile::LoadData()
     QCompleter *completer = new QCompleter(user_data.keys(), this);
     completer->setCaseSensitivity(Qt::CaseInsensitive);
     ui->lineEdit->setCompleter(completer);
-    return user_data.size();
+    ld = user_data.size();
+    ui->label->setText("Users List | " + QString::number(ld) + " Records Loaded");
+    return ld;
 }
 
 bool Edit_User_profile::saveChanges()
@@ -70,7 +73,8 @@ bool Edit_User_profile::saveChanges()
 
     QTextStream out(&userfile);
     for (auto it = user_data.constBegin(); it != user_data.constEnd(); ++it)
-        out << it.key() << SEP_DATA << it.value().join(SEP_DATA);
+        out << it.key() << SEP_DATA << it.value().join(SEP_DATA) << "\n";
+    userfile.close();
     return true;
 }
 
@@ -103,4 +107,14 @@ void Edit_User_profile::on_pushButton_edit_clicked()
     Edit_User_Data * eud = new Edit_User_Data(ui->tableWidget->selectedItems()[0]->text(), user_data);
     eud->setWindowFlags(Qt::Window | Qt::WindowCloseButtonHint);
     eud->show();
+}
+
+void Edit_User_profile::on_pushButton_delete_clicked()
+{
+    QString user = ui->tableWidget->selectedItems()[0]->text();
+    int ret = QMessageBox::question(nullptr, "Confirm Delete User", "Are you sure you want to delete user : " + user + " ?");
+    if (ret == QMessageBox::Yes)
+        user_data.remove(user);
+    saveChanges();
+    LoadData();
 }

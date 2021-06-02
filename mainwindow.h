@@ -24,6 +24,7 @@ public:
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
     QWidget *searchForms(QString name);
+    void deleteForms();
     ~MainWindow();
 
 private slots:

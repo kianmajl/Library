@@ -7,6 +7,7 @@
 #include <QFile>
 #include <QTextStream>
 #include <QCompleter>
+#include <QMessageBox>
 #include "edit_user_data.h"
 
 namespace Ui {
@@ -33,6 +34,8 @@ private slots:
     void on_tableWidget_currentCellChanged(int currentRow);
 
     void on_pushButton_edit_clicked();
+
+    void on_pushButton_delete_clicked();
 
 private:
     Ui::Edit_User_profile *ui;

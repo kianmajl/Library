@@ -36,8 +36,16 @@ QWidget *MainWindow::searchForms(QString name)
 {
     for (auto i = forms.constBegin(); i != forms.constEnd(); ++i)
         if (i->first == name)
-            return i->second;
+            return i->second; // Pointer of form
     return nullptr;
+}
+
+void MainWindow::deleteForms()
+{
+    for (auto i = forms.begin(); i != forms.end(); ++i)
+        if (i->first != AUTHENTICATION_FORM)
+            delete i->second;
+    forms.clear();
 }
 
 MainWindow::~MainWindow()
@@ -53,6 +61,7 @@ void MainWindow::on_pushButton_logout_clicked()
         QWidget *aui = searchForms(AUTHENTICATION_FORM);
         this->close();
         aui->show();
+        deleteForms();
     }
 }
 
