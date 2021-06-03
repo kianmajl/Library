@@ -25,9 +25,16 @@ Edit_User_Data::~Edit_User_Data()
 void Edit_User_Data::on_pushButton_save_clicked()
 {
     QString pass = ui->lineEdit_pass->text();
+
+    if (!pass.length())
+    {
+        QMessageBox::critical(nullptr, "Password is Empty", "Password Can not be empty !!!!");
+        return;
+    }
+
     QString hashed_pass;
 
-    if (pass == data->value(user_selected).at(0))
+    if (pass == data->value(user_selected).at(0)) // Check if password have change ?
         hashed_pass = pass;
     else
         hashed_pass = QString(QCryptographicHash::hash((pass.toLocal8Bit()), QCryptographicHash::Sha256).toHex());

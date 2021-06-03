@@ -18,6 +18,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     mainwindow_user.cpp \
+    message.cpp \
     user.cpp
 
 HEADERS += \
@@ -29,6 +30,7 @@ HEADERS += \
     groupbooks.h \
     mainwindow.h \
     mainwindow_user.h \
+    message.h \
     user.h
 
 FORMS += \

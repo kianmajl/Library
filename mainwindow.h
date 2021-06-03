@@ -24,7 +24,6 @@ public:
     void mouseMoveEvent(QMouseEvent *event);
     QWidget *searchForms(QString name);
     void deleteForms();
-    void setTotalUser();
     ~MainWindow();
 
 private slots:
@@ -40,6 +39,6 @@ private:
     Ui::MainWindow *ui;
     QVector<QPair<QString, QWidget *>> forms;
     QPointF oldPos; // for draggable
-    QString user; // logged in user
+    QString user;
 };
 #endif // MAINWINDOW_H

@@ -88,9 +88,12 @@ void Edit_User_profile::on_pushButton_backtodash_clicked()
 {
     saveChanges();
     this->close();
-    QString user_admin = uiMainWindow->label_username->text().remove(0, 3);
-    uiMainWindow->pushButton_totaluser->setText("Total Users : " + QString::number(User::LoadData()));
-    uiMainWindow->frame_2->setStyleSheet((user_data[user_admin][1].toInt()) ? "image: url(:/icons/icons/librarian.png);" : "image: url(:/icons/icons/librarian-m.png);");
+    // Refresh Data on Admin Dashboard
+    {
+        QString user_admin = uiMainWindow->label_username->text().remove(0, 3);
+        uiMainWindow->pushButton_totaluser->setText("Total Users : " + QString::number(User::LoadData()));
+        uiMainWindow->frame_2->setStyleSheet((user_data[user_admin][1].toInt()) ? "image: url(:/icons/icons/librarian.png);" : "image: url(:/icons/icons/librarian-m.png);");
+    }
     admin_dash->show();
 }
 
@@ -104,7 +107,7 @@ void Edit_User_profile::on_lineEdit_textChanged(const QString &arg1)
 void Edit_User_profile::on_tableWidget_currentCellChanged(int currentRow)
 {
     QTableWidgetItem *tmp = ui->tableWidget->item(currentRow, 0);
-    if (tmp)
+    if (tmp) // if item exists !
         ui->lineEdit->setText(tmp->text());
 }
 
@@ -128,7 +131,7 @@ void Edit_User_profile::on_pushButton_delete_clicked()
         return;
     }
     QString user = ui->tableWidget->selectedItems()[0]->text();
-    if (user_data[user][2].toInt())
+    if (user_data[user][2].toInt()) // check user isAdmin
     {
         QMessageBox::critical(nullptr, "Error", "You can not delete admin users");
         return;
