@@ -128,9 +128,9 @@ void Edit_User_profile::on_pushButton_delete_clicked()
         return;
     }
     QString user = ui->tableWidget->selectedItems()[0]->text();
-    if (user == "admin")
+    if (user_data[user][2].toInt())
     {
-        QMessageBox::critical(nullptr, "Error", "You can not delete admin user");
+        QMessageBox::critical(nullptr, "Error", "You can not delete admin users");
         return;
     }
     int ret = QMessageBox::question(nullptr, "Confirm Delete User", "Are you sure you want to delete user : " + user + " ?");

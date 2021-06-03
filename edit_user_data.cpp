@@ -12,6 +12,9 @@ Edit_User_Data::Edit_User_Data(QString user_selected, QMap<QString, QStringList>
     ui->lineEdit_pass->setText(data->value(user_selected).at(0));
     ui->radioButton_male->setChecked((data->value(user_selected).at(1).toInt()) ? false : true);
     ui->radioButton_female->setChecked((data->value(user_selected).at(1).toInt()) ? true : false);
+    ui->checkBox_admin->setChecked(data->value(user_selected).at(2).toInt());
+    if (user_selected == "admin")
+        ui->checkBox_admin->setEnabled(false);
 }
 
 Edit_User_Data::~Edit_User_Data()
@@ -31,7 +34,7 @@ void Edit_User_Data::on_pushButton_save_clicked()
 
     bool sex = (ui->radioButton_female->isChecked()) ? true : false;
     QStringList qsl;
-    qsl << hashed_pass << QString::number(sex) << data->value(user_selected).at(2);
+    qsl << hashed_pass << QString::number(sex) << QString::number(ui->checkBox_admin->isChecked());
     data->insert(user_selected, qsl);
     this->close();
     delete this;
