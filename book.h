@@ -11,6 +11,7 @@ public:
 private:
     QString ISBN;
     QString title;
+    QString author;
     QString subject;
     QString publisher;
     QString language;

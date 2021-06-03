@@ -15,10 +15,11 @@ class MainWindow_user : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow_user(QString user_logged_in, bool sex, QWidget *parent = nullptr);
+    explicit MainWindow_user(QWidget *auth, QString user_logged_in, bool sex, QWidget *parent = nullptr);
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
-    QString getUser();
+    QWidget *searchForms(QString name);
+    void deleteForms();
     ~MainWindow_user();
 
 private slots:
@@ -26,6 +27,7 @@ private slots:
 
 private:
     Ui::MainWindow_user *ui;
+    QVector<QPair<QString, QWidget *>> forms;
     QPointF oldPos; // for draggable
     QString user; // logged in user
 };

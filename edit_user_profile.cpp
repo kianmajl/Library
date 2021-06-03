@@ -4,10 +4,11 @@
 #define USER_FILE "userdb.txt"
 #define SEP_DATA ","
 
-Edit_User_profile::Edit_User_profile(QWidget *admin_dash, QWidget *parent) :
+Edit_User_profile::Edit_User_profile(Ui::MainWindow *uiMainWindow, QWidget *admin_dash, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Edit_User_profile)
 {
+    this->uiMainWindow = uiMainWindow;
     this->admin_dash = admin_dash;
     ui->setupUi(this);
     this->LoadData();
@@ -28,8 +29,8 @@ void Edit_User_profile::mouseMoveEvent(QMouseEvent *event)
 
 int Edit_User_profile::LoadData()
 {
-    int ld = 0;
     ui->tableWidget->setRowCount(0);
+    int ld = 0;
     QFile userfile(USER_FILE);
 
     if (!userfile.open(QIODevice::ReadOnly | QIODevice::Text))
@@ -85,7 +86,11 @@ Edit_User_profile::~Edit_User_profile()
 
 void Edit_User_profile::on_pushButton_backtodash_clicked()
 {
+    saveChanges();
     this->close();
+    QString user_admin = uiMainWindow->label_username->text().remove(0, 3);
+    uiMainWindow->pushButton_totaluser->setText("Total Users : " + QString::number(User::LoadData()));
+    uiMainWindow->frame_2->setStyleSheet((user_data[user_admin][1].toInt()) ? "image: url(:/icons/icons/librarian.png);" : "image: url(:/icons/icons/librarian-m.png);");
     admin_dash->show();
 }
 
@@ -99,22 +104,44 @@ void Edit_User_profile::on_lineEdit_textChanged(const QString &arg1)
 void Edit_User_profile::on_tableWidget_currentCellChanged(int currentRow)
 {
     QTableWidgetItem *tmp = ui->tableWidget->item(currentRow, 0);
-    ui->lineEdit->setText(tmp->text());
+    if (tmp)
+        ui->lineEdit->setText(tmp->text());
 }
 
 void Edit_User_profile::on_pushButton_edit_clicked()
 {
-    Edit_User_Data * eud = new Edit_User_Data(ui->tableWidget->selectedItems()[0]->text(), user_data);
+    if (!ui->tableWidget->selectedItems().size())
+    {
+        QMessageBox::critical(nullptr, "No Item Selected", "Please Select an Item to edit");
+        return;
+    }
+    Edit_User_Data * eud = new Edit_User_Data(ui->tableWidget->selectedItems()[0]->text(), &user_data);
     eud->setWindowFlags(Qt::Window | Qt::WindowCloseButtonHint);
     eud->show();
 }
 
 void Edit_User_profile::on_pushButton_delete_clicked()
 {
+    if (!ui->tableWidget->selectedItems().size())
+    {
+        QMessageBox::critical(nullptr, "No Item Selected", "Please Select an Item to delete");
+        return;
+    }
     QString user = ui->tableWidget->selectedItems()[0]->text();
+    if (user == "admin")
+    {
+        QMessageBox::critical(nullptr, "Error", "You can not delete admin user");
+        return;
+    }
     int ret = QMessageBox::question(nullptr, "Confirm Delete User", "Are you sure you want to delete user : " + user + " ?");
     if (ret == QMessageBox::Yes)
         user_data.remove(user);
+    saveChanges();
+    LoadData();
+}
+
+void Edit_User_profile::on_pushButton_Refresh_clicked()
+{
     saveChanges();
     LoadData();
 }

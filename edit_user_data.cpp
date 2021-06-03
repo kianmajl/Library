@@ -1,7 +1,7 @@
 #include "edit_user_data.h"
 #include "ui_edit_user_data.h"
 
-Edit_User_Data::Edit_User_Data(QString user_selected, QMap<QString, QStringList> &data, QWidget *parent) :
+Edit_User_Data::Edit_User_Data(QString user_selected, QMap<QString, QStringList> * data, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Edit_User_Data)
 {
@@ -9,11 +9,30 @@ Edit_User_Data::Edit_User_Data(QString user_selected, QMap<QString, QStringList>
     this->user_selected = user_selected;
     ui->setupUi(this);
     ui->lineEdit_user->setText(user_selected);
-    ui->radioButton_male->setChecked((data[user_selected][1].toInt()) ? false : true);
-    ui->radioButton_female->setChecked((data[user_selected][1].toInt()) ? true : false);
+    ui->lineEdit_pass->setText(data->value(user_selected).at(0));
+    ui->radioButton_male->setChecked((data->value(user_selected).at(1).toInt()) ? false : true);
+    ui->radioButton_female->setChecked((data->value(user_selected).at(1).toInt()) ? true : false);
 }
 
 Edit_User_Data::~Edit_User_Data()
 {
     delete ui;
+}
+
+void Edit_User_Data::on_pushButton_save_clicked()
+{
+    QString pass = ui->lineEdit_pass->text();
+    QString hashed_pass;
+
+    if (pass == data->value(user_selected).at(0))
+        hashed_pass = pass;
+    else
+        hashed_pass = QString(QCryptographicHash::hash((pass.toLocal8Bit()), QCryptographicHash::Sha256).toHex());
+
+    bool sex = (ui->radioButton_female->isChecked()) ? true : false;
+    QStringList qsl;
+    qsl << hashed_pass << QString::number(sex) << data->value(user_selected).at(2);
+    data->insert(user_selected, qsl);
+    this->close();
+    delete this;
 }

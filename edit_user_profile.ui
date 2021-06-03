@@ -34,6 +34,14 @@ QPushButton
 QPushButton:hover
 {
 	background-color: rgb(242, 204, 143);
+}
+QPushButton#pushButton_Refresh
+{
+	background-color: rgb(129, 178, 154);
+}
+QPushButton:hover#pushButton_Refresh
+{
+	background-color: rgb(242, 204, 143);
 }</string>
   </property>
   <widget class="QFrame" name="frame_top">
@@ -202,6 +210,19 @@ font: 25 7pt &quot;IRANYekan Light&quot;;</string>
    </property>
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="1">
+     <widget class="QPushButton" name="pushButton_edit">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="text">
+       <string>&amp;Edit</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="3">
      <widget class="QPushButton" name="pushButton_delete">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -215,15 +236,18 @@ font: 25 7pt &quot;IRANYekan Light&quot;;</string>
      </widget>
     </item>
     <item row="0" column="0">
-     <widget class="QPushButton" name="pushButton_edit">
+     <widget class="QPushButton" name="pushButton_Refresh">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
+      <property name="toolTip">
+       <string>To Save Changes</string>
+      </property>
       <property name="text">
-       <string>&amp;Edit</string>
+       <string>&amp;Refresh</string>
       </property>
      </widget>
     </item>

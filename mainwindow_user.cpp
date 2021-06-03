@@ -1,10 +1,13 @@
 #include "mainwindow_user.h"
 #include "ui_mainwindow_user.h"
 
-MainWindow_user::MainWindow_user(QString user_logged_in, bool sex, QWidget *parent) :
+#define AUTHENTICATION_FORM "auth"
+
+MainWindow_user::MainWindow_user(QWidget *auth, QString user_logged_in, bool sex, QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow_user)
 {
+    forms.append(qMakePair(AUTHENTICATION_FORM, auth));
     ui->setupUi(this);
     this->user = user_logged_in;
     ui->label_username->setText("Hi " + this->user);
@@ -24,9 +27,21 @@ void MainWindow_user::mouseMoveEvent(QMouseEvent *event)
     oldPos = event->globalPosition();
 }
 
-QString MainWindow_user::getUser()
+QWidget *MainWindow_user::searchForms(QString name)
 {
-    return this->user;
+    for (auto i = forms.constBegin(); i != forms.constEnd(); ++i)
+        if (i->first == name)
+            return i->second; // Pointer of form
+    return nullptr;
+}
+
+void MainWindow_user::deleteForms()
+{
+    for (auto i = forms.begin(); i != forms.end(); ++i)
+        if (i->first != AUTHENTICATION_FORM)
+            delete i->second;
+    forms.clear();
+    delete this;
 }
 
 MainWindow_user::~MainWindow_user()
@@ -37,12 +52,11 @@ MainWindow_user::~MainWindow_user()
 void MainWindow_user::on_pushButton_logout_clicked()
 {
     int ret = QMessageBox::question(nullptr, "Confirm Logout", "Are you sure you want to logout?");
-
     if (ret == QMessageBox::Yes)
     {
-        authentication * auth = new authentication();
+        QWidget *aui = searchForms(AUTHENTICATION_FORM);
         this->close();
-        auth->setWindowFlags(Qt::Window | Qt::WindowCloseButtonHint);
-        auth->show();
+        aui->show();
+        deleteForms();
     }
 }

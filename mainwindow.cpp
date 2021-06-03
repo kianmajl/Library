@@ -17,7 +17,7 @@ MainWindow::MainWindow(QWidget *auth, QString user_logged_in, bool sex, QWidget 
     ui->label_username->setText("Hi " + this->user);
     ui->label->setText("Admin Dashboard | " + QDateTime::currentDateTime().toString("dddd, MMMM dd, yyyy"));
     ui->frame_2->setStyleSheet((sex) ? "image: url(:/icons/icons/librarian.png);" : "image: url(:/icons/icons/librarian-m.png);");
-    ui->pushButton_totaluser->setText("Total Users : " + QString::number(User::LoadData()));
+    setTotalUser();
 }
 
 void MainWindow::mousePressEvent(QMouseEvent *event)
@@ -46,6 +46,12 @@ void MainWindow::deleteForms()
         if (i->first != AUTHENTICATION_FORM)
             delete i->second;
     forms.clear();
+    delete this;
+}
+
+void MainWindow::setTotalUser()
+{
+    ui->pushButton_totaluser->setText("Total Users : " + QString::number(User::LoadData()));
 }
 
 MainWindow::~MainWindow()
@@ -90,7 +96,7 @@ void MainWindow::on_pushButton_editprofile_clicked()
     QWidget * us_list = searchForms(USERS_LIST_FORM);
     if (!us_list)
     {
-        Edit_User_profile *eup = new Edit_User_profile(this);
+        Edit_User_profile *eup = new Edit_User_profile(ui, this);
         eup->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
         forms.append(qMakePair(USERS_LIST_FORM, eup));
         us_list = eup;

@@ -6,7 +6,6 @@
 #include "groupbooks.h"
 #include "edit_user_profile.h"
 #include <QMainWindow>
-#include <QMouseEvent>
 #include <QDateTime>
 #include <QVector>
 #include <QPair>
@@ -25,6 +24,7 @@ public:
     void mouseMoveEvent(QMouseEvent *event);
     QWidget *searchForms(QString name);
     void deleteForms();
+    void setTotalUser();
     ~MainWindow();
 
 private slots:
