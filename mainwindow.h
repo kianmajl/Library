@@ -4,6 +4,7 @@
 #include "authentication.h"
 #include "user.h"
 #include "groupbooks.h"
+#include "compose.h"
 #include "edit_user_profile.h"
 #include <QMainWindow>
 #include <QDateTime>
@@ -34,6 +35,8 @@ private slots:
     void on_pushButton_viewgrouplist_clicked();
 
     void on_pushButton_editprofile_clicked();
+
+    void on_pushButton_compose_clicked();
 
 private:
     Ui::MainWindow *ui;

@@ -5,13 +5,16 @@
 #include <QStringList>
 #include <QFile>
 #include <QTextStream>
+#include <QMap>
 
 class User
 {
 public:
     static QString Login(QString user, QString hashed_pass);
     static QString Register(QString user, QString hashed_pass, bool sex, bool isAdmin = false);
-    static int LoadData();
+    static int LoadedData();
+    static QMap<QString, QStringList> LoadUsers();
+    static bool SaveUsers(QMap<QString, QStringList> &data);
     User(QString username, QString password, bool sex, bool admin);
     QString toString();
 

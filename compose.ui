@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Edit_User_profile</class>
- <widget class="QWidget" name="Edit_User_profile">
+ <class>Compose</class>
+ <widget class="QWidget" name="Compose">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Users List</string>
+   <string>Compose</string>
   </property>
   <property name="windowIcon">
    <iconset resource="res.qrc">
@@ -32,14 +32,6 @@ QPushButton
     border-radius: 6px;
 }
 QPushButton:hover
-{
-	background-color: rgb(242, 204, 143);
-}
-QPushButton#pushButton_Refresh
-{
-	background-color: rgb(129, 178, 154);
-}
-QPushButton:hover#pushButton_Refresh
 {
 	background-color: rgb(242, 204, 143);
 }</string>
@@ -63,7 +55,7 @@ color: rgb(255, 255, 255);</string>
    <property name="frameShadow">
     <enum>QFrame::Raised</enum>
    </property>
-   <widget class="QFrame" name="frame">
+   <widget class="QFrame" name="frame_logo">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -73,7 +65,7 @@ color: rgb(255, 255, 255);</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image: url(:/icons/icons/book-club.png);</string>
+     <string notr="true">image: url(:/icons/icons/compose.png);</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::StyledPanel</enum>
@@ -98,38 +90,6 @@ color: rgb(255, 255, 255);</string>
      <string>Library Management System</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_search">
-    <property name="geometry">
-     <rect>
-      <x>640</x>
-      <y>80</y>
-      <width>91</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 25 7pt &quot;IRANYekan Light&quot;;</string>
-    </property>
-    <property name="text">
-     <string>Quick Search </string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>130</x>
-      <y>75</y>
-      <width>320</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 25 10pt &quot;IRANYekan Light&quot;;</string>
-    </property>
-    <property name="text">
-     <string>Users List</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="pushButton_backtodash">
     <property name="geometry">
      <rect>
@@ -151,8 +111,108 @@ font: 25 7pt &quot;IRANYekan Light&quot;;</string>
      <bool>true</bool>
     </property>
    </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>75</y>
+      <width>320</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 25 10pt &quot;IRANYekan Light&quot;;</string>
+    </property>
+    <property name="text">
+     <string>New Message</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_search">
+    <property name="geometry">
+     <rect>
+      <x>640</x>
+      <y>80</y>
+      <width>91</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 25 7pt &quot;IRANYekan Light&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Sender</string>
+    </property>
+   </widget>
   </widget>
-  <widget class="QLineEdit" name="lineEdit">
+  <widget class="QWidget" name="formLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>180</y>
+     <width>731</width>
+     <height>281</height>
+    </rect>
+   </property>
+   <layout class="QFormLayout" name="formLayout">
+    <item row="0" column="0">
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>To:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="lineEdit"/>
+    </item>
+    <item row="1" column="1">
+     <spacer name="verticalSpacer">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="label_2">
+      <property name="text">
+       <string>Subject:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QLineEdit" name="lineEdit_2">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <spacer name="verticalSpacer_2">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="4" column="0" colspan="2">
+     <widget class="QPlainTextEdit" name="plainTextEdit"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_sender">
    <property name="geometry">
     <rect>
      <x>554</x>
@@ -161,100 +221,22 @@ font: 25 7pt &quot;IRANYekan Light&quot;;</string>
      <height>27</height>
     </rect>
    </property>
-  </widget>
-  <widget class="QTableWidget" name="tableWidget">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>170</y>
-     <width>751</width>
-     <height>311</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true"/>
-   </property>
-   <property name="selectionBehavior">
-    <enum>QAbstractItemView::SelectRows</enum>
-   </property>
-   <property name="sortingEnabled">
+   <property name="readOnly">
     <bool>true</bool>
    </property>
-   <attribute name="horizontalHeaderDefaultSectionSize">
-    <number>243</number>
-   </attribute>
-   <column>
-    <property name="text">
-     <string>Username</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>Password</string>
-    </property>
-    <property name="toolTip">
-     <string>Passwords are Hashed with SHA-256 algorithm</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>Gender</string>
-    </property>
-   </column>
   </widget>
-  <widget class="QWidget" name="gridLayoutWidget">
+  <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>500</y>
-     <width>751</width>
+     <x>30</x>
+     <y>490</y>
+     <width>731</width>
      <height>71</height>
     </rect>
    </property>
-   <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="1">
-     <widget class="QPushButton" name="pushButton_edit">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="text">
-       <string>&amp;Edit</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="3">
-     <widget class="QPushButton" name="pushButton_delete">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="text">
-       <string>&amp;Delete</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="0">
-     <widget class="QPushButton" name="pushButton_Refresh">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="toolTip">
-       <string>To Save Changes</string>
-      </property>
-      <property name="text">
-       <string>&amp;Refresh</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
+   <property name="text">
+    <string>Send</string>
+   </property>
   </widget>
  </widget>
  <resources>

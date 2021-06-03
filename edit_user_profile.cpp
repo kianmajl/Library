@@ -1,9 +1,6 @@
 #include "edit_user_profile.h"
 #include "ui_edit_user_profile.h"
 
-#define USER_FILE "userdb.txt"
-#define SEP_DATA ","
-
 Edit_User_profile::Edit_User_profile(Ui::MainWindow *uiMainWindow, QWidget *admin_dash, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Edit_User_profile)
@@ -31,19 +28,8 @@ int Edit_User_profile::LoadData()
 {
     ui->tableWidget->setRowCount(0);
     int ld = 0;
-    QFile userfile(USER_FILE);
+    this->user_data = User::LoadUsers();
 
-    if (!userfile.open(QIODevice::ReadOnly | QIODevice::Text))
-        return ld;
-
-    QTextStream in(&userfile);
-    while (!in.atEnd())
-    {
-        QStringList data = in.readLine().split(SEP_DATA);
-        user_data[data[0]] << data[1] << data[2] << data[3];
-    }
-
-    userfile.close();
     // Add to table
     {
         int j = 0;
@@ -67,16 +53,7 @@ int Edit_User_profile::LoadData()
 
 bool Edit_User_profile::saveChanges()
 {
-    QFile userfile(USER_FILE);
-
-    if (!userfile.open(QIODevice::WriteOnly | QIODevice::Text))
-        return false;
-
-    QTextStream out(&userfile);
-    for (auto it = user_data.constBegin(); it != user_data.constEnd(); ++it)
-        out << it.key() << SEP_DATA << it.value().join(SEP_DATA) << "\n";
-    userfile.close();
-    return true;
+    return User::SaveUsers(user_data);
 }
 
 Edit_User_profile::~Edit_User_profile()
@@ -91,7 +68,7 @@ void Edit_User_profile::on_pushButton_backtodash_clicked()
     // Refresh Data on Admin Dashboard
     {
         QString user_admin = uiMainWindow->label_username->text().remove(0, 3);
-        uiMainWindow->pushButton_totaluser->setText("Total Users : " + QString::number(User::LoadData()));
+        uiMainWindow->pushButton_totaluser->setText("Total Users : " + QString::number(user_data.size()));
         uiMainWindow->frame_2->setStyleSheet((user_data[user_admin][1].toInt()) ? "image: url(:/icons/icons/librarian.png);" : "image: url(:/icons/icons/librarian-m.png);");
     }
     admin_dash->show();
@@ -136,7 +113,7 @@ void Edit_User_profile::on_pushButton_delete_clicked()
         QMessageBox::critical(nullptr, "Error", "You can not delete admin users");
         return;
     }
-    int ret = QMessageBox::question(nullptr, "Confirm Delete User", "Are you sure you want to delete user : " + user + " ?");
+    int ret = QMessageBox::warning(nullptr, "Confirm Delete User", "Are you sure you want to delete user : " + user + " ?", QMessageBox::Yes | QMessageBox::No);
     if (ret == QMessageBox::Yes)
         user_data.remove(user);
     saveChanges();

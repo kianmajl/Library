@@ -17,7 +17,7 @@ MainWindow::MainWindow(QWidget *auth, QString user_logged_in, bool sex, QWidget 
     ui->label_username->setText("Hi " + this->user);
     ui->label->setText("Admin Dashboard | " + QDateTime::currentDateTime().toString("dddd, MMMM dd, yyyy"));
     ui->frame_2->setStyleSheet((sex) ? "image: url(:/icons/icons/librarian.png);" : "image: url(:/icons/icons/librarian-m.png);");
-    ui->pushButton_totaluser->setText("Total Users : " + QString::number(User::LoadData()));
+    ui->pushButton_totaluser->setText("Total Users : " + QString::number(User::LoadedData()));
 }
 
 void MainWindow::mousePressEvent(QMouseEvent *event)
@@ -97,4 +97,12 @@ void MainWindow::on_pushButton_editprofile_clicked()
         us_list = eup;
     }
     us_list->show();
+}
+
+void MainWindow::on_pushButton_compose_clicked()
+{
+    Compose * cmp = new Compose(this, this->user);
+    this->hide();
+    cmp->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+    cmp->show();
 }

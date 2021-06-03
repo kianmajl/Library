@@ -60,3 +60,11 @@ void MainWindow_user::on_pushButton_logout_clicked()
         deleteForms();
     }
 }
+
+void MainWindow_user::on_pushButton_compose_clicked()
+{
+    Compose * cmp = new Compose(this, this->user);
+    this->hide();
+    cmp->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+    cmp->show();
+}

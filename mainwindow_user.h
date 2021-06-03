@@ -2,6 +2,7 @@
 #define MAINWINDOW_USER_H
 
 #include "authentication.h"
+#include "compose.h"
 #include <QMainWindow>
 #include <QMouseEvent>
 #include <QDateTime>
@@ -24,6 +25,8 @@ public:
 
 private slots:
     void on_pushButton_logout_clicked();
+
+    void on_pushButton_compose_clicked();
 
 private:
     Ui::MainWindow_user *ui;

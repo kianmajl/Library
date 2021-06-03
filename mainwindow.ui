@@ -275,7 +275,7 @@ color: rgb(255, 255, 255);</string>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_4">
          <item>
-          <widget class="QPushButton" name="pushButton_13">
+          <widget class="QPushButton" name="pushButton_compose">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
              <horstretch>0</horstretch>
@@ -309,7 +309,7 @@ color: rgb(255, 255, 255);</string>
             </sizepolicy>
            </property>
            <property name="text">
-            <string>&amp;Sent</string>
+            <string>&amp;Outbox</string>
            </property>
           </widget>
          </item>
@@ -404,7 +404,6 @@ color: rgb(255, 255, 255);</string>
   <tabstop>pushButton_viewblist</tabstop>
   <tabstop>pushButton_2</tabstop>
   <tabstop>pushButton_viewgrouplist</tabstop>
-  <tabstop>pushButton_13</tabstop>
   <tabstop>pushButton_12</tabstop>
   <tabstop>pushButton_14</tabstop>
   <tabstop>pushButton_editprofile</tabstop>

@@ -56,7 +56,7 @@ QString User::Register(QString user, QString hashed_pass, bool sex, bool isAdmin
     return "ok";
 }
 
-int User::LoadData()
+int User::LoadedData()
 {
     int cnt = 0;
     QFile user_data(USER_FILE);
@@ -73,6 +73,38 @@ int User::LoadData()
 
     user_data.close();
     return cnt;
+}
+
+QMap<QString, QStringList> User::LoadUsers()
+{
+    QMap<QString, QStringList> user_data;
+    QFile userfile(USER_FILE);
+
+    userfile.open(QIODevice::ReadOnly | QIODevice::Text);
+
+    QTextStream in(&userfile);
+    while (!in.atEnd())
+    {
+        QStringList data = in.readLine().split(SEP_DATA);
+        user_data[data[0]] << data[1] << data[2] << data[3]; // key: username | values : passwors,sex,isAdmin
+    }
+
+    userfile.close();
+    return user_data;
+}
+
+bool User::SaveUsers(QMap<QString, QStringList> &data)
+{
+    QFile userfile(USER_FILE);
+
+    if (!userfile.open(QIODevice::WriteOnly | QIODevice::Text))
+        return false;
+
+    QTextStream out(&userfile);
+    for (auto it = data.constBegin(); it != data.constEnd(); ++it)
+        out << it.key() << SEP_DATA << it.value().join(SEP_DATA) << "\n";
+    userfile.close();
+    return true;
 }
 
 User::User(QString username, QString password, bool sex, bool admin)

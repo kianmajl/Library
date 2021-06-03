@@ -13,5 +13,6 @@
         <file>icons/stairs.png</file>
         <file>icons/book-club.png</file>
         <file>icons/conspectus.png</file>
+        <file>icons/compose.png</file>
     </qresource>
 </RCC>

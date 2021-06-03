@@ -14,6 +14,7 @@ private:
     QString code;
     QString sender;
     QString receiver;
+    bool isRead;
 };
 
 #endif // MESSAGE_H
