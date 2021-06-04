@@ -68,3 +68,10 @@ void MainWindow_user::on_pushButton_compose_clicked()
     cmp->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
     cmp->show();
 }
+
+void MainWindow_user::on_pushButton_editprofile_clicked()
+{
+    Edit_User_Data *eud = new Edit_User_Data(this->user, false);
+    eud->setWindowFlags(Qt::Window | Qt::WindowCloseButtonHint);
+    eud->show();
+}

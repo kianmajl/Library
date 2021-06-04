@@ -1,6 +1,7 @@
 #ifndef EDIT_USER_DATA_H
 #define EDIT_USER_DATA_H
 
+#include "user.h"
 #include <QWidget>
 #include <QMap>
 #include <QString>
@@ -17,7 +18,7 @@ class Edit_User_Data : public QWidget
     Q_OBJECT
 
 public:
-    Edit_User_Data(QString user_selected, QMap<QString, QStringList> * data, QWidget *parent = nullptr);
+    Edit_User_Data(QString user_selected, bool admin, QWidget *parent = nullptr);
     ~Edit_User_Data();
 
 private slots:
@@ -26,7 +27,8 @@ private slots:
 private:
     Ui::Edit_User_Data *ui;
     QString user_selected;
-    QMap<QString, QStringList> * data;
+    QMap<QString, QStringList> data;
+    bool admin;
 };
 
 #endif // EDIT_USER_DATA_H

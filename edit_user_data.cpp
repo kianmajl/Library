@@ -1,20 +1,29 @@
 #include "edit_user_data.h"
 #include "ui_edit_user_data.h"
 
-Edit_User_Data::Edit_User_Data(QString user_selected, QMap<QString, QStringList> * data, QWidget *parent) :
+Edit_User_Data::Edit_User_Data(QString user_selected, bool admin, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Edit_User_Data)
 {
-    this->data = data;
+    this->data = User::LoadUsers();
     this->user_selected = user_selected;
+    this->admin = admin;
     ui->setupUi(this);
     ui->lineEdit_user->setText(user_selected);
-    ui->lineEdit_pass->setText(data->value(user_selected).at(0));
-    ui->radioButton_male->setChecked((data->value(user_selected).at(1).toInt()) ? false : true);
-    ui->radioButton_female->setChecked((data->value(user_selected).at(1).toInt()) ? true : false);
-    ui->checkBox_admin->setChecked(data->value(user_selected).at(2).toInt());
+    ui->lineEdit_pass->setText(data.value(user_selected).at(0));
+    ui->radioButton_male->setChecked((data.value(user_selected).at(1).toInt()) ? false : true);
+    ui->radioButton_female->setChecked((data.value(user_selected).at(1).toInt()) ? true : false);
+    ui->checkBox_admin->setChecked(data.value(user_selected).at(2).toInt());
     if (user_selected == "admin")
         ui->checkBox_admin->setEnabled(false);
+    if (!admin)
+    {
+        ui->label_isAdmin->hide();
+        ui->label_sex->hide();
+        ui->radioButton_female->hide();
+        ui->radioButton_male->hide();
+        ui->checkBox_admin->hide();
+    }
 }
 
 Edit_User_Data::~Edit_User_Data()
@@ -34,7 +43,7 @@ void Edit_User_Data::on_pushButton_save_clicked()
 
     QString hashed_pass;
 
-    if (pass == data->value(user_selected).at(0)) // Check if password have change ?
+    if (pass == data.value(user_selected).at(0)) // Check if password have change ?
         hashed_pass = pass;
     else
         hashed_pass = QString(QCryptographicHash::hash((pass.toLocal8Bit()), QCryptographicHash::Sha256).toHex());
@@ -42,7 +51,8 @@ void Edit_User_Data::on_pushButton_save_clicked()
     bool sex = (ui->radioButton_female->isChecked()) ? true : false;
     QStringList qsl;
     qsl << hashed_pass << QString::number(sex) << QString::number(ui->checkBox_admin->isChecked());
-    data->insert(user_selected, qsl);
+    data.insert(user_selected, qsl);
+    User::SaveUsers(data);
     this->close();
     delete this;
 }

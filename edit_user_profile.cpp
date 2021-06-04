@@ -63,7 +63,6 @@ Edit_User_profile::~Edit_User_profile()
 
 void Edit_User_profile::on_pushButton_backtodash_clicked()
 {
-    saveChanges();
     this->close();
     // Refresh Data on Admin Dashboard
     {
@@ -95,7 +94,7 @@ void Edit_User_profile::on_pushButton_edit_clicked()
         QMessageBox::critical(nullptr, "No Item Selected", "Please Select an Item to edit");
         return;
     }
-    Edit_User_Data * eud = new Edit_User_Data(ui->tableWidget->selectedItems()[0]->text(), &user_data);
+    Edit_User_Data * eud = new Edit_User_Data(ui->tableWidget->selectedItems()[0]->text(), true);
     eud->setWindowFlags(Qt::Window | Qt::WindowCloseButtonHint);
     eud->show();
 }
@@ -122,6 +121,5 @@ void Edit_User_profile::on_pushButton_delete_clicked()
 
 void Edit_User_profile::on_pushButton_Refresh_clicked()
 {
-    saveChanges();
     LoadData();
 }

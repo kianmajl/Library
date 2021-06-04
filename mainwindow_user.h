@@ -3,6 +3,8 @@
 
 #include "authentication.h"
 #include "compose.h"
+#include "edit_user_data.h"
+#include "user.h"
 #include <QMainWindow>
 #include <QMouseEvent>
 #include <QDateTime>
@@ -27,6 +29,8 @@ private slots:
     void on_pushButton_logout_clicked();
 
     void on_pushButton_compose_clicked();
+
+    void on_pushButton_editprofile_clicked();
 
 private:
     Ui::MainWindow_user *ui;

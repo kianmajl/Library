@@ -53,6 +53,7 @@ QString User::Register(QString user, QString hashed_pass, bool sex, bool isAdmin
 
     User new_user(user, hashed_pass, sex, isAdmin);
     out << new_user.toString();
+    user_data.close();
     return "ok";
 }
 
