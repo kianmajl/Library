@@ -5,6 +5,7 @@
 #include "compose.h"
 #include "edit_user_data.h"
 #include "user.h"
+#include "message.h"
 #include <QMainWindow>
 #include <QMouseEvent>
 #include <QDateTime>

@@ -66,6 +66,10 @@ QPushButton#pushButton_totaluser
 QPushButton:hover#pushButton_logout
 {
 	background-color: rgb(242, 204, 143);
+}
+QStatusBar
+{
+	color: rgb(143, 93, 93);
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">

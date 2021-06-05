@@ -13,6 +13,7 @@ MainWindow_user::MainWindow_user(QWidget *auth, QString user_logged_in, bool sex
     ui->label_username->setText("Hi " + this->user);
     ui->label->setText("User Dashboard | " + QDateTime::currentDateTime().toString("dddd, MMMM dd, yyyy"));
     ui->frame_2->setStyleSheet((sex) ? "image: url(:/icons/icons/reading.png);" : "image: url(:/icons/icons/reading-m.png);");
+    ui->statusbar->showMessage("You Have " + QString::number(Message::numUnreadMessages(user)) + " Unread Messages", 60000);
 }
 
 void MainWindow_user::mousePressEvent(QMouseEvent *event)

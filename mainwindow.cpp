@@ -18,6 +18,7 @@ MainWindow::MainWindow(QWidget *auth, QString user_logged_in, bool sex, QWidget 
     ui->label->setText("Admin Dashboard | " + QDateTime::currentDateTime().toString("dddd, MMMM dd, yyyy"));
     ui->frame_2->setStyleSheet((sex) ? "image: url(:/icons/icons/librarian.png);" : "image: url(:/icons/icons/librarian-m.png);");
     ui->pushButton_totaluser->setText("Total Users : " + QString::number(User::LoadedData()));
+    ui->statusbar->showMessage("You Have " + QString::number(Message::numUnreadMessages(user)) + " Unread Messages", 60000);
 }
 
 void MainWindow::mousePressEvent(QMouseEvent *event)

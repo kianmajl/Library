@@ -3,17 +3,27 @@
 
 #include <QString>
 #include <QDateTime>
+#include <QFile>
+#include <QDateTime>
 
 class Message
 {
 public:
-    Message();
+    void send();
+    void setSubject(QString subject);
+    void setText(QString text);
+    Message(QString sender, QString receiver);
+    QString toString();
+    static QMap<QString, QStringList> loadMessages(QString username);
+    static bool saveChanges(QMap<QString, QStringList> *data);
+    static int numUnreadMessages(QString username);
 
 private:
-    QDateTime time_sent;
     QString code;
     QString sender;
     QString receiver;
+    QString subject;
+    QString text;
     bool isRead;
 };
 

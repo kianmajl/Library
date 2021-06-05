@@ -156,13 +156,20 @@ font: 25 7pt &quot;IRANYekan Light&quot;;</string>
    <layout class="QFormLayout" name="formLayout">
     <item row="0" column="0">
      <widget class="QLabel" name="label">
+      <property name="styleSheet">
+       <string notr="true">font: 8pt &quot;IRANYekan&quot;;</string>
+      </property>
       <property name="text">
        <string>To:</string>
       </property>
      </widget>
     </item>
     <item row="0" column="1">
-     <widget class="QLineEdit" name="lineEdit"/>
+     <widget class="QLineEdit" name="lineEdit_reciver">
+      <property name="styleSheet">
+       <string notr="true">font: 8pt &quot;IRANYekan&quot;;</string>
+      </property>
+     </widget>
     </item>
     <item row="1" column="1">
      <spacer name="verticalSpacer">
@@ -179,18 +186,24 @@ font: 25 7pt &quot;IRANYekan Light&quot;;</string>
     </item>
     <item row="2" column="0">
      <widget class="QLabel" name="label_2">
+      <property name="styleSheet">
+       <string notr="true">font: 8pt &quot;IRANYekan&quot;;</string>
+      </property>
       <property name="text">
        <string>Subject:</string>
       </property>
      </widget>
     </item>
     <item row="2" column="1">
-     <widget class="QLineEdit" name="lineEdit_2">
+     <widget class="QLineEdit" name="lineEdit_subject">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 8pt &quot;IRANYekan&quot;;</string>
       </property>
      </widget>
     </item>
@@ -208,7 +221,11 @@ font: 25 7pt &quot;IRANYekan Light&quot;;</string>
      </spacer>
     </item>
     <item row="4" column="0" colspan="2">
-     <widget class="QPlainTextEdit" name="plainTextEdit"/>
+     <widget class="QPlainTextEdit" name="plainTextEdit">
+      <property name="styleSheet">
+       <string notr="true">font: 8pt &quot;IRANYekan&quot;;</string>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>
