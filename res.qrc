@@ -14,5 +14,6 @@
         <file>icons/book-club.png</file>
         <file>icons/conspectus.png</file>
         <file>icons/compose.png</file>
+        <file>icons/inbox.png</file>
     </qresource>
 </RCC>

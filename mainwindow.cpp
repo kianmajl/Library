@@ -6,6 +6,7 @@
 #define BOOK_LIST_FORM "booklist"
 #define USERS_LIST_FORM "userlist"
 #define AUTHENTICATION_FORM "auth"
+#define INBOX_FORM "inbox"
 
 MainWindow::MainWindow(QWidget *auth, QString user_logged_in, bool sex, QWidget *parent)
     : QMainWindow(parent)
@@ -18,7 +19,7 @@ MainWindow::MainWindow(QWidget *auth, QString user_logged_in, bool sex, QWidget 
     ui->label->setText("Admin Dashboard | " + QDateTime::currentDateTime().toString("dddd, MMMM dd, yyyy"));
     ui->frame_2->setStyleSheet((sex) ? "image: url(:/icons/icons/librarian.png);" : "image: url(:/icons/icons/librarian-m.png);");
     ui->pushButton_totaluser->setText("Total Users : " + QString::number(User::LoadedData()));
-    ui->statusbar->showMessage("You Have " + QString::number(Message::numUnreadMessages(user)) + " Unread Messages", 60000);
+    ui->statusbar->showMessage("You Have " + QString::number(Message::numUnreadMessages(user)) + " Unread Messages", 30000);
 }
 
 void MainWindow::mousePressEvent(QMouseEvent *event)
@@ -106,4 +107,18 @@ void MainWindow::on_pushButton_compose_clicked()
     this->hide();
     cmp->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
     cmp->show();
+}
+
+void MainWindow::on_pushButton_inbox_clicked()
+{
+    this->hide();
+    QWidget * inb = searchForms(INBOX_FORM);
+    if (!inb)
+    {
+        inbox *inb_frm = new inbox(user, this);
+        inb_frm->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+        forms.append(qMakePair(INBOX_FORM, inb_frm));
+        inb = inb_frm;
+    }
+    inb->show();
 }

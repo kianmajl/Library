@@ -16,6 +16,7 @@ SOURCES += \
     edit_user_data.cpp \
     edit_user_profile.cpp \
     groupbooks.cpp \
+    inbox.cpp \
     main.cpp \
     mainwindow.cpp \
     mainwindow_user.cpp \
@@ -30,6 +31,7 @@ HEADERS += \
     edit_user_data.h \
     edit_user_profile.h \
     groupbooks.h \
+    inbox.h \
     mainwindow.h \
     mainwindow_user.h \
     message.h \
@@ -42,6 +44,7 @@ FORMS += \
     edit_user_data.ui \
     edit_user_profile.ui \
     groupbooks.ui \
+    inbox.ui \
     mainwindow.ui \
     mainwindow_user.ui
 

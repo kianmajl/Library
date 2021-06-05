@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Edit_User_profile</class>
- <widget class="QWidget" name="Edit_User_profile">
+ <class>inbox</class>
+ <widget class="QWidget" name="inbox">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,11 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Users List</string>
-  </property>
-  <property name="windowIcon">
-   <iconset resource="res.qrc">
-    <normaloff>:/icons/icons/library.png</normaloff>:/icons/icons/library.png</iconset>
+   <string>Form</string>
   </property>
   <property name="styleSheet">
    <string notr="true">QWidget
@@ -35,11 +31,11 @@ QPushButton:hover
 {
 	background-color: rgb(242, 204, 143);
 }
-QPushButton#pushButton_Refresh
+QPushButton#pushButton_show
 {
 	background-color: rgb(129, 178, 154);
 }
-QPushButton:hover#pushButton_Refresh
+QPushButton#pushButton_show:hover
 {
 	background-color: rgb(242, 204, 143);
 }</string>
@@ -63,7 +59,7 @@ color: rgb(255, 255, 255);</string>
    <property name="frameShadow">
     <enum>QFrame::Raised</enum>
    </property>
-   <widget class="QFrame" name="frame">
+   <widget class="QFrame" name="frame_icon">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -73,7 +69,7 @@ color: rgb(255, 255, 255);</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image: url(:/icons/icons/book-club.png);</string>
+     <string notr="true">image: url(:/icons/icons/inbox.png);</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::StyledPanel</enum>
@@ -98,22 +94,6 @@ color: rgb(255, 255, 255);</string>
      <string>Library Management System</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_search">
-    <property name="geometry">
-     <rect>
-      <x>640</x>
-      <y>80</y>
-      <width>91</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 25 7pt &quot;IRANYekan Light&quot;;</string>
-    </property>
-    <property name="text">
-     <string>Quick Search </string>
-    </property>
-   </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
@@ -127,7 +107,7 @@ color: rgb(255, 255, 255);</string>
      <string notr="true">font: 25 10pt &quot;IRANYekan Light&quot;;</string>
     </property>
     <property name="text">
-     <string>Users List</string>
+     <string>Inbox | 6 Records Loaded</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_backtodash">
@@ -152,16 +132,6 @@ font: 25 7pt &quot;IRANYekan Light&quot;;</string>
     </property>
    </widget>
   </widget>
-  <widget class="QLineEdit" name="lineEdit">
-   <property name="geometry">
-    <rect>
-     <x>554</x>
-     <y>45</y>
-     <width>221</width>
-     <height>27</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QTableWidget" name="tableWidget">
    <property name="geometry">
     <rect>
@@ -171,38 +141,29 @@ font: 25 7pt &quot;IRANYekan Light&quot;;</string>
      <height>311</height>
     </rect>
    </property>
-   <property name="styleSheet">
-    <string notr="true"/>
-   </property>
    <property name="selectionBehavior">
     <enum>QAbstractItemView::SelectRows</enum>
-   </property>
-   <property name="sortingEnabled">
-    <bool>true</bool>
    </property>
    <attribute name="horizontalHeaderDefaultSectionSize">
     <number>244</number>
    </attribute>
    <column>
     <property name="text">
-     <string>Username</string>
+     <string>Code (Date)</string>
     </property>
    </column>
    <column>
     <property name="text">
-     <string>Password</string>
-    </property>
-    <property name="toolTip">
-     <string>Passwords are Hashed with SHA-256 algorithm</string>
+     <string>From</string>
     </property>
    </column>
    <column>
     <property name="text">
-     <string>Gender</string>
+     <string>Subject</string>
     </property>
    </column>
   </widget>
-  <widget class="QWidget" name="gridLayoutWidget">
+  <widget class="QWidget" name="horizontalLayoutWidget">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -211,9 +172,9 @@ font: 25 7pt &quot;IRANYekan Light&quot;;</string>
      <height>71</height>
     </rect>
    </property>
-   <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="1">
-     <widget class="QPushButton" name="pushButton_edit">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QPushButton" name="pushButton_show">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
         <horstretch>0</horstretch>
@@ -221,11 +182,50 @@ font: 25 7pt &quot;IRANYekan Light&quot;;</string>
        </sizepolicy>
       </property>
       <property name="text">
-       <string>&amp;Edit</string>
+       <string>Show</string>
       </property>
      </widget>
     </item>
-    <item row="0" column="3">
+    <item>
+     <widget class="QPushButton" name="pushButton_reply">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="text">
+       <string>Reply</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_forward">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="text">
+       <string>Forward</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_asread">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="text">
+       <string>Mark as read</string>
+      </property>
+     </widget>
+    </item>
+    <item>
      <widget class="QPushButton" name="pushButton_delete">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -234,31 +234,13 @@ font: 25 7pt &quot;IRANYekan Light&quot;;</string>
        </sizepolicy>
       </property>
       <property name="text">
-       <string>&amp;Delete</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="0">
-     <widget class="QPushButton" name="pushButton_Refresh">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="toolTip">
-       <string>To Save Changes</string>
-      </property>
-      <property name="text">
-       <string>&amp;Refresh</string>
+       <string>Delete</string>
       </property>
      </widget>
     </item>
    </layout>
   </widget>
  </widget>
- <resources>
-  <include location="res.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

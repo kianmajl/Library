@@ -2,6 +2,7 @@
 #include "ui_mainwindow_user.h"
 
 #define AUTHENTICATION_FORM "auth"
+#define INBOX_FORM "inbox"
 
 MainWindow_user::MainWindow_user(QWidget *auth, QString user_logged_in, bool sex, QWidget *parent) :
     QMainWindow(parent),

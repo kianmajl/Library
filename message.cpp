@@ -42,6 +42,27 @@ QString Message::toString()
     return qsl.join(SEP_DATA) + "-";
 }
 
+QMap<QString, QStringList> Message::loadMessages(QString username)
+{
+    QMap<QString, QStringList> msgdb;
+    QFile data(MESSAGE_FILE);
+    QTextStream in(&data);
+    data.open(QIODevice::ReadOnly | QIODevice::Text);
+
+    QStringList allmsg = in.readAll().split("-");
+
+    for (auto it = allmsg.constBegin(); it != allmsg.constEnd(); ++it)
+    {
+        QStringList msg = it->split(SEP_DATA);
+        if (!msg[0].length())
+            break;
+        if (msg[2] == username)
+            msgdb[msg[0]] << msg[1] << msg[2] << msg[3] << msg[4] << msg[5];
+    }
+
+    return msgdb;
+}
+
 int Message::numUnreadMessages(QString username)
 {
     int cnt = 0;
@@ -56,6 +77,9 @@ int Message::numUnreadMessages(QString username)
     for (auto it = messages.constBegin(); it != messages.constEnd(); ++it)
     {
         QStringList msg = it->split(SEP_DATA);
+
+        if (!msg[0].length())
+            break;
         if (msg[2] == username && !msg[4].toInt())
             cnt++;
     }
