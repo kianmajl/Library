@@ -12,6 +12,18 @@ inbox::inbox(QString user, QWidget *dash, QWidget *parent) :
     this->LoadData();
 }
 
+void inbox::mousePressEvent(QMouseEvent *event)
+{
+    oldPos = event->globalPosition();
+}
+
+void inbox::mouseMoveEvent(QMouseEvent *event)
+{
+    const QPointF delta = event->globalPosition() - oldPos;
+    move(x()+delta.x(), y()+delta.y());
+    oldPos = event->globalPosition();
+}
+
 int inbox::LoadData()
 {
     ui->tableWidget->setRowCount(0);
@@ -21,10 +33,11 @@ int inbox::LoadData()
     for (auto i = messages_data.begin(); i != messages_data.end(); ++i)
     {
         ui->tableWidget->insertRow(ui->tableWidget->rowCount());
-        QString date = QDateTime::fromString(i.key(), "yyMMddhhmmss").toString("dd MMMM yy hh:mm:ss");
+        QString date = QDateTime::fromString(i.key(), "yyyyMMddhhmmss").toString("dd MMMM yyyy hh:mm:ss");
         ui->tableWidget->setItem(j, 0, new QTableWidgetItem(date));
         ui->tableWidget->setItem(j, 1, new QTableWidgetItem(i.value()[0]));
-        ui->tableWidget->setItem(j, 2, new QTableWidgetItem((i.value()[2])));
+        ui->tableWidget->setItem(j, 2, new QTableWidgetItem(i.value()[2]));
+        ui->tableWidget->setItem(j, 3, new QTableWidgetItem((i.value()[4].toInt()) ? "Yes" : "No"));
         ++j;
     }
 
@@ -41,4 +54,14 @@ void inbox::on_pushButton_backtodash_clicked()
 {
     this->close();
     dash->show();
+}
+
+void inbox::on_tableWidget_currentCellChanged(int currentRow)
+{
+    QTableWidgetItem *tmp = ui->tableWidget->item(currentRow, 0);
+    if (tmp) // if item exists !
+    {
+        QString code_msg = QDateTime::fromString(tmp->text(), "dd MMMM yyyy hh:mm:ss").toString("yyyyMMddhhmmss");
+        ui->plainTextEdit->setPlainText(messages_data.value(code_msg)[3]);
+    }
 }

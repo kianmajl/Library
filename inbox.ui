@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Inbox</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="res.qrc">
+    <normaloff>:/icons/icons/library.png</normaloff>:/icons/icons/library.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">QWidget
@@ -31,11 +35,11 @@ QPushButton:hover
 {
 	background-color: rgb(242, 204, 143);
 }
-QPushButton#pushButton_show
+QPushButton#pushButton_asread
 {
 	background-color: rgb(129, 178, 154);
 }
-QPushButton#pushButton_show:hover
+QPushButton#pushButton_asread:hover
 {
 	background-color: rgb(242, 204, 143);
 }</string>
@@ -131,6 +135,22 @@ font: 25 7pt &quot;IRANYekan Light&quot;;</string>
      <bool>true</bool>
     </property>
    </widget>
+   <widget class="QPlainTextEdit" name="plainTextEdit">
+    <property name="geometry">
+     <rect>
+      <x>490</x>
+      <y>20</y>
+      <width>281</width>
+      <height>104</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 8pt &quot;IRANYekan&quot;;</string>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
   </widget>
   <widget class="QTableWidget" name="tableWidget">
    <property name="geometry">
@@ -145,11 +165,11 @@ font: 25 7pt &quot;IRANYekan Light&quot;;</string>
     <enum>QAbstractItemView::SelectRows</enum>
    </property>
    <attribute name="horizontalHeaderDefaultSectionSize">
-    <number>244</number>
+    <number>183</number>
    </attribute>
    <column>
     <property name="text">
-     <string>Code (Date)</string>
+     <string>Date</string>
     </property>
    </column>
    <column>
@@ -160,6 +180,11 @@ font: 25 7pt &quot;IRANYekan Light&quot;;</string>
    <column>
     <property name="text">
      <string>Subject</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>isRead?</string>
     </property>
    </column>
   </widget>
@@ -174,7 +199,7 @@ font: 25 7pt &quot;IRANYekan Light&quot;;</string>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
-     <widget class="QPushButton" name="pushButton_show">
+     <widget class="QPushButton" name="pushButton_asread">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
         <horstretch>0</horstretch>
@@ -182,7 +207,7 @@ font: 25 7pt &quot;IRANYekan Light&quot;;</string>
        </sizepolicy>
       </property>
       <property name="text">
-       <string>Show</string>
+       <string>Mark as read</string>
       </property>
      </widget>
     </item>
@@ -213,19 +238,6 @@ font: 25 7pt &quot;IRANYekan Light&quot;;</string>
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton_asread">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="text">
-       <string>Mark as read</string>
-      </property>
-     </widget>
-    </item>
-    <item>
      <widget class="QPushButton" name="pushButton_delete">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -241,6 +253,8 @@ font: 25 7pt &quot;IRANYekan Light&quot;;</string>
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="res.qrc"/>
+ </resources>
  <connections/>
 </ui>

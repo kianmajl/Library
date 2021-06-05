@@ -27,7 +27,7 @@ void Message::setText(QString text)
 
 Message::Message(QString sender, QString receiver)
 {
-    this->code = QDateTime::currentDateTime().toString("yyMMddhhmmss");
+    this->code = QDateTime::currentDateTime().toString("yyyyMMddhhmmss");
     this->isRead = false;
     this->sender = sender;
     this->receiver = receiver;
