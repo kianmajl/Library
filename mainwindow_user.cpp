@@ -77,3 +77,17 @@ void MainWindow_user::on_pushButton_editprofile_clicked()
     eud->setWindowFlags(Qt::Window | Qt::WindowCloseButtonHint);
     eud->show();
 }
+
+void MainWindow_user::on_pushButton_inbox_clicked()
+{
+    this->hide();
+    QWidget * inb = searchForms(INBOX_FORM);
+    if (!inb)
+    {
+        inbox *inb_frm = new inbox(user, this);
+        inb_frm->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+        forms.append(qMakePair(INBOX_FORM, inb_frm));
+        inb = inb_frm;
+    }
+    inb->show();
+}

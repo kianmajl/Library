@@ -46,6 +46,11 @@ void Compose::on_pushButton_clicked()
         QMessageBox::critical(nullptr, "Reciver is Empty", "The Reciver field can not be empty");
         return;
     }
+    if (!ui->plainTextEdit->toPlainText().length())
+    {
+        QMessageBox::critical(nullptr, "Body is Empty", "Please Write something :/");
+        return;
+    }
     if (ui->lineEdit_reciver->text() == ui->lineEdit_sender->text())
     {
         QMessageBox::warning(nullptr, "Wrong Reciver", "Reciver is equal to Sender !!");
