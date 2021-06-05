@@ -247,7 +247,7 @@ font: 25 7pt &quot;IRANYekan Light&quot;;</string>
        </sizepolicy>
       </property>
       <property name="toolTip">
-       <string>To Save Changes</string>
+       <string>To Refresh Table</string>
       </property>
       <property name="text">
        <string>&amp;Refresh</string>

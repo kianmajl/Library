@@ -6,6 +6,7 @@
 #include <QStringList>
 #include <QMap>
 #include <QDateTime>
+#include <QMessageBox>
 #include "message.h"
 
 namespace Ui {
@@ -21,6 +22,7 @@ public:
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
     int LoadData();
+    bool saveChanges();
     ~inbox();
 
 private slots:
@@ -28,10 +30,15 @@ private slots:
 
     void on_tableWidget_currentCellChanged(int currentRow);
 
+    void on_pushButton_delete_clicked();
+
+    void on_pushButton_asread_clicked();
+
 private:
     Ui::inbox *ui;
     QWidget *dash;
     QPointF oldPos; // for draggable
+    QString user;
     QMap<QString, QStringList> messages_data;
 };
 

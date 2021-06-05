@@ -48,6 +48,7 @@ private:
     QWidget *admin_dash; // pointer of admin dashboard
     QPointF oldPos; // for draggable
     QMap<QString, QStringList> user_data;
+    bool change;
 };
 
 #endif // EDIT_USER_PROFILE_H
