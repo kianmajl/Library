@@ -27,6 +27,7 @@ void Edit_User_profile::mouseMoveEvent(QMouseEvent *event)
 
 int Edit_User_profile::LoadData()
 {
+    ui->lineEdit->clear();
     ui->tableWidget->setRowCount(0);
     int ld = 0;
     this->user_data = User::LoadUsers();
@@ -96,13 +97,6 @@ void Edit_User_profile::on_lineEdit_textChanged(const QString &arg1)
         }
         ui->label->setText("Users List | " + QString::number(cnt) + " Records Loaded");
     }
-}
-
-void Edit_User_profile::on_tableWidget_currentCellChanged(int currentRow)
-{
-    QTableWidgetItem *tmp = ui->tableWidget->item(currentRow, 0);
-    if (tmp) // if item exists !
-        ui->lineEdit->setText(tmp->text());
 }
 
 void Edit_User_profile::on_pushButton_edit_clicked()

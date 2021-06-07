@@ -1,7 +1,11 @@
 #ifndef ADDBOOK_H
 #define ADDBOOK_H
 
+#include <QMap>
+#include <QStringList>
 #include <QWidget>
+#include <QMessageBox>
+#include "book.h"
 
 namespace Ui {
 class addBook;
@@ -15,8 +19,12 @@ public:
     explicit addBook(QWidget *parent = nullptr);
     ~addBook();
 
+private slots:
+    void on_pushButton_save_clicked();
+
 private:
     Ui::addBook *ui;
+    QMap<QString, QStringList> data;
 };
 
 #endif // ADDBOOK_H

@@ -35,8 +35,6 @@ private slots:
 
     void on_lineEdit_textChanged(const QString &arg1);
 
-    void on_tableWidget_currentCellChanged(int currentRow);
-
     void on_pushButton_edit_clicked();
 
     void on_pushButton_delete_clicked();
