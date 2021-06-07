@@ -27,23 +27,6 @@ void groupBooks::mouseMoveEvent(QMouseEvent *event)
 
 int groupBooks::LoadData()
 {
-    QFile group_data(GROUP_FILE);
-
-    if (!group_data.open(QIODevice::ReadOnly | QIODevice::Text))
-        return 0;
-
-    QTextStream in(&group_data);
-
-    while (!in.atEnd())
-        data << in.readLine();
-
-    ui->listWidget->addItems(data);
-    QCompleter *completer = new QCompleter(data, this);
-    completer->setCaseSensitivity(Qt::CaseInsensitive);
-    ui->lineEdit->setCompleter(completer);
-
-    group_data.close();
-    return this->data.length();
 }
 
 groupBooks::~groupBooks()

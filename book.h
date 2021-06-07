@@ -16,6 +16,7 @@ private:
     QString publisher;
     QString language;
     int numberOfPages;
+    int available;
 };
 
 #endif // BOOK_H

@@ -16,5 +16,6 @@
         <file>icons/compose.png</file>
         <file>icons/inbox.png</file>
         <file>icons/outbox.png</file>
+        <file>icons/add_book.png</file>
     </qresource>
 </RCC>

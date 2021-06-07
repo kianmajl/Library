@@ -9,6 +9,7 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    addbook.cpp \
     authentication.cpp \
     book.cpp \
     booklist_admin.cpp \
@@ -25,6 +26,7 @@ SOURCES += \
     user.cpp
 
 HEADERS += \
+    addbook.h \
     authentication.h \
     book.h \
     booklist_admin.h \
@@ -40,6 +42,7 @@ HEADERS += \
     user.h
 
 FORMS += \
+    addbook.ui \
     authentication.ui \
     booklist_admin.ui \
     compose.ui \
