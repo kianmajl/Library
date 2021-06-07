@@ -78,9 +78,24 @@ void Edit_User_profile::on_pushButton_backtodash_clicked()
 
 void Edit_User_profile::on_lineEdit_textChanged(const QString &arg1)
 {
-    QList<QTableWidgetItem *> qlwi = ui->tableWidget->findItems(arg1, Qt::MatchExactly);
-    for (const auto &i : qlwi)
-        ui->tableWidget->setCurrentItem(i);
+    if (arg1 == "")
+    {
+        for (int i = 0; i < ui->tableWidget->rowCount(); ++i)
+            ui->tableWidget->showRow(i);
+        ui->label->setText("Users List | " + QString::number(user_data.size()) + " Records Loaded");
+    }
+    else
+    {
+        int cnt = 0;
+        for (int i = 0; i < ui->tableWidget->rowCount(); ++i)
+        {
+            if (ui->tableWidget->item(i, 0)->text().startsWith(arg1, Qt::CaseInsensitive))
+                cnt++;
+            else
+                ui->tableWidget->hideRow(i);
+        }
+        ui->label->setText("Users List | " + QString::number(cnt) + " Records Loaded");
+    }
 }
 
 void Edit_User_profile::on_tableWidget_currentCellChanged(int currentRow)

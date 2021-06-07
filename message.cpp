@@ -56,7 +56,8 @@ QMap<QString, QStringList> Message::loadMessages()
         QStringList msg = it->split(SEP_DATA);
         if (!msg[0].length())
             break;
-        msgdb[msg[0]] << msg[1] << msg[2] << msg[3] << msg[4] << msg[5];
+        for (int i = 1; i < msg.size(); ++i)
+            msgdb[msg[0]] << msg.at(i);
     }
 
     return msgdb;

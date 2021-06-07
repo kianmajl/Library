@@ -9,8 +9,8 @@ groupBooks::groupBooks(QWidget *admin_dash, QWidget *parent) :
 {
     this->admin_dash = admin_dash;
     ui->setupUi(this);
-    int num_loaded_data = this->LoadData();
-    ui->label->setText("Group Books | " + QString::number(num_loaded_data) + " Records Loaded");
+//    int num_loaded_data = this->LoadData();
+//    ui->label->setText("Group Books | " + QString::number(num_loaded_data) + " Records Loaded");
 }
 
 void groupBooks::mousePressEvent(QMouseEvent *event)
@@ -25,25 +25,13 @@ void groupBooks::mouseMoveEvent(QMouseEvent *event)
     oldPos = event->globalPosition();
 }
 
-int groupBooks::LoadData()
-{
-}
+//int groupBooks::LoadData()
+//{
+//}
 
 groupBooks::~groupBooks()
 {
     delete ui;
-}
-
-void groupBooks::on_lineEdit_textChanged(const QString &arg1)
-{
-    QList<QListWidgetItem *> qlwi = ui->listWidget->findItems(arg1, Qt::MatchExactly);
-    for (const auto &i : qlwi)
-        ui->listWidget->setCurrentItem(i);
-}
-
-void groupBooks::on_listWidget_currentTextChanged(const QString &currentText)
-{
-    ui->lineEdit->setText(currentText);
 }
 
 void groupBooks::on_pushButton_backtodash_clicked()

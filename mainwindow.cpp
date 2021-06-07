@@ -71,7 +71,16 @@ void MainWindow::on_pushButton_logout_clicked()
 
 void MainWindow::on_pushButton_viewblist_clicked()
 {
-
+    this->hide();
+    QWidget *ba_list = searchForms(BOOK_LIST_FORM);
+    if (!ba_list)
+    {
+        BookList_Admin *bla = new BookList_Admin(this);
+        bla->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+        forms.append(qMakePair(BOOK_LIST_FORM, bla));
+        ba_list = bla;
+    }
+    ba_list->show();
 }
 
 void MainWindow::on_pushButton_viewgrouplist_clicked()

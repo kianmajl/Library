@@ -4,6 +4,7 @@
 #include "authentication.h"
 #include "user.h"
 #include "message.h"
+#include "booklist_admin.h"
 #include "groupbooks.h"
 #include "compose.h"
 #include "edit_user_profile.h"
