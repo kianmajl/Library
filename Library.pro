@@ -21,6 +21,7 @@ SOURCES += \
     mainwindow.cpp \
     mainwindow_user.cpp \
     message.cpp \
+    outbox.cpp \
     user.cpp
 
 HEADERS += \
@@ -35,6 +36,7 @@ HEADERS += \
     mainwindow.h \
     mainwindow_user.h \
     message.h \
+    outbox.h \
     user.h
 
 FORMS += \
@@ -46,7 +48,8 @@ FORMS += \
     groupbooks.ui \
     inbox.ui \
     mainwindow.ui \
-    mainwindow_user.ui
+    mainwindow_user.ui \
+    outbox.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

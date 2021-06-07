@@ -62,17 +62,31 @@ QMap<QString, QStringList> Message::loadMessages()
     return msgdb;
 }
 
-bool Message::saveChanges(QMap<QString, QStringList> *data)
+bool Message::saveChanges(QMap<QString, QStringList> &data)
 {
     QFile new_data(MESSAGE_FILE);
     QTextStream out(&new_data);
 
     if (!new_data.open(QIODevice::WriteOnly | QIODevice::Text))
         return false;
-    for (auto it = data->constBegin(); it != data->constEnd(); ++it)
+    for (auto it = data.constBegin(); it != data.constEnd(); ++it)
         out << it.key() << SEP_DATA << it.value().join(SEP_DATA) << "-";
 
     return true;
+}
+
+void Message::deleteMessages(QString username)
+{
+    QMap<QString, QStringList> msgdb = loadMessages();
+
+    for (auto it = msgdb.constBegin(); it != msgdb.constEnd();)
+    {
+        if (it.value().at(1) == username)
+            msgdb.erase(it++);
+        else
+            ++it;
+    }
+    saveChanges(msgdb);
 }
 
 int Message::numUnreadMessages(QString username)

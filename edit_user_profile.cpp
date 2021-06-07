@@ -98,7 +98,7 @@ void Edit_User_profile::on_pushButton_edit_clicked()
         return;
     }
     this->change = true;
-    Edit_User_Data * eud = new Edit_User_Data(ui->tableWidget->selectedItems().at(0)->text(), true);
+    Edit_User_Data *eud = new Edit_User_Data(ui->tableWidget->selectedItems().at(0)->text(), true);
     eud->setWindowFlags(Qt::Window | Qt::WindowCloseButtonHint);
     eud->show();
 }
@@ -118,7 +118,10 @@ void Edit_User_profile::on_pushButton_delete_clicked()
     }
     int ret = QMessageBox::warning(nullptr, "Confirm Delete User", "Are you sure you want to delete user : " + user + " ?", QMessageBox::Yes | QMessageBox::No);
     if (ret == QMessageBox::Yes)
+    {
         user_data.remove(user);
+        Message::deleteMessages(user);
+    }
     this->change = true;
     saveChanges();
     LoadData();

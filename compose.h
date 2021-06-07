@@ -16,7 +16,7 @@ class Compose : public QWidget
     Q_OBJECT
 
 public:
-    explicit Compose(QWidget *dash, QString sender, QWidget *parent = nullptr);
+    explicit Compose(QWidget *dash, QString sender, QString reciver = "", QString subject = "", QString txt = "", QWidget *parent = nullptr);
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
     ~Compose();

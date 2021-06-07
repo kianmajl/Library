@@ -8,6 +8,7 @@
 #include <QDateTime>
 #include <QMessageBox>
 #include "message.h"
+#include "compose.h"
 
 namespace Ui {
 class inbox;
@@ -33,6 +34,10 @@ private slots:
     void on_pushButton_delete_clicked();
 
     void on_pushButton_asread_clicked();
+
+    void on_pushButton_reply_clicked();
+
+    void on_pushButton_forward_clicked();
 
 private:
     Ui::inbox *ui;

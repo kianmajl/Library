@@ -1,7 +1,7 @@
 #include "compose.h"
 #include "ui_compose.h"
 
-Compose::Compose(QWidget *dash, QString sender, QWidget *parent) :
+Compose::Compose(QWidget *dash, QString sender, QString reciver, QString subject, QString txt, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Compose)
 {
@@ -10,6 +10,9 @@ Compose::Compose(QWidget *dash, QString sender, QWidget *parent) :
     this->users = User::LoadUsers();
     ui->setupUi(this);
     ui->lineEdit_sender->setText(sender);
+    ui->lineEdit_reciver->setText(reciver);
+    ui->lineEdit_subject->setText(subject);
+    ui->plainTextEdit->setPlainText(txt);
     QCompleter *completer = new QCompleter(users.keys(), this);
     completer->setCaseSensitivity(Qt::CaseInsensitive);
     ui->lineEdit_reciver->setCompleter(completer);

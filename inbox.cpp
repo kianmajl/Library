@@ -52,7 +52,7 @@ int inbox::LoadData()
 
 bool inbox::saveChanges()
 {
-    return Message::saveChanges(&messages_data);
+    return Message::saveChanges(messages_data);
 }
 
 inbox::~inbox()
@@ -104,4 +104,32 @@ void inbox::on_pushButton_asread_clicked()
     messages_data[code][4] = QString::number(true);
     saveChanges();
     LoadData();
+}
+
+void inbox::on_pushButton_reply_clicked()
+{
+    if (!ui->tableWidget->selectedItems().size())
+    {
+        QMessageBox::critical(nullptr, "No Item Selected", "Please Select an Item to reply");
+        return;
+    }
+    QString code = QDateTime::fromString(ui->tableWidget->selectedItems().at(0)->text(), "dd MMMM yyyy hh:mm:ss").toString("yyyyMMddhhmmss");
+    Compose * cmp = new Compose(this, this->user, messages_data[code].at(0), "Re: " + messages_data[code].at(2));
+    this->hide();
+    cmp->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+    cmp->show();
+}
+
+void inbox::on_pushButton_forward_clicked()
+{
+    if (!ui->tableWidget->selectedItems().size())
+    {
+        QMessageBox::critical(nullptr, "No Item Selected", "Please Select an Item to reply");
+        return;
+    }
+    QString code = QDateTime::fromString(ui->tableWidget->selectedItems().at(0)->text(), "dd MMMM yyyy hh:mm:ss").toString("yyyyMMddhhmmss");
+    Compose * cmp = new Compose(this, this->user, "", "Fw: " + messages_data[code].at(2), messages_data[code].at(3));
+    this->hide();
+    cmp->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+    cmp->show();
 }

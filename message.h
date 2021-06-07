@@ -15,7 +15,8 @@ public:
     Message(QString sender, QString receiver);
     QString toString();
     static QMap<QString, QStringList> loadMessages();
-    static bool saveChanges(QMap<QString, QStringList> *data);
+    static bool saveChanges(QMap<QString, QStringList> &data);
+    static void deleteMessages(QString username);
     static int numUnreadMessages(QString username);
 
 private:

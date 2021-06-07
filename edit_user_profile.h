@@ -12,6 +12,7 @@
 #include "edit_user_data.h"
 #include "ui_mainwindow.h"
 #include "user.h"
+#include "message.h"
 
 namespace Ui {
 class Edit_User_profile;
