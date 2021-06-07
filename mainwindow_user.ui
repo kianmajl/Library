@@ -282,7 +282,7 @@ color: rgb(255, 255, 255);</string>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_sent">
+          <widget class="QPushButton" name="pushButton_outbox">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
              <horstretch>0</horstretch>
@@ -290,7 +290,7 @@ color: rgb(255, 255, 255);</string>
             </sizepolicy>
            </property>
            <property name="text">
-            <string>Sent</string>
+            <string>Outbox</string>
            </property>
           </widget>
          </item>

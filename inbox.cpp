@@ -32,7 +32,7 @@ int inbox::LoadData()
     int j = 0;
 
     // Add to table
-    for (auto i = messages_data.begin(); i != messages_data.end(); ++i)
+    for (auto i = messages_data.constBegin(); i != messages_data.constEnd(); ++i)
     {
         if (i.value().at(1) == user)
         {

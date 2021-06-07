@@ -7,6 +7,7 @@
 #include "user.h"
 #include "message.h"
 #include "inbox.h"
+#include "outbox.h"
 #include <QMainWindow>
 #include <QMouseEvent>
 #include <QDateTime>
@@ -35,6 +36,8 @@ private slots:
     void on_pushButton_editprofile_clicked();
 
     void on_pushButton_inbox_clicked();
+
+    void on_pushButton_outbox_clicked();
 
 private:
     Ui::MainWindow_user *ui;

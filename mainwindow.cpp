@@ -7,6 +7,7 @@
 #define USERS_LIST_FORM "userlist"
 #define AUTHENTICATION_FORM "auth"
 #define INBOX_FORM "inbox"
+#define OUTBOX_FORM "outbox"
 
 MainWindow::MainWindow(QWidget *auth, QString user_logged_in, bool sex, QWidget *parent)
     : QMainWindow(parent)
@@ -121,4 +122,18 @@ void MainWindow::on_pushButton_inbox_clicked()
         inb = inb_frm;
     }
     inb->show();
+}
+
+void MainWindow::on_pushButton_outbox_clicked()
+{
+    this->hide();
+    QWidget * out = searchForms(OUTBOX_FORM);
+    if (!out)
+    {
+        outbox *out_frm = new outbox(this, user);
+        out_frm->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+        forms.append(qMakePair(OUTBOX_FORM, out_frm));
+        out = out_frm;
+    }
+    out->show();
 }

@@ -8,6 +8,7 @@
 #include "compose.h"
 #include "edit_user_profile.h"
 #include "inbox.h"
+#include "outbox.h"
 #include <QMainWindow>
 #include <QDateTime>
 #include <QVector>
@@ -41,6 +42,8 @@ private slots:
     void on_pushButton_compose_clicked();
 
     void on_pushButton_inbox_clicked();
+
+    void on_pushButton_outbox_clicked();
 
 private:
     Ui::MainWindow *ui;

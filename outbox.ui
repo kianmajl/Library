@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Outbox</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="res.qrc">
+    <normaloff>:/icons/icons/library.png</normaloff>:/icons/icons/library.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">QWidget
@@ -147,11 +151,14 @@ font: 25 7pt &quot;IRANYekan Light&quot;;</string>
      <x>20</x>
      <y>170</y>
      <width>751</width>
-     <height>401</height>
+     <height>311</height>
     </rect>
    </property>
    <property name="selectionBehavior">
     <enum>QAbstractItemView::SelectRows</enum>
+   </property>
+   <property name="sortingEnabled">
+    <bool>true</bool>
    </property>
    <attribute name="horizontalHeaderDefaultSectionSize">
     <number>183</number>
@@ -177,7 +184,22 @@ font: 25 7pt &quot;IRANYekan Light&quot;;</string>
     </property>
    </column>
   </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>510</y>
+     <width>751</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Refresh</string>
+   </property>
+  </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="res.qrc"/>
+ </resources>
  <connections/>
 </ui>
