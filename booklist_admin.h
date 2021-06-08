@@ -3,6 +3,7 @@
 
 #include "book.h"
 #include "addbook.h"
+#include "editbook.h"
 #include <QMouseEvent>
 #include <QWidget>
 #include <QCompleter>
@@ -34,6 +35,8 @@ private slots:
     void on_lineEdit_search_textChanged(const QString &arg1);
 
     void on_comboBox_search_currentIndexChanged(int index);
+
+    void on_pushButton_edit_clicked();
 
 private:
     Ui::BookList_Admin *ui;

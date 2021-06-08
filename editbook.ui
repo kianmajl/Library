@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>addBook</class>
- <widget class="QWidget" name="addBook">
+ <class>editBook</class>
+ <widget class="QWidget" name="editBook">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Add Book</string>
+   <string>Edit Book</string>
   </property>
   <property name="windowIcon">
    <iconset resource="res.qrc">
@@ -63,7 +63,7 @@ color: rgb(255, 255, 255);</string>
    <property name="frameShadow">
     <enum>QFrame::Raised</enum>
    </property>
-   <widget class="QFrame" name="frame_icon">
+   <widget class="QFrame" name="frame">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -73,7 +73,7 @@ color: rgb(255, 255, 255);</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image: url(:/icons/icons/add_book.png);</string>
+     <string notr="true">image: url(:/icons/icons/edit-book.png);</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::StyledPanel</enum>
@@ -95,7 +95,7 @@ color: rgb(255, 255, 255);</string>
      <string notr="true">font: 25 8pt &quot;IRANYekan Light&quot;;</string>
     </property>
     <property name="text">
-     <string>Add Form (Book) </string>
+     <string>Edit Form (Book) </string>
     </property>
    </widget>
    <widget class="QLabel" name="label_title">
@@ -137,6 +137,9 @@ color: rgb(255, 255, 255);</string>
       <property name="inputMask">
        <string>000-0-00-000000-0</string>
       </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
      </widget>
     </item>
     <item row="1" column="0">
@@ -175,9 +178,6 @@ color: rgb(255, 255, 255);</string>
        <string>Subject:</string>
       </property>
      </widget>
-    </item>
-    <item row="4" column="1">
-     <widget class="QLineEdit" name="lineEdit_subject"/>
     </item>
     <item row="5" column="0">
      <widget class="QLabel" name="label_language">
@@ -225,9 +225,12 @@ color: rgb(255, 255, 255);</string>
        </sizepolicy>
       </property>
       <property name="text">
-       <string>Add</string>
+       <string>&amp;Save</string>
       </property>
      </widget>
+    </item>
+    <item row="4" column="1">
+     <widget class="QLineEdit" name="lineEdit_subject"/>
     </item>
    </layout>
   </widget>

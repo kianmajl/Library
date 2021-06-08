@@ -17,5 +17,6 @@
         <file>icons/inbox.png</file>
         <file>icons/outbox.png</file>
         <file>icons/add_book.png</file>
+        <file>icons/edit-book.png</file>
     </qresource>
 </RCC>

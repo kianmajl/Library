@@ -46,7 +46,6 @@ int BookList_Admin::loadData()
         }
         for (int i = 0; i < 8; ++i)
             completer.at(i)->setCaseSensitivity(Qt::CaseInsensitive);
-        ui->lineEdit_search->setCompleter(completer.at(1));
     }
 
     // Add to table
@@ -56,13 +55,8 @@ int BookList_Admin::loadData()
         {
             ui->tableWidget->insertRow(ui->tableWidget->rowCount());
             ui->tableWidget->setItem(j, 0, new QTableWidgetItem(i.key()));
-            ui->tableWidget->setItem(j, 1, new QTableWidgetItem(i.value().at(0)));
-            ui->tableWidget->setItem(j, 2, new QTableWidgetItem(i.value().at(1)));
-            ui->tableWidget->setItem(j, 3, new QTableWidgetItem(i.value().at(2)));
-            ui->tableWidget->setItem(j, 4, new QTableWidgetItem(i.value().at(3)));
-            ui->tableWidget->setItem(j, 5, new QTableWidgetItem(i.value().at(4)));
-            ui->tableWidget->setItem(j, 6, new QTableWidgetItem(i.value().at(5)));
-            ui->tableWidget->setItem(j, 7, new QTableWidgetItem(i.value().at(6)));
+            for (int k = 0; k < i.value().size(); ++k)
+                ui->tableWidget->setItem(j, k + 1, new QTableWidgetItem(i.value().at(k)));
             ++j;
         }
     }
@@ -110,7 +104,6 @@ void BookList_Admin::on_pushButton_delete_clicked()
 
     Book::saveChanges(booksdb);
     loadData();
-
 }
 
 void BookList_Admin::on_lineEdit_search_textChanged(const QString &arg1)
@@ -124,15 +117,30 @@ void BookList_Admin::on_lineEdit_search_textChanged(const QString &arg1)
     else
     {
         int cnt = 0;
-        for (int i = 0; i < ui->tableWidget->rowCount(); ++i)
+        if (ui->comboBox_search->currentIndex())
         {
-            if (ui->tableWidget->item(i, ui->comboBox_search->currentIndex())->text().startsWith(arg1, Qt::CaseInsensitive))
+            for (int i = 0; i < ui->tableWidget->rowCount(); ++i)
             {
-                cnt++;
-                ui->tableWidget->showRow(i);
+                if (ui->tableWidget->item(i, ui->comboBox_search->currentIndex() - 1)->text().startsWith(arg1, Qt::CaseInsensitive))
+                {
+                    cnt++;
+                    ui->tableWidget->showRow(i);
+                }
+                else
+                    ui->tableWidget->hideRow(i);
             }
-            else
+        }
+        else
+        {
+            for (int i = 0; i < ui->tableWidget->rowCount(); ++i)
                 ui->tableWidget->hideRow(i);
+            QList<QTableWidgetItem *> filterd_items = ui->tableWidget->findItems(arg1, Qt::MatchStartsWith);
+            QSet<int> rows;
+            for (int i = 0; i < filterd_items.size(); ++i)
+                rows.insert(filterd_items.at(i)->row());
+            for (int r : rows)
+                ui->tableWidget->showRow(r);
+            cnt = rows.size();
         }
         ui->label->setText("Books List | " + QString::number(cnt) + " Records Loaded");
     }
@@ -140,5 +148,23 @@ void BookList_Admin::on_lineEdit_search_textChanged(const QString &arg1)
 
 void BookList_Admin::on_comboBox_search_currentIndexChanged(int index)
 {
-    ui->lineEdit_search->setCompleter(completer.at(index));
+    ui->lineEdit_search->clear();
+    if (index)
+        ui->lineEdit_search->setCompleter(completer.at(index - 1));
+    else
+        ui->lineEdit_search->setCompleter(0);
+}
+
+void BookList_Admin::on_pushButton_edit_clicked()
+{
+    if (!ui->tableWidget->selectedItems().size())
+    {
+        QMessageBox::critical(nullptr, "No Item Selected", "Please Select an Item to edit");
+        return;
+    }
+
+    QString key = ui->tableWidget->selectedItems().at(0)->text(); //ISBN
+    editBook * eb = new editBook(key);
+    eb->setWindowFlags(Qt::Window | Qt::WindowCloseButtonHint);
+    eb->show();
 }

@@ -16,6 +16,7 @@ SOURCES += \
     compose.cpp \
     edit_user_data.cpp \
     edit_user_profile.cpp \
+    editbook.cpp \
     groupbooks.cpp \
     inbox.cpp \
     main.cpp \
@@ -33,6 +34,7 @@ HEADERS += \
     compose.h \
     edit_user_data.h \
     edit_user_profile.h \
+    editbook.h \
     groupbooks.h \
     inbox.h \
     mainwindow.h \
@@ -48,6 +50,7 @@ FORMS += \
     compose.ui \
     edit_user_data.ui \
     edit_user_profile.ui \
+    editbook.ui \
     groupbooks.ui \
     inbox.ui \
     mainwindow.ui \

@@ -14,13 +14,13 @@ QString User::Login(QString user, QString hashed_pass)
     while (!in.atEnd())
     {
         QStringList data = in.readLine().split(SEP_DATA);
-        if (data[0] == user && data[1] == hashed_pass)
+        if (data.at(0) == user && data.at(1) == hashed_pass)
         {
             user_data.close();
-            if (data[2].toInt()) // Check Sex
-                return (data[3].toInt()) ? "ok_admin_f" : "ok_f";
+            if (data.at(2).toInt()) // Check Sex
+                return (data.at(3).toInt()) ? "ok_admin_f" : "ok_f";
             else
-                return (data[3].toInt()) ? "ok_admin_m" : "ok_m";
+                return (data.at(3).toInt()) ? "ok_admin_m" : "ok_m";
         }
     }
 
@@ -39,12 +39,12 @@ QString User::Register(QString user, QString hashed_pass, bool sex, bool isAdmin
     while (!out.atEnd())
     {
         QStringList data = out.readLine().split(SEP_DATA);
-        if (data[2].toInt() && isAdmin) // Check for is Admin exists
+        if (data.at(2).toInt() && isAdmin) // Check for is Admin exists
         {
             user_data.close();
             return "The admin already exists !";
         }
-        if (data[0] == user) // Check for duplicate username
+        if (data.at(0) == user) // Check for duplicate username
         {
             user_data.close();
             return "This username already exists !";
@@ -87,7 +87,7 @@ QMap<QString, QStringList> User::LoadUsers()
     while (!in.atEnd())
     {
         QStringList data = in.readLine().split(SEP_DATA);
-        user_data[data[0]] << data[1] << data[2] << data[3]; // key: username | values : passwors,sex,isAdmin
+        user_data[data.at(0)] << data.at(1) << data.at(2) << data.at(3); // key: username | values : passwors,sex,isAdmin
     }
 
     userfile.close();

@@ -40,7 +40,7 @@ QMap<QString, QStringList> Book::loadBooks()
     {
         QStringList tmp = in.readLine().split(SEP_DATA);
         for (int i = 1; i < tmp.size(); ++i)
-            data[tmp[0]] << tmp.at(i);
+            data[tmp.at(0)] << tmp.at(i);
     }
 
     bookdb.close();

@@ -34,6 +34,14 @@ QPushButton
 QPushButton:hover
 {
 	background-color: rgb(242, 204, 143);
+}
+QPushButton#pushButton_refresh
+{
+	background-color: rgb(129, 178, 154);
+}
+QPushButton:hover#pushButton_refresh
+{
+	background-color: rgb(242, 204, 143);
 }</string>
   </property>
   <widget class="QFrame" name="frame_top">
@@ -285,9 +293,11 @@ font: 25 7pt &quot;IRANYekan Light&quot;;</string>
    <property name="toolTip">
     <string>Search by:</string>
    </property>
-   <property name="currentIndex">
-    <number>1</number>
-   </property>
+   <item>
+    <property name="text">
+     <string>All</string>
+    </property>
+   </item>
    <item>
     <property name="text">
      <string>ISBN</string>
