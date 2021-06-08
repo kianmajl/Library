@@ -3,7 +3,9 @@
 
 #include "book.h"
 #include "addbook.h"
+#include <QMouseEvent>
 #include <QWidget>
+#include <QCompleter>
 
 namespace Ui {
 class BookList_Admin;
@@ -15,6 +17,8 @@ class BookList_Admin : public QWidget
 
 public:
     explicit BookList_Admin(QWidget *dash, QWidget *parent = nullptr);
+    void mousePressEvent(QMouseEvent *event);
+    void mouseMoveEvent(QMouseEvent *event);
     int loadData();
     ~BookList_Admin();
 
@@ -25,10 +29,18 @@ private slots:
 
     void on_pushButton_add_clicked();
 
+    void on_pushButton_delete_clicked();
+
+    void on_lineEdit_search_textChanged(const QString &arg1);
+
+    void on_comboBox_search_currentIndexChanged(int index);
+
 private:
     Ui::BookList_Admin *ui;
     QWidget *admin_dash;
+    QPointF oldPos; // for draggable
     QMap <QString, QStringList> booksdb;
+    QVector<QCompleter *> completer;
 };
 
 #endif // BOOKLIST_ADMIN_H

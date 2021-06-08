@@ -8,6 +8,7 @@ outbox::outbox(QWidget *dash, QString user, QWidget *parent) :
     this->dash = dash;
     this->user = user;
     ui->setupUi(this);
+    ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
     loadData();
 }
 

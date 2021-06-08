@@ -46,3 +46,22 @@ QMap<QString, QStringList> Book::loadBooks()
     bookdb.close();
     return data;
 }
+
+int Book::numBooks()
+{
+    int cnt = 0;
+    QFile bookdb(BOOK_FILE);
+    QTextStream in(&bookdb);
+
+    if(!bookdb.open(QIODevice::ReadOnly | QIODevice::Text))
+        return cnt;
+
+    while (!in.atEnd())
+    {
+        in.readLine();
+        ++cnt;
+    }
+
+    bookdb.close();
+    return cnt;
+}

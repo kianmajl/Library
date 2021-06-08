@@ -18,7 +18,7 @@
     <normaloff>:/icons/icons/library.png</normaloff>:/icons/icons/library.png</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">QWidget
+   <string notr="true">#groupBooks
 {
 	background-color: rgb(244, 241, 222);
 	color: rgb(61, 64, 91);
@@ -217,6 +217,11 @@ font: 25 7pt &quot;IRANYekan Light&quot;;</string>
      <height>311</height>
     </rect>
    </property>
+   <column>
+    <property name="text">
+     <string notr="true">1</string>
+    </property>
+   </column>
   </widget>
  </widget>
  <resources>

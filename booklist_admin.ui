@@ -18,7 +18,7 @@
     <normaloff>:/icons/icons/library.png</normaloff>:/icons/icons/library.png</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">QWidget
+   <string notr="true">#BookList_Admin
 {
 	background-color: rgb(244, 241, 222);
 	color: rgb(61, 64, 91);
@@ -137,6 +137,21 @@ font: 25 7pt &quot;IRANYekan Light&quot;;</string>
      <height>311</height>
     </rect>
    </property>
+   <property name="alternatingRowColors">
+    <bool>true</bool>
+   </property>
+   <property name="selectionMode">
+    <enum>QAbstractItemView::SingleSelection</enum>
+   </property>
+   <property name="selectionBehavior">
+    <enum>QAbstractItemView::SelectRows</enum>
+   </property>
+   <property name="sortingEnabled">
+    <bool>true</bool>
+   </property>
+   <attribute name="horizontalHeaderDefaultSectionSize">
+    <number>200</number>
+   </attribute>
    <column>
     <property name="text">
      <string>ISBN</string>
@@ -215,7 +230,7 @@ font: 25 7pt &quot;IRANYekan Light&quot;;</string>
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton_2">
+     <widget class="QPushButton" name="pushButton_edit">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
         <horstretch>0</horstretch>
@@ -228,7 +243,7 @@ font: 25 7pt &quot;IRANYekan Light&quot;;</string>
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton_3">
+     <widget class="QPushButton" name="pushButton_delete">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
         <horstretch>0</horstretch>
@@ -241,6 +256,73 @@ font: 25 7pt &quot;IRANYekan Light&quot;;</string>
      </widget>
     </item>
    </layout>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_search">
+   <property name="geometry">
+    <rect>
+     <x>554</x>
+     <y>45</y>
+     <width>221</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string>Quick Search</string>
+   </property>
+   <property name="placeholderText">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBox_search">
+   <property name="geometry">
+    <rect>
+     <x>554</x>
+     <y>80</y>
+     <width>221</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string>Search by:</string>
+   </property>
+   <property name="currentIndex">
+    <number>1</number>
+   </property>
+   <item>
+    <property name="text">
+     <string>ISBN</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Title</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Author</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Subject</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Publisher</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Language</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Number Of Pages</string>
+    </property>
+   </item>
   </widget>
  </widget>
  <resources>

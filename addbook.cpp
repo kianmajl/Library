@@ -28,7 +28,7 @@ void addBook::on_pushButton_save_clicked()
                                        ui->lineEdit_language->text() << ui->spinBox_numpages->text() <<
                                        ui->spinBox_available->text();
     if (Book::saveChanges(data))
-        QMessageBox::information(nullptr, "Added Successfully", ui->lineEdit_isbn->text() + " Added Successfully");
+        QMessageBox::information(nullptr, "Added Successfully", ui->lineEdit_title->text() + " Added Successfully");
     this->close();
     delete this;
 }
