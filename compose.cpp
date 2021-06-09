@@ -15,6 +15,7 @@ Compose::Compose(QWidget *dash, QString sender, QString reciver, QString subject
     ui->plainTextEdit->setPlainText(txt);
     QCompleter *completer = new QCompleter(users.keys(), this);
     completer->setCaseSensitivity(Qt::CaseInsensitive);
+    completer->setCompletionMode(QCompleter::InlineCompletion);
     ui->lineEdit_reciver->setCompleter(completer);
 }
 

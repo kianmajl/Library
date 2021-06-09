@@ -4,6 +4,7 @@
 #include "book.h"
 #include "addbook.h"
 #include "editbook.h"
+#include "ui_mainwindow.h"
 #include <QMouseEvent>
 #include <QWidget>
 #include <QCompleter>
@@ -17,7 +18,7 @@ class BookList_Admin : public QWidget
     Q_OBJECT
 
 public:
-    explicit BookList_Admin(QWidget *dash, QWidget *parent = nullptr);
+    explicit BookList_Admin(Ui::MainWindow *ui_dash, QWidget *dash, QWidget *parent = nullptr);
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
     int loadData();
@@ -41,9 +42,11 @@ private slots:
 private:
     Ui::BookList_Admin *ui;
     QWidget *admin_dash;
+    Ui::MainWindow *ui_admindash;
     QPointF oldPos; // for draggable
     QMap <QString, QStringList> booksdb;
     QVector<QCompleter *> completer;
+    bool change;
 };
 
 #endif // BOOKLIST_ADMIN_H

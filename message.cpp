@@ -60,6 +60,7 @@ QMap<QString, QStringList> Message::loadMessages()
             msgdb[msg[0]] << msg.at(i);
     }
 
+    data.close();
     return msgdb;
 }
 
@@ -73,6 +74,7 @@ bool Message::saveChanges(QMap<QString, QStringList> &data)
     for (auto it = data.constBegin(); it != data.constEnd(); ++it)
         out << it.key() << SEP_DATA << it.value().join(SEP_DATA) << "-";
 
+    new_data.close();
     return true;
 }
 
@@ -111,5 +113,6 @@ int Message::numUnreadMessages(QString username)
             cnt++;
     }
 
+    message.close();
     return cnt;
 }

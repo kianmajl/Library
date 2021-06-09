@@ -25,6 +25,7 @@ bool Book::saveChanges(QMap<QString, QStringList> &data)
     for (auto it = data.constBegin(); it != data.constEnd(); ++it)
         out << it.key() << SEP_DATA << it.value().join(SEP_DATA) << "\n";
 
+    bookdb.close();
     return true;
 }
 

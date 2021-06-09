@@ -1,10 +1,28 @@
 #include "inbox.h"
 #include "ui_inbox.h"
 
-inbox::inbox(QString user, QWidget *dash, QWidget *parent) :
+inbox::inbox(Ui::MainWindow *ui_admindash, QString user, bool isAdmin, QWidget *dash, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::inbox)
 {
+    this->change = false;
+    this->ui_admindash = ui_admindash;
+    this->isAdmin = isAdmin;
+    this->dash = dash;
+    this->user = user;
+    this->messages_data = Message::loadMessages(); // code - sender - reciver - subject - text - isRead
+    ui->setupUi(this);
+    ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    this->LoadData();
+}
+
+inbox::inbox(Ui::MainWindow_user *ui_userdash, QString user, bool isAdmin, QWidget *dash, QWidget *parent) :
+    QWidget(parent),
+    ui(new Ui::inbox)
+{
+    this->change = false;
+    this->ui_userdash = ui_userdash;
+    this->isAdmin = isAdmin;
     this->dash = dash;
     this->user = user;
     this->messages_data = Message::loadMessages(); // code - sender - reciver - subject - text - isRead
@@ -62,7 +80,28 @@ inbox::~inbox()
 
 void inbox::on_pushButton_backtodash_clicked()
 {
-    this->close();
+    this->hide();
+    if (change)
+    {
+        int unreadmsg = Message::numUnreadMessages(user);
+
+        if (isAdmin)
+        {
+            if (unreadmsg)
+                ui_admindash->statusbar->showMessage("You Have " + QString::number(unreadmsg) + " Unread Messages");
+            else
+                ui_admindash->statusbar->clearMessage();
+        }
+        else
+        {
+            if (unreadmsg)
+                ui_userdash->statusbar->showMessage("You Have " + QString::number(unreadmsg) + " Unread Messages");
+            else
+                ui_userdash->statusbar->clearMessage();
+        }
+
+        this->change = false;
+    }
     dash->show();
 }
 
@@ -90,7 +129,7 @@ void inbox::on_pushButton_delete_clicked()
         messages_data.remove(code);
     saveChanges();
     LoadData();
-
+    this->change = true;
 }
 
 void inbox::on_pushButton_asread_clicked()
@@ -104,6 +143,7 @@ void inbox::on_pushButton_asread_clicked()
     messages_data[code][4] = QString::number(true);
     saveChanges();
     LoadData();
+    this->change = true;
 }
 
 void inbox::on_pushButton_reply_clicked()
@@ -113,6 +153,7 @@ void inbox::on_pushButton_reply_clicked()
         QMessageBox::critical(nullptr, "No Item Selected", "Please Select an Item to reply");
         return;
     }
+    on_pushButton_asread_clicked();
     QString code = QDateTime::fromString(ui->tableWidget->selectedItems().at(0)->text(), "dd MMMM yyyy hh:mm:ss").toString("yyyyMMddhhmmss");
     Compose * cmp = new Compose(this, this->user, messages_data[code].at(0), "Re: " + messages_data[code].at(2));
     this->hide();
@@ -127,6 +168,7 @@ void inbox::on_pushButton_forward_clicked()
         QMessageBox::critical(nullptr, "No Item Selected", "Please Select an Item to reply");
         return;
     }
+    on_pushButton_asread_clicked();
     QString code = QDateTime::fromString(ui->tableWidget->selectedItems().at(0)->text(), "dd MMMM yyyy hh:mm:ss").toString("yyyyMMddhhmmss");
     Compose * cmp = new Compose(this, this->user, "", "Fw: " + messages_data[code].at(2), messages_data[code].at(3));
     this->hide();

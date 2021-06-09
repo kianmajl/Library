@@ -21,7 +21,9 @@ MainWindow::MainWindow(QWidget *auth, QString user_logged_in, bool sex, QWidget 
     ui->frame_2->setStyleSheet((sex) ? "image: url(:/icons/icons/librarian.png);" : "image: url(:/icons/icons/librarian-m.png);");
     ui->pushButton_totaluser->setText("Total Users : " + QString::number(User::LoadedData()));
     ui->pushButton_totalb->setText("Total Books : " + QString::number(Book::numBooks()));
-    ui->statusbar->showMessage("You Have " + QString::number(Message::numUnreadMessages(user)) + " Unread Messages", 30000);
+    int unread_messages = Message::numUnreadMessages(user);
+    if (unread_messages)
+        ui->statusbar->showMessage("You Have " + QString::number(unread_messages) + " Unread Messages");
 }
 
 void MainWindow::mousePressEvent(QMouseEvent *event)
@@ -76,7 +78,7 @@ void MainWindow::on_pushButton_viewblist_clicked()
     QWidget *ba_list = searchForms(BOOK_LIST_FORM);
     if (!ba_list)
     {
-        BookList_Admin *bla = new BookList_Admin(this);
+        BookList_Admin *bla = new BookList_Admin(ui, this);
         bla->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
         forms.append(qMakePair(BOOK_LIST_FORM, bla));
         ba_list = bla;
@@ -126,7 +128,7 @@ void MainWindow::on_pushButton_inbox_clicked()
     QWidget * inb = searchForms(INBOX_FORM);
     if (!inb)
     {
-        inbox *inb_frm = new inbox(user, this);
+        inbox *inb_frm = new inbox(ui, user, true, this);
         inb_frm->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
         forms.append(qMakePair(INBOX_FORM, inb_frm));
         inb = inb_frm;

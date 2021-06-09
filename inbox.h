@@ -9,6 +9,8 @@
 #include <QMessageBox>
 #include "message.h"
 #include "compose.h"
+#include "ui_mainwindow.h"
+#include "ui_mainwindow_user.h"
 
 namespace Ui {
 class inbox;
@@ -19,7 +21,8 @@ class inbox : public QWidget
     Q_OBJECT
 
 public:
-    explicit inbox(QString user, QWidget *dash, QWidget *parent = nullptr);
+    explicit inbox(Ui::MainWindow *ui_admindash, QString user, bool isAdmin, QWidget *dash, QWidget *parent = nullptr);
+    explicit inbox(Ui::MainWindow_user *ui_userdash, QString user, bool isAdmin, QWidget *dash, QWidget *parent = nullptr);
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
     int LoadData();
@@ -41,10 +44,14 @@ private slots:
 
 private:
     Ui::inbox *ui;
+    Ui::MainWindow *ui_admindash;
+    Ui::MainWindow_user *ui_userdash;
     QWidget *dash;
     QPointF oldPos; // for draggable
     QString user;
     QMap<QString, QStringList> messages_data;
+    bool change;
+    bool isAdmin;
 };
 
 #endif // INBOX_H

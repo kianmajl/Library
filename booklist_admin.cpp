@@ -1,11 +1,13 @@
 #include "booklist_admin.h"
 #include "ui_booklist_admin.h"
 
-BookList_Admin::BookList_Admin(QWidget *dash, QWidget *parent) :
+BookList_Admin::BookList_Admin(Ui::MainWindow *ui_dash, QWidget *dash, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::BookList_Admin)
 {
     this->admin_dash = dash;
+    this->ui_admindash = ui_dash;
+    this->change = false;
     ui->setupUi(this);
     ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
     this->loadData();
@@ -74,6 +76,11 @@ BookList_Admin::~BookList_Admin()
 void BookList_Admin::on_pushButton_backtodash_clicked()
 {
     this->hide();
+    if (change)
+    {
+        this->ui_admindash->pushButton_totalb->setText("Total Books : " + QString::number(this->booksdb.size()));
+        this->change = false;
+    }
     admin_dash->show();
 }
 
@@ -87,6 +94,7 @@ void BookList_Admin::on_pushButton_add_clicked()
     addBook * ab = new addBook();
     ab->setWindowFlags(Qt::Window | Qt::WindowCloseButtonHint);
     ab->show();
+    this->change = true;
 }
 
 void BookList_Admin::on_pushButton_delete_clicked()
@@ -104,6 +112,7 @@ void BookList_Admin::on_pushButton_delete_clicked()
 
     Book::saveChanges(booksdb);
     loadData();
+    this->change = true;
 }
 
 void BookList_Admin::on_lineEdit_search_textChanged(const QString &arg1)
