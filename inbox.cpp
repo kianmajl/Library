@@ -165,7 +165,7 @@ void inbox::on_pushButton_forward_clicked()
 {
     if (!ui->tableWidget->selectedItems().size())
     {
-        QMessageBox::critical(nullptr, "No Item Selected", "Please Select an Item to reply");
+        QMessageBox::critical(nullptr, "No Item Selected", "Please Select an Item to forward");
         return;
     }
     on_pushButton_asread_clicked();

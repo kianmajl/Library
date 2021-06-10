@@ -1,11 +1,10 @@
 #ifndef ADDBOOK_H
 #define ADDBOOK_H
 
-#include <QMap>
-#include <QStringList>
 #include <QWidget>
 #include <QMessageBox>
 #include "book.h"
+#include "editbook.h"
 
 namespace Ui {
 class addBook;

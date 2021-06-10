@@ -3,16 +3,8 @@
 #define BOOK_FILE "bookdb.txt"
 #define SEP_DATA ","
 
-Book::Book(QString ISBN, QString title, QString author, QString subject, QString publisher, QString language, int nump, int available)
+Book::Book()
 {
-    this->ISBN = ISBN;
-    this->title = title;
-    this->author = author;
-    this->subject = subject;
-    this->publisher = publisher;
-    this->language = language;
-    this->numberOfPages = nump;
-    this->available = available;
 }
 
 bool Book::saveChanges(QMap<QString, QStringList> &data)

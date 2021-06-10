@@ -18,5 +18,7 @@
         <file>icons/outbox.png</file>
         <file>icons/add_book.png</file>
         <file>icons/edit-book.png</file>
+        <file>icons/hand-over.png</file>
+        <file>icons/return.png</file>
     </qresource>
 </RCC>
