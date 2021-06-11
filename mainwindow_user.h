@@ -9,6 +9,7 @@
 #include "inbox.h"
 #include "outbox.h"
 #include "booklist_user.h"
+#include "returnbook.h"
 #include <QMainWindow>
 #include <QMouseEvent>
 #include <QDate>

@@ -1,8 +1,6 @@
 #include "booklist_user.h"
 #include "ui_booklist_user.h"
 
-int j = 0;
-
 booklist_user::booklist_user(QString user, Ui::MainWindow_user *ui_user_dash, QWidget *dash, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::booklist_user)
@@ -157,4 +155,9 @@ void booklist_user::on_pushButton_issue_clicked()
     QMessageBox::information(nullptr, "Issued Successfully", "Book Issued Successfully\nDate: " + QDate::currentDate().toString("dddd, MMMM dd, yyyy"));
     loadData();
     this->change = true;
+}
+
+void booklist_user::on_pushButton_refresh_clicked()
+{
+    this->loadData();
 }

@@ -5,6 +5,7 @@
 #define INBOX_FORM "inbox"
 #define OUTBOX_FORM "outbox"
 #define BOOK_LIST_FORM "booklist"
+#define RETURN_BOOK_FORM "returnb"
 
 MainWindow_user::MainWindow_user(QWidget *auth, QString user_logged_in, bool sex, QWidget *parent) :
     QMainWindow(parent),

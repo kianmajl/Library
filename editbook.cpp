@@ -32,7 +32,7 @@ void editBook::on_pushButton_save_clicked()
                                        ui->spinBox_available->text();
     bookdb.insert(isbn, qsl);
     if (Book::saveChanges(bookdb))
-        QMessageBox::information(nullptr, "Edited Successfully", isbn + " Edited Successfully");
+        QMessageBox::information(nullptr, "Edited Successfully", isbn + " Edited Successfully\nPlease Refresh The Table");
     this->close();
     delete this;
 

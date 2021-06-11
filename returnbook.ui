@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>booklist_user</class>
- <widget class="QWidget" name="booklist_user">
+ <class>returnBook</class>
+ <widget class="QWidget" name="returnBook">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,14 +11,10 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Book List</string>
-  </property>
-  <property name="windowIcon">
-   <iconset resource="res.qrc">
-    <normaloff>:/icons/icons/library.png</normaloff>:/icons/icons/library.png</iconset>
+   <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">#booklist_user
+   <string notr="true">#returnBook
 {
 	background-color: rgb(244, 241, 222);
 	color: rgb(61, 64, 91);
@@ -63,7 +59,7 @@ color: rgb(255, 255, 255);</string>
    <property name="frameShadow">
     <enum>QFrame::Raised</enum>
    </property>
-   <widget class="QFrame" name="frame">
+   <widget class="QFrame" name="frame_icon">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -73,45 +69,13 @@ color: rgb(255, 255, 255);</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image: url(:/icons/icons/hand-over.png);</string>
+     <string notr="true">image: url(:/icons/icons/return.png);</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::StyledPanel</enum>
     </property>
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>130</x>
-      <y>75</y>
-      <width>320</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 25 10pt &quot;IRANYekan Light&quot;;</string>
-    </property>
-    <property name="text">
-     <string>Book List | 6 Records Loaded</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_title">
-    <property name="geometry">
-     <rect>
-      <x>130</x>
-      <y>45</y>
-      <width>451</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 75 14pt &quot;IRANYekan&quot;;</string>
-    </property>
-    <property name="text">
-     <string>Library Management System</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_backtodash">
@@ -135,6 +99,38 @@ font: 25 7pt &quot;IRANYekan Light&quot;;</string>
      <bool>true</bool>
     </property>
    </widget>
+   <widget class="QLabel" name="label_title">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>45</y>
+      <width>451</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 14pt &quot;IRANYekan&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Library Management System</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>75</y>
+      <width>351</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 25 10pt &quot;IRANYekan Light&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Issued Books List | 6 Records Loaded</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QLineEdit" name="lineEdit_search">
    <property name="geometry">
@@ -153,6 +149,59 @@ font: 25 7pt &quot;IRANYekan Light&quot;;</string>
    </property>
   </widget>
   <widget class="QComboBox" name="comboBox_search">
+   <property name="geometry">
+    <rect>
+     <x>844</x>
+     <y>225</y>
+     <width>221</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string>Search by:</string>
+   </property>
+   <item>
+    <property name="text">
+     <string>All</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>ISBN</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Title</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Author</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Subject</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Publisher</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Language</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Number Of Pages</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QComboBox" name="comboBox_search_2">
    <property name="geometry">
     <rect>
      <x>554</x>
@@ -289,7 +338,7 @@ font: 25 7pt &quot;IRANYekan Light&quot;;</string>
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton_issue">
+     <widget class="QPushButton" name="pushButton_return">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
         <horstretch>0</horstretch>
@@ -297,15 +346,13 @@ font: 25 7pt &quot;IRANYekan Light&quot;;</string>
        </sizepolicy>
       </property>
       <property name="text">
-       <string>Issue</string>
+       <string>Return</string>
       </property>
      </widget>
     </item>
    </layout>
   </widget>
  </widget>
- <resources>
-  <include location="res.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

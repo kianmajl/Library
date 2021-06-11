@@ -33,6 +33,8 @@ private slots:
 
     void on_pushButton_issue_clicked();
 
+    void on_pushButton_refresh_clicked();
+
 private:
     Ui::booklist_user *ui;
     Ui::MainWindow_user *ui_user_dash;
@@ -43,6 +45,7 @@ private:
     QMap<QPair<QString, QString>, QDate> issuedbooksdb;
     QVector<QCompleter *> completer;
     bool change;
+    int j;
 };
 
 #endif // BOOKLIST_USER_H

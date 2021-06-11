@@ -52,7 +52,8 @@ void Edit_User_Data::on_pushButton_save_clicked()
     QStringList qsl;
     qsl << hashed_pass << QString::number(sex) << QString::number(ui->checkBox_admin->isChecked());
     data.insert(user_selected, qsl);
-    User::SaveUsers(data);
+    if (User::SaveUsers(data))
+        QMessageBox::information(nullptr, "Edited Successfully", user_selected + " Edited Successfully");
     this->close();
     delete this;
 }
