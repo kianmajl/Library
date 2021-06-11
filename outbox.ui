@@ -46,9 +46,21 @@ QPushButton:hover
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(61, 64, 91);
+    <string notr="true">#frame_top
+{
+background-color: rgb(61, 64, 91);
 color: rgb(255, 255, 255);
-</string>
+}
+#pushButton_backtodash
+{
+background-color: rgb(61, 64, 91);
+color: rgb(255, 255, 255);
+}
+QLabel
+{
+background-color: rgb(61, 64, 91);
+color: rgb(255, 255, 255);
+}</string>
    </property>
    <property name="frameShape">
     <enum>QFrame::StyledPanel</enum>
