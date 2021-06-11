@@ -29,7 +29,7 @@ int BookList_Admin::loadData()
 {
     ui->lineEdit_search->clear();
     ui->tableWidget->setRowCount(0);
-    int ld = 0;
+    int j = 0;
     this->booksdb = Book::loadBooks();
 
     // Set Completer
@@ -38,7 +38,7 @@ int BookList_Admin::loadData()
             delete completer.at(i);
         completer.clear();
         this->completer.append(new QCompleter(booksdb.keys(), this));
-        for (int i = 0; i < 7; i++)
+        for (int i = 0; i < 6; i++)
         {
             QStringList tmp;
             for (auto it = booksdb.constBegin(); it != booksdb.constEnd(); ++it)
@@ -46,14 +46,13 @@ int BookList_Admin::loadData()
             this->completer.append(new QCompleter(tmp, this));
             tmp.clear();
         }
-        for (int i = 0; i < 8; ++i)
+        for (int i = 0; i < 7; ++i)
             completer.at(i)->setCaseSensitivity(Qt::CaseInsensitive);
     }
 
     // Add to table
     {
-        int j = 0;
-        for (auto i = booksdb.begin(); i != booksdb.end(); ++i)
+        for (auto i = booksdb.constBegin(); i != booksdb.constEnd(); ++i)
         {
             ui->tableWidget->insertRow(ui->tableWidget->rowCount());
             ui->tableWidget->setItem(j, 0, new QTableWidgetItem(i.key()));
@@ -63,9 +62,8 @@ int BookList_Admin::loadData()
         }
     }
 
-    ld = booksdb.size();
-    ui->label->setText("Books List | " + QString::number(ld) + " Records Loaded");
-    return ld;
+    ui->label->setText("Books List | " + QString::number(j) + " Records Loaded");
+    return j;
 }
 
 BookList_Admin::~BookList_Admin()

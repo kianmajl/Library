@@ -1,7 +1,7 @@
 #ifndef BOOKLIST_ADMIN_H
 #define BOOKLIST_ADMIN_H
 
-#include "book.h"
+#include "book_item.h"
 #include "addbook.h"
 #include "editbook.h"
 #include "ui_mainwindow.h"

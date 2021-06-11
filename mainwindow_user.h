@@ -8,9 +8,10 @@
 #include "message.h"
 #include "inbox.h"
 #include "outbox.h"
+#include "booklist_user.h"
 #include <QMainWindow>
 #include <QMouseEvent>
-#include <QDateTime>
+#include <QDate>
 
 namespace Ui {
 class MainWindow_user;
@@ -38,6 +39,8 @@ private slots:
     void on_pushButton_inbox_clicked();
 
     void on_pushButton_outbox_clicked();
+
+    void on_pushButton_viewlist_clicked();
 
 private:
     Ui::MainWindow_user *ui;

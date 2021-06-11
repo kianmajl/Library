@@ -39,7 +39,7 @@ QString Message::toString()
 {
     QStringList qsl;
     qsl << this->code << this->sender << this->receiver << this->subject << this->text << QString::number(this->isRead);
-    return qsl.join(SEP_DATA) + "-";
+    return qsl.join(SEP_DATA) + "/";
 }
 
 QMap<QString, QStringList> Message::loadMessages()
@@ -49,7 +49,7 @@ QMap<QString, QStringList> Message::loadMessages()
     QTextStream in(&data);
     data.open(QIODevice::ReadOnly | QIODevice::Text);
 
-    QStringList allmsg = in.readAll().split("-");
+    QStringList allmsg = in.readAll().split("/");
 
     for (auto it = allmsg.constBegin(); it != allmsg.constEnd(); ++it)
     {
@@ -72,7 +72,7 @@ bool Message::saveChanges(QMap<QString, QStringList> &data)
     if (!new_data.open(QIODevice::WriteOnly | QIODevice::Text))
         return false;
     for (auto it = data.constBegin(); it != data.constEnd(); ++it)
-        out << it.key() << SEP_DATA << it.value().join(SEP_DATA) << "-";
+        out << it.key() << SEP_DATA << it.value().join(SEP_DATA) << "/";
 
     new_data.close();
     return true;
@@ -101,7 +101,7 @@ int Message::numUnreadMessages(QString username)
     if (!message.open(QIODevice::ReadOnly | QIODevice::Text))
         return cnt;
 
-    QStringList messages = in.readAll().split("-");
+    QStringList messages = in.readAll().split("/");
 
     for (auto it = messages.constBegin(); it != messages.constEnd(); ++it)
     {
@@ -115,4 +115,17 @@ int Message::numUnreadMessages(QString username)
 
     message.close();
     return cnt;
+}
+
+bool Message::isSend(QString date, QString receiver, QString sender)
+{
+    QMap<QString, QStringList> msgdb = loadMessages();
+
+    for (auto it = msgdb.constBegin(); it != msgdb.constEnd(); ++it)
+    {
+        if (it.key().startsWith(date) && it.value().at(0) == sender && it.value().at(1) == receiver)
+            return true;
+    }
+
+    return false;
 }

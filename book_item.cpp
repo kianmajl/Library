@@ -2,16 +2,16 @@
 
 #define RESERVE_FILE "reservedb.txt"
 #define SEP_DATA ","
-#define TIME_FORMAT "yyyyMMddhhmmss"
+#define DATE_FORMAT "yyyyMMdd"
 
 book_item::book_item()
 {
 
 }
 
-QMap<QPair<QString, QString>, QDateTime> book_item::loadData()
+QMap<QPair<QString, QString>, QDate> book_item::loadData_issuedBooks()
 {
-    QMap<QPair<QString, QString>, QDateTime> data;
+    QMap<QPair<QString, QString>, QDate> data;
     QFile reserve_file(RESERVE_FILE);
     QTextStream in(&reserve_file);
 
@@ -20,14 +20,14 @@ QMap<QPair<QString, QString>, QDateTime> book_item::loadData()
     while (!in.atEnd())
     {
         QStringList qsl = in.readLine().split(SEP_DATA);
-        data[qMakePair(qsl[0], qsl[1])] = QDateTime::fromString(TIME_FORMAT);
+        data[qMakePair(qsl[0], qsl[1])] = QDate::fromString(qsl[2], DATE_FORMAT);
     }
 
     reserve_file.close();
     return data;
 }
 
-bool book_item::saveChanges(QMap<QPair<QString, QString>, QDateTime> &data)
+bool book_item::saveChanges_issuedBooks(QMap<QPair<QString, QString>, QDate> &data)
 {
     QFile reserve_file(RESERVE_FILE);
 
@@ -36,13 +36,73 @@ bool book_item::saveChanges(QMap<QPair<QString, QString>, QDateTime> &data)
 
     QTextStream out(&reserve_file);
     for (auto it = data.constBegin(); it != data.constEnd(); ++it)
-        out << it.key().first << SEP_DATA << it.key().second << SEP_DATA << it.value().toString(TIME_FORMAT) << "\n";
+        out << it.key().first << SEP_DATA << it.key().second << SEP_DATA << it.value().toString(DATE_FORMAT) << "\n";
     reserve_file.close();
     return true;
 }
 
 void book_item::sendMessage(QString user)
 {
-    QDateTime currentDate = QDateTime::currentDateTime();
-    QMap<QPair<QString, QString>, QDateTime> data;
+    QDate currentDate = QDate::currentDate();
+    QMap<QPair<QString, QString>, QDate> data = loadData_issuedBooks();
+
+    for (auto it = data.constBegin(); it != data.constEnd(); ++it)
+    {
+        QDate expire_date = it.value().addDays(MAX_DAYS);
+        qint64 d = currentDate.daysTo(expire_date);
+        if (d < 4 && d > -1 && !Message::isSend(currentDate.toString(DATE_FORMAT), user))
+        {
+            Message ex_date_close("SYSTEM", user);
+            ex_date_close.setSubject("Expiration Date is close");
+            ex_date_close.setText("Hi " + user + ";\nOnly " + QString::number(d) + " days left to expire date of " + it.key().first);
+            ex_date_close.send();
+        }
+
+        else if (d < 0 && !Message::isSend(currentDate.toString(DATE_FORMAT), user))
+        {
+            Message ex_date_close("SYSTEM", user);
+            ex_date_close.setSubject("Expiry date has passed");
+            ex_date_close.setText("Hi " + user + ";\nExpiry date of " + it.key().first + " has passed\nPlease Return it !!!!");
+            ex_date_close.send();
+        }
+    }
+}
+
+int book_item::numIssued()
+{
+    int cnt = 0;
+    QFile reserve_file(RESERVE_FILE);
+    QTextStream in(&reserve_file);
+
+    if (!reserve_file.open(QIODevice::ReadOnly | QIODevice::Text))
+        return cnt;
+
+    while (!in.atEnd())
+    {
+        in.readLine();
+        ++cnt;
+    }
+
+    reserve_file.close();
+    return cnt;
+}
+
+int book_item::numIssued(QString user)
+{
+    int cnt = 0;
+    QFile reserve_file(RESERVE_FILE);
+    QTextStream in(&reserve_file);
+
+    if (!reserve_file.open(QIODevice::ReadOnly | QIODevice::Text))
+        return cnt;
+
+    while (!in.atEnd())
+    {
+        QStringList tmp = in.readLine().split(SEP_DATA);
+        if (tmp[1] == user)
+            ++cnt;
+    }
+
+    reserve_file.close();
+    return cnt;
 }

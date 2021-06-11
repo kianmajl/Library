@@ -4,6 +4,7 @@
 #define AUTHENTICATION_FORM "auth"
 #define INBOX_FORM "inbox"
 #define OUTBOX_FORM "outbox"
+#define BOOK_LIST_FORM "booklist"
 
 MainWindow_user::MainWindow_user(QWidget *auth, QString user_logged_in, bool sex, QWidget *parent) :
     QMainWindow(parent),
@@ -13,11 +14,12 @@ MainWindow_user::MainWindow_user(QWidget *auth, QString user_logged_in, bool sex
     ui->setupUi(this);
     this->user = user_logged_in;
     ui->label_username->setText("Hi " + this->user);
-    ui->label->setText("User Dashboard | " + QDateTime::currentDateTime().toString("dddd, MMMM dd, yyyy"));
+    ui->label->setText("User Dashboard | " + QDate::currentDate().toString("dddd, MMMM dd, yyyy"));
     ui->frame_2->setStyleSheet((sex) ? "image: url(:/icons/icons/reading.png);" : "image: url(:/icons/icons/reading-m.png);");
+    ui->pushButton_totalbissued->setText("Total Books Issued : " + QString::number(book_item::numIssued(user)));
     int unread_messages = Message::numUnreadMessages(user);
     if (unread_messages)
-        ui->statusbar->showMessage("You Have " + QString::number(unread_messages) + " Unread Messages", 30000);
+        ui->statusbar->showMessage("You Have " + QString::number(unread_messages) + " Unread Messages");
 }
 
 void MainWindow_user::mousePressEvent(QMouseEvent *event)
@@ -107,4 +109,18 @@ void MainWindow_user::on_pushButton_outbox_clicked()
         out = out_frm;
     }
     out->show();
+}
+
+void MainWindow_user::on_pushButton_viewlist_clicked()
+{
+    this->hide();
+    QWidget *ba_list = searchForms(BOOK_LIST_FORM);
+    if (!ba_list)
+    {
+        booklist_user *blu = new booklist_user(user, ui, this);
+        blu->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+        forms.append(qMakePair(BOOK_LIST_FORM, blu));
+        ba_list = blu;
+    }
+    ba_list->show();
 }
