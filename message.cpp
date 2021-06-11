@@ -27,7 +27,7 @@ void Message::setText(QString text)
 
 Message::Message(QString sender, QString receiver)
 {
-    this->code = QDateTime::currentDateTime().toString("yyyyMMddhhmmss");
+    this->code = QDateTime::currentDateTime().toString("yyyyMMddhhmmsszzz");
     this->isRead = false;
     this->sender = sender;
     this->receiver = receiver;
@@ -45,9 +45,9 @@ QString Message::toString()
 QMap<QString, QStringList> Message::loadMessages()
 {
     QMap<QString, QStringList> msgdb;
-    QFile data(MESSAGE_FILE);
-    QTextStream in(&data);
-    data.open(QIODevice::ReadOnly | QIODevice::Text);
+    QFile msgdata(MESSAGE_FILE);
+    QTextStream in(&msgdata);
+    msgdata.open(QIODevice::ReadOnly | QIODevice::Text);
 
     QStringList allmsg = in.readAll().split("/");
 
@@ -60,7 +60,7 @@ QMap<QString, QStringList> Message::loadMessages()
             msgdb[msg[0]] << msg.at(i);
     }
 
-    data.close();
+    msgdata.close();
     return msgdb;
 }
 
@@ -117,13 +117,13 @@ int Message::numUnreadMessages(QString username)
     return cnt;
 }
 
-bool Message::isSend(QString date, QString receiver, QString sender)
+bool Message::isSend(QString date, QString receiver, QString book_isbn, QString sender)
 {
     QMap<QString, QStringList> msgdb = loadMessages();
 
     for (auto it = msgdb.constBegin(); it != msgdb.constEnd(); ++it)
     {
-        if (it.key().startsWith(date) && it.value().at(0) == sender && it.value().at(1) == receiver)
+        if (it.key().startsWith(date) && it.value().at(0) == sender && it.value().at(1) == receiver && it.value().at(3).contains(book_isbn))
             return true;
     }
 

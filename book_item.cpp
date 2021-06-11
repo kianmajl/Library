@@ -50,7 +50,7 @@ void book_item::sendMessage(QString user)
     {
         QDate expire_date = it.value().addDays(MAX_DAYS);
         qint64 d = currentDate.daysTo(expire_date);
-        if (d < 4 && d > -1 && !Message::isSend(currentDate.toString(DATE_FORMAT), user))
+        if (d < 4 && d > -1 && !Message::isSend(currentDate.toString(DATE_FORMAT), user, it.key().first))
         {
             Message ex_date_close("SYSTEM", user);
             ex_date_close.setSubject("Expiration Date is close");
@@ -58,7 +58,7 @@ void book_item::sendMessage(QString user)
             ex_date_close.send();
         }
 
-        else if (d < 0 && !Message::isSend(currentDate.toString(DATE_FORMAT), user))
+        else if (d < 0 && !Message::isSend(currentDate.toString(DATE_FORMAT), user, it.key().first))
         {
             Message ex_date_close("SYSTEM", user);
             ex_date_close.setSubject("Expiry date has passed");

@@ -43,6 +43,8 @@ private slots:
 
     void on_pushButton_viewlist_clicked();
 
+    void on_pushButton_returnbook_clicked();
+
 private:
     Ui::MainWindow_user *ui;
     QVector<QPair<QString, QWidget *>> forms;

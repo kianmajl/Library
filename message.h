@@ -18,7 +18,7 @@ public:
     static bool saveChanges(QMap<QString, QStringList> &data);
     static void deleteMessages(QString username);
     static int numUnreadMessages(QString username);
-    static bool isSend(QString date, QString receiver, QString sender = "SYSTEM");
+    static bool isSend(QString date, QString receiver, QString book_isbn = "", QString sender = "SYSTEM");
 
 private:
     QString code;

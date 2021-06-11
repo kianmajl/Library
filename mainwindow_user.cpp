@@ -125,3 +125,17 @@ void MainWindow_user::on_pushButton_viewlist_clicked()
     }
     ba_list->show();
 }
+
+void MainWindow_user::on_pushButton_returnbook_clicked()
+{
+    this->hide();
+    QWidget *reb_list = searchForms(RETURN_BOOK_FORM);
+    if (!reb_list)
+    {
+        returnBook *rb = new returnBook(ui, user, this);
+        rb->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+        forms.append(qMakePair(RETURN_BOOK_FORM, rb));
+        reb_list = rb;
+    }
+    reb_list->show();
+}

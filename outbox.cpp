@@ -37,7 +37,7 @@ int outbox::loadData()
         if (i.value().at(0) == user)
         {
             ui->tableWidget->insertRow(ui->tableWidget->rowCount());
-            QString date = QDateTime::fromString(i.key(), "yyyyMMddhhmmss").toString("dd MMMM yyyy hh:mm:ss");
+            QString date = QDateTime::fromString(i.key(), "yyyyMMddhhmmsszzz").toString("dd MMMM yyyy hh:mm:ss.zzz");
             ui->tableWidget->setItem(j, 0, new QTableWidgetItem(date));
             ui->tableWidget->setItem(j, 1, new QTableWidgetItem(i.value().at(1)));
             ui->tableWidget->setItem(j, 2, new QTableWidgetItem(i.value().at(2)));

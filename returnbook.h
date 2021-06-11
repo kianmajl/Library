@@ -4,6 +4,7 @@
 #include <QCompleter>
 #include <QMouseEvent>
 #include <QWidget>
+#include <QMessageBox>
 #include "ui_mainwindow_user.h"
 #include "book_item.h"
 
@@ -24,6 +25,14 @@ public:
 
 private slots:
     void on_pushButton_refresh_clicked();
+
+    void on_lineEdit_search_textChanged(const QString &arg1);
+
+    void on_comboBox_search_currentIndexChanged(int index);
+
+    void on_pushButton_backtodash_clicked();
+
+    void on_pushButton_return_clicked();
 
 private:
     Ui::returnBook *ui;

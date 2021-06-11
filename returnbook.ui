@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Issued Books List</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="res.qrc">
+    <normaloff>:/icons/icons/library.png</normaloff>:/icons/icons/library.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">#returnBook
@@ -151,59 +155,6 @@ font: 25 7pt &quot;IRANYekan Light&quot;;</string>
   <widget class="QComboBox" name="comboBox_search">
    <property name="geometry">
     <rect>
-     <x>844</x>
-     <y>225</y>
-     <width>221</width>
-     <height>27</height>
-    </rect>
-   </property>
-   <property name="toolTip">
-    <string>Search by:</string>
-   </property>
-   <item>
-    <property name="text">
-     <string>All</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>ISBN</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Title</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Author</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Subject</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Publisher</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Language</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Number Of Pages</string>
-    </property>
-   </item>
-  </widget>
-  <widget class="QComboBox" name="comboBox_search_2">
-   <property name="geometry">
-    <rect>
      <x>554</x>
      <y>80</y>
      <width>221</width>
@@ -251,6 +202,16 @@ font: 25 7pt &quot;IRANYekan Light&quot;;</string>
    <item>
     <property name="text">
      <string>Number Of Pages</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Issue Date</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Expire Date</string>
     </property>
    </item>
   </widget>
@@ -313,6 +274,16 @@ font: 25 7pt &quot;IRANYekan Light&quot;;</string>
      <string>Number Of Pages</string>
     </property>
    </column>
+   <column>
+    <property name="text">
+     <string>Issue Date</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Expire Date</string>
+    </property>
+   </column>
   </widget>
   <widget class="QWidget" name="horizontalLayoutWidget">
    <property name="geometry">
@@ -353,6 +324,8 @@ font: 25 7pt &quot;IRANYekan Light&quot;;</string>
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="res.qrc"/>
+ </resources>
  <connections/>
 </ui>
