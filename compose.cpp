@@ -72,6 +72,6 @@ void Compose::on_pushButton_clicked()
         new_message.setSubject(ui->lineEdit_subject->text());
     new_message.setText(ui->plainTextEdit->toPlainText());
     new_message.send();
-    QMessageBox::information(nullptr, "Sent Successfully", "Message Sent Successfully\nTime: " + QDateTime::currentDateTime().toString("dd MMMM yyyy hh:mm:ss"));
+    QMessageBox::information(nullptr, "Sent Successfully", "Message Sent Successfully\nTime: " + QDateTime::currentDateTime().toString("dd MMMM yyyy hh:mm:ss.zzz"));
     on_pushButton_backtodash_clicked();
 }

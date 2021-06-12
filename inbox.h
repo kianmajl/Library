@@ -5,6 +5,7 @@
 #include <QString>
 #include <QStringList>
 #include <QMap>
+#include <QMapIterator>
 #include <QDateTime>
 #include <QMessageBox>
 #include "message.h"

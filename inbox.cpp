@@ -50,8 +50,11 @@ int inbox::LoadData()
     int j = 0;
 
     // Add to table
-    for (auto i = messages_data.constBegin(); i != messages_data.constEnd(); ++i)
+    QMapIterator<QString, QStringList> i(messages_data);
+    i.toBack();
+    while (i.hasPrevious())
     {
+        i.previous();
         if (i.value().at(1) == user)
         {
             ui->tableWidget->insertRow(ui->tableWidget->rowCount());
@@ -153,12 +156,17 @@ void inbox::on_pushButton_reply_clicked()
         QMessageBox::critical(nullptr, "No Item Selected", "Please Select an Item to reply");
         return;
     }
-    on_pushButton_asread_clicked();
     QString code = QDateTime::fromString(ui->tableWidget->selectedItems().at(0)->text(), "dd MMMM yyyy hh:mm:ss.zzz").toString("yyyyMMddhhmmsszzz");
-    Compose * cmp = new Compose(this, this->user, messages_data[code].at(0), "Re: " + messages_data[code].at(2));
-    this->hide();
-    cmp->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
-    cmp->show();
+    if (ui->tableWidget->selectedItems().at(1)->text() != "SYSTEM")
+    {
+        Compose * cmp = new Compose(this, this->user, messages_data[code].at(0), "Re: " + messages_data[code].at(2));
+        this->hide();
+        cmp->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+        cmp->show();
+    }
+    else
+        QMessageBox::warning(nullptr, "SYSTEM", "You can not send message to SYSTEM !");
+    on_pushButton_asread_clicked();
 }
 
 void inbox::on_pushButton_forward_clicked()
@@ -168,10 +176,10 @@ void inbox::on_pushButton_forward_clicked()
         QMessageBox::critical(nullptr, "No Item Selected", "Please Select an Item to forward");
         return;
     }
-    on_pushButton_asread_clicked();
     QString code = QDateTime::fromString(ui->tableWidget->selectedItems().at(0)->text(), "dd MMMM yyyy hh:mm:ss.zzz").toString("yyyyMMddhhmmsszzz");
     Compose * cmp = new Compose(this, this->user, "", "Fw: " + messages_data[code].at(2), messages_data[code].at(3));
     this->hide();
     cmp->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
     cmp->show();
+    on_pushButton_asread_clicked();
 }

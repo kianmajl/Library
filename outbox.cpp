@@ -32,8 +32,11 @@ int outbox::loadData()
     int j = 0;
 
     // Add to table
-    for (auto i = messagedb.constBegin(); i != messagedb.constEnd(); ++i)
+    QMapIterator<QString, QStringList> i(messagedb);
+    i.toBack();
+    while (i.hasPrevious())
     {
+        i.previous();
         if (i.value().at(0) == user)
         {
             ui->tableWidget->insertRow(ui->tableWidget->rowCount());
@@ -66,7 +69,7 @@ void outbox::on_tableWidget_currentCellChanged(int currentRow)
     QTableWidgetItem *tmp = ui->tableWidget->item(currentRow, 0);
     if (tmp) // if item exists !
     {
-        QString code_msg = QDateTime::fromString(tmp->text(), "dd MMMM yyyy hh:mm:ss").toString("yyyyMMddhhmmss");
+        QString code_msg = QDateTime::fromString(tmp->text(), "dd MMMM yyyy hh:mm:ss.zzz").toString("yyyyMMddhhmmsszzz");
         ui->plainTextEdit->show();
         ui->plainTextEdit->setPlainText(messagedb.value(code_msg).at(3));
     }

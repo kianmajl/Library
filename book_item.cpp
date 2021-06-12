@@ -48,22 +48,25 @@ void book_item::sendMessage(QString user)
 
     for (auto it = data.constBegin(); it != data.constEnd(); ++it)
     {
-        QDate expire_date = it.value().addDays(MAX_DAYS);
-        qint64 d = currentDate.daysTo(expire_date);
-        if (d < 4 && d > -1 && !Message::isSend(currentDate.toString(DATE_FORMAT), user, it.key().first))
+        if (it.key().second == user)
         {
-            Message ex_date_close("SYSTEM", user);
-            ex_date_close.setSubject("Expiration Date is close");
-            ex_date_close.setText("Hi " + user + ";\nOnly " + QString::number(d) + " days left to expire date of " + it.key().first);
-            ex_date_close.send();
-        }
+            QDate expire_date = it.value().addDays(MAX_DAYS);
+            qint64 d = currentDate.daysTo(expire_date);
+            if (d < 4 && d > -1 && !Message::isSend(currentDate.toString(DATE_FORMAT), user, it.key().first))
+            {
+                Message ex_date_close("SYSTEM", user);
+                ex_date_close.setSubject("Expiration Date is close");
+                ex_date_close.setText("Hi " + user + ";\nOnly " + QString::number(d) + " days left to expire date of " + it.key().first);
+                ex_date_close.send();
+            }
 
-        else if (d < 0 && !Message::isSend(currentDate.toString(DATE_FORMAT), user, it.key().first))
-        {
-            Message ex_date_close("SYSTEM", user);
-            ex_date_close.setSubject("Expiry date has passed");
-            ex_date_close.setText("Hi " + user + ";\nExpiry date of " + it.key().first + " has passed\nPlease Return it !!!!");
-            ex_date_close.send();
+            else if (d < 0 && !Message::isSend(currentDate.toString(DATE_FORMAT), user, it.key().first))
+            {
+                Message ex_date_close("SYSTEM", user);
+                ex_date_close.setSubject("Expiry date has passed");
+                ex_date_close.setText("Hi " + user + ";\nExpiry date of " + it.key().first + " has passed\nPlease Return it !!!!");
+                ex_date_close.send();
+            }
         }
     }
 }

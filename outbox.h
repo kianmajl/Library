@@ -2,6 +2,7 @@
 #define OUTBOX_H
 
 #include <QWidget>
+#include <QMapIterator>
 #include "message.h"
 
 namespace Ui {
