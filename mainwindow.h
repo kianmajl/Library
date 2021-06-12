@@ -10,6 +10,7 @@
 #include "edit_user_profile.h"
 #include "inbox.h"
 #include "outbox.h"
+#include "issuedbooks_admin.h"
 #include <QMainWindow>
 #include <QDate>
 #include <QVector>
@@ -35,6 +36,8 @@ private slots:
     void on_pushButton_logout_clicked();
 
     void on_pushButton_viewblist_clicked();
+
+    void on_pushButton_issuedBookl_clicked();
 
     void on_pushButton_viewgrouplist_clicked();
 

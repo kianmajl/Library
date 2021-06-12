@@ -20,5 +20,6 @@
         <file>icons/edit-book.png</file>
         <file>icons/hand-over.png</file>
         <file>icons/return.png</file>
+        <file>icons/calendar.png</file>
     </qresource>
 </RCC>

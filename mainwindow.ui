@@ -234,7 +234,7 @@ color: rgb(255, 255, 255);</string>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_2">
+          <widget class="QPushButton" name="pushButton_issuedBookl">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
              <horstretch>0</horstretch>
@@ -406,7 +406,7 @@ color: rgb(255, 255, 255);</string>
  </widget>
  <tabstops>
   <tabstop>pushButton_viewblist</tabstop>
-  <tabstop>pushButton_2</tabstop>
+  <tabstop>pushButton_issuedBookl</tabstop>
   <tabstop>pushButton_viewgrouplist</tabstop>
   <tabstop>pushButton_inbox</tabstop>
   <tabstop>pushButton_outbox</tabstop>

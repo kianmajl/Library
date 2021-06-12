@@ -21,6 +21,7 @@ SOURCES += \
     editbook.cpp \
     groupbooks.cpp \
     inbox.cpp \
+    issuedbooks_admin.cpp \
     main.cpp \
     mainwindow.cpp \
     mainwindow_user.cpp \
@@ -42,6 +43,7 @@ HEADERS += \
     editbook.h \
     groupbooks.h \
     inbox.h \
+    issuedbooks_admin.h \
     mainwindow.h \
     mainwindow_user.h \
     message.h \
@@ -60,6 +62,7 @@ FORMS += \
     editbook.ui \
     groupbooks.ui \
     inbox.ui \
+    issuedbooks_admin.ui \
     mainwindow.ui \
     mainwindow_user.ui \
     outbox.ui \

@@ -1,37 +1,21 @@
-#include "returnbook.h"
-#include "ui_returnbook.h"
+#include "issuedbooks_admin.h"
+#include "ui_issuedbooks_admin.h"
 
-returnBook::returnBook(Ui::MainWindow_user *ui_user_dash, QString user, QWidget *user_dash, QWidget *parent) :
+issuedBooks_admin::issuedBooks_admin(Ui::MainWindow *ui_admin_dash, QWidget *dash, QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::returnBook)
+    ui(new Ui::issuedBooks_admin)
 {
-    this->user = user;
-    this->dash = user_dash;
-    this->ui_user_dash = ui_user_dash;
     this->change = false;
+    this->admin_dash = dash;
+    this->ui_admin_dash = ui_admin_dash;
     ui->setupUi(this);
     this->loadData();
 }
 
-void returnBook::mousePressEvent(QMouseEvent *event)
+int issuedBooks_admin::loadData()
 {
-    oldPos = event->globalPosition();
-}
-
-void returnBook::mouseMoveEvent(QMouseEvent *event)
-{
-    const QPointF delta = event->globalPosition() - oldPos;
-    move(x()+delta.x(), y()+delta.y());
-    oldPos = event->globalPosition();
-}
-
-int returnBook::loadData()
-{
-    j = 0;
-    ui->lineEdit_search->clear();
-    ui->tableWidget->setRowCount(0);
-    this->booksdb = Book::loadBooks();
     this->issuedbooksdb = book_item::loadData_issuedBooks();
+    ui->tableWidget->setRowCount(0);
 
     // Set Completer
     {
@@ -41,76 +25,68 @@ int returnBook::loadData()
         QStringList tmp;
 
         for (auto it = issuedbooksdb.constBegin(); it != issuedbooksdb.constEnd(); ++it)
-            if (it.key().second == user)
-                tmp << it.key().first;
-        this->completer.append(new QCompleter(tmp, this));
-
-        for (int i = 0; i < 6; i++)
-        {
-            tmp.clear();
-            for (auto it = booksdb.constBegin(); it != booksdb.constEnd(); ++it)
-                if (issuedbooksdb.contains(qMakePair(it.key(), user)))
-                    tmp << it.value().at(i);
-            this->completer.append(new QCompleter(tmp, this));
-        }
-
-        tmp.clear();
-        for (auto it = issuedbooksdb.constBegin(); it != issuedbooksdb.constEnd(); ++it)
-            if(it.key().second == user)
-                tmp << it.value().toString("dddd, MMMM dd, yyyy");
+            tmp << it.key().first;
         this->completer.append(new QCompleter(tmp, this));
 
         tmp.clear();
         for (auto it = issuedbooksdb.constBegin(); it != issuedbooksdb.constEnd(); ++it)
-            if (it.key().second == user)
-                tmp << it.value().addDays(MAX_DAYS).toString("dddd, MMMM dd, yyyy");
+            tmp << it.key().second;
+        tmp.removeDuplicates();
         this->completer.append(new QCompleter(tmp, this));
 
-        for (int i = 0; i < 9; ++i)
+        tmp.clear();
+        for (auto it = issuedbooksdb.constBegin(); it != issuedbooksdb.constEnd(); ++it)
+            tmp << it.value().toString("dddd, MMMM dd, yyyy");
+        tmp.removeDuplicates();
+        this->completer.append(new QCompleter(tmp, this));
+
+        tmp.clear();
+        for (auto it = issuedbooksdb.constBegin(); it != issuedbooksdb.constEnd(); ++it)
+            tmp << it.value().addDays(MAX_DAYS).toString("dddd, MMMM dd, yyyy");
+        tmp.removeDuplicates();
+        this->completer.append(new QCompleter(tmp, this));
+
+
+        for (int i = 0; i < 4; ++i)
             completer.at(i)->setCaseSensitivity(Qt::CaseInsensitive);
 
     }
 
     // Add to table
     {
+        int j = 0;
         for (auto i = issuedbooksdb.constBegin(); i != issuedbooksdb.constEnd(); ++i)
         {
-            if (i.key().second == user)
-            {
-                int k;
-                ui->tableWidget->insertRow(ui->tableWidget->rowCount());
-                ui->tableWidget->setItem(j, 0, new QTableWidgetItem(i.key().first));
-                for (k = 0; k < booksdb.value(i.key().first).size() - 1; ++k)
-                    ui->tableWidget->setItem(j, k + 1, new QTableWidgetItem(booksdb.value(i.key().first).at(k)));
-                ui->tableWidget->setItem(j, ++k, new QTableWidgetItem(i.value().toString("dddd, MMMM dd, yyyy")));
-                ui->tableWidget->setItem(j, ++k, new QTableWidgetItem(i.value().addDays(MAX_DAYS).toString("dddd, MMMM dd, yyyy")));
-                ++j;
-            }
+            ui->tableWidget->insertRow(ui->tableWidget->rowCount());
+            ui->tableWidget->setItem(j, 0, new QTableWidgetItem(i.key().first));
+            ui->tableWidget->setItem(j, 1, new QTableWidgetItem(i.key().second));
+            ui->tableWidget->setItem(j, 2, new QTableWidgetItem(i.value().toString("dddd, MMMM dd, yyyy")));
+            ui->tableWidget->setItem(j, 3, new QTableWidgetItem(i.value().addDays(MAX_DAYS).toString("dddd, MMMM dd, yyyy")));
+            ++j;
         }
     }
 
-    ui->label->setText("Issued Books List | " + QString::number(j) + " Records Loaded");
-    return j;
-
+    ui->label->setText("Issued Books List | " + QString::number(issuedbooksdb.size()) + " Records Loaded");
+    return issuedbooksdb.size();
 }
 
-returnBook::~returnBook()
+issuedBooks_admin::~issuedBooks_admin()
 {
     delete ui;
 }
 
-void returnBook::on_pushButton_refresh_clicked()
+void issuedBooks_admin::on_pushButton_refresh_clicked()
 {
     this->loadData();
 }
 
-void returnBook::on_lineEdit_search_textChanged(const QString &arg1)
+void issuedBooks_admin::on_lineEdit_search_textChanged(const QString &arg1)
 {
     if (arg1 == "")
     {
         for (int i = 0; i < ui->tableWidget->rowCount(); ++i)
             ui->tableWidget->showRow(i);
-        ui->label->setText("Issued Books List | " + QString::number(j) + " Records Loaded");
+        ui->label->setText("Issued Books List | " + QString::number(issuedbooksdb.size()) + " Records Loaded");
     }
     else
     {
@@ -142,10 +118,9 @@ void returnBook::on_lineEdit_search_textChanged(const QString &arg1)
         }
         ui->label->setText("Issued Books List | " + QString::number(cnt) + " Records Loaded");
     }
-
 }
 
-void returnBook::on_comboBox_search_currentIndexChanged(int index)
+void issuedBooks_admin::on_comboBox_search_currentIndexChanged(int index)
 {
     ui->lineEdit_search->clear();
     if (index)
@@ -154,19 +129,21 @@ void returnBook::on_comboBox_search_currentIndexChanged(int index)
         ui->lineEdit_search->setCompleter(0);
 }
 
-void returnBook::on_pushButton_backtodash_clicked()
+void issuedBooks_admin::on_pushButton_backtodash_clicked()
 {
     this->hide();
     if (change)
     {
-        ui_user_dash->pushButton_totalbissued->setText("Total Books Issued : " + QString::number(book_item::numIssued(user)));
+        ui_admin_dash->pushButton_totalbissued->setText("Total Books Issued : " + QString::number(issuedbooksdb.size()));
         change = false;
     }
-    this->dash->show();
+    this->admin_dash->show();
+
 }
 
-void returnBook::on_pushButton_return_clicked()
+void issuedBooks_admin::on_pushButton_return_clicked()
 {
+    QMap<QString, QStringList> booksdb = book_item::loadBooks();
     if (!ui->tableWidget->selectedItems().size())
     {
         QMessageBox::critical(nullptr, "No Item Selected", "Please Select an Item to return");
@@ -174,6 +151,7 @@ void returnBook::on_pushButton_return_clicked()
     }
 
     QString key = ui->tableWidget->selectedItems().at(0)->text(); //ISBN
+    QString user = ui->tableWidget->selectedItems().at(1)->text();
     issuedbooksdb.remove(qMakePair(key, user));
     booksdb[key][6] = QString::number(booksdb.value(key).at(6).toInt() + 1);
     book_item::saveChanges_issuedBooks(issuedbooksdb);

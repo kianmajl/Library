@@ -33,7 +33,6 @@ void authentication::on_pushButton_signin_clicked()
 
     if (login_res == "ok_admin_m")
     {
-        book_item::sendMessage(username);
         MainWindow * mw_admin = new MainWindow(this, username, false);
         this->close();
         mw_admin->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
@@ -41,7 +40,6 @@ void authentication::on_pushButton_signin_clicked()
     }
     else if (login_res == "ok_admin_f")
     {
-        book_item::sendMessage(username);
         MainWindow * mw_admin = new MainWindow(this, username, true);
         this->close();
         mw_admin->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);

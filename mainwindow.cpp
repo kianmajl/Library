@@ -87,6 +87,20 @@ void MainWindow::on_pushButton_viewblist_clicked()
     ba_list->show();
 }
 
+void MainWindow::on_pushButton_issuedBookl_clicked()
+{
+    this->hide();
+    QWidget *iba_list = searchForms(ISSUED_BOOK_LIST_FORM);
+    if (!iba_list)
+    {
+        issuedBooks_admin *ibla = new issuedBooks_admin(ui, this);
+        ibla->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+        forms.append(qMakePair(ISSUED_BOOK_LIST_FORM, ibla));
+        iba_list = ibla;
+    }
+    iba_list->show();
+}
+
 void MainWindow::on_pushButton_viewgrouplist_clicked()
 {
     this->hide();
