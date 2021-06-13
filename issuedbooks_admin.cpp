@@ -77,6 +77,7 @@ issuedBooks_admin::~issuedBooks_admin()
 
 void issuedBooks_admin::on_pushButton_refresh_clicked()
 {
+    this->change = true;
     this->loadData();
 }
 

@@ -20,7 +20,7 @@ QMap<QPair<QString, QString>, QDate> book_item::loadData_issuedBooks()
     while (!in.atEnd())
     {
         QStringList qsl = in.readLine().split(SEP_DATA);
-        data[qMakePair(qsl[0], qsl[1])] = QDate::fromString(qsl[2], DATE_FORMAT);
+        data[qMakePair(qsl.at(0), qsl.at(1))] = QDate::fromString(qsl.at(2), DATE_FORMAT);
     }
 
     reserve_file.close();
@@ -102,10 +102,40 @@ int book_item::numIssued(QString user)
     while (!in.atEnd())
     {
         QStringList tmp = in.readLine().split(SEP_DATA);
-        if (tmp[1] == user)
+        if (tmp.at(1) == user)
             ++cnt;
     }
 
     reserve_file.close();
     return cnt;
+}
+
+void book_item::deleteBooks(QString isbn)
+{
+    QMap<QPair<QString, QString>, QDate> data = loadData_issuedBooks();
+
+    for (auto it = data.constBegin(); it != data.constEnd();)
+    {
+        if (it.key().first == isbn)
+            data.erase(it++);
+        else
+            ++it;
+    }
+
+    saveChanges_issuedBooks(data);
+}
+
+void book_item::deleteUsers(QString user)
+{
+    QMap<QPair<QString, QString>, QDate> data = loadData_issuedBooks();
+
+    for (auto it = data.constBegin(); it != data.constEnd();)
+    {
+        if (it.key().second == user)
+            data.erase(it++);
+        else
+            ++it;
+    }
+
+    saveChanges_issuedBooks(data);
 }

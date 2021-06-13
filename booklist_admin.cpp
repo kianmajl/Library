@@ -106,11 +106,13 @@ void BookList_Admin::on_pushButton_delete_clicked()
     QString key = ui->tableWidget->selectedItems().at(0)->text(); //ISBN
     int ret = QMessageBox::warning(nullptr, "Confirm Delete Book", "Are you sure you want to delete book : " + booksdb.value(key).at(0) + " ?", QMessageBox::Yes | QMessageBox::No);
     if (ret == QMessageBox::Yes)
+    {
         booksdb.remove(key);
-
-    Book::saveChanges(booksdb);
-    loadData();
-    this->change = true;
+        book_item::deleteBooks(key);
+        Book::saveChanges(booksdb);
+        loadData();
+        this->change = true;
+    }
 }
 
 void BookList_Admin::on_lineEdit_search_textChanged(const QString &arg1)

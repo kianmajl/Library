@@ -133,10 +133,11 @@ void Edit_User_profile::on_pushButton_delete_clicked()
     {
         user_data.remove(user);
         Message::deleteMessages(user);
+        book_item::deleteUsers(user);
+        this->change = true;
+        saveChanges();
+        LoadData();
     }
-    this->change = true;
-    saveChanges();
-    LoadData();
 }
 
 void Edit_User_profile::on_pushButton_Refresh_clicked()
