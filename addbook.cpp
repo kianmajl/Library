@@ -22,7 +22,7 @@ void addBook::on_pushButton_save_clicked()
 
         if (ret == QMessageBox::Yes)
         {
-            editBook * eb = new editBook(ui->lineEdit_isbn->text());
+            editBook * eb = new editBook(data, ui->lineEdit_isbn->text());
             eb->setWindowFlags(Qt::Window | Qt::WindowCloseButtonHint);
             eb->show();
             this->close();

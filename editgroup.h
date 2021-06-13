@@ -14,12 +14,12 @@ class editGroup : public QWidget
     Q_OBJECT
 
 public:
-    explicit editGroup(const QString &gp, QWidget *parent = nullptr);
+    explicit editGroup(QMap<QString, QStringList> * groups, const QString &gp, QWidget *parent = nullptr);
     ~editGroup();
 
 private:
     Ui::editGroup *ui;
-    QMap<QString, QStringList> groups;
+    QMap<QString, QStringList> * groups;
 };
 
 #endif // EDITGROUP_H

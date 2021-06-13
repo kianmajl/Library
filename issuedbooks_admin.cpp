@@ -190,7 +190,7 @@ void issuedBooks_admin::on_pushButton_return_clicked()
     issuedbooksdb.remove(qMakePair(key, user));
     booksdb[key][6] = QString::number(booksdb.value(key).at(6).toInt() + 1);
     book_item::saveChanges_issuedBooks(issuedbooksdb);
-    book_item::saveChanges(booksdb);
+    book_item::saveChanges(&booksdb);
     QMessageBox::information(nullptr, "Returned Successfully", "Book Returned Successfully\nDate: " + QDate::currentDate().toString("dddd, MMMM dd, yyyy"));
     loadData();
     this->change = true;

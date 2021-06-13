@@ -11,7 +11,7 @@ class group_item
 public:
     group_item();
     static QMap<QString, QStringList> loadData();
-    static bool saveChanges(QMap<QString, QStringList> &data);
+    static bool saveChanges(QMap<QString, QStringList> *data);
 };
 
 #endif // GROUP_ITEM_H

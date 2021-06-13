@@ -1,11 +1,11 @@
 #include "editgroup.h"
 #include "ui_editgroup.h"
 
-editGroup::editGroup(const QString &gp, QWidget *parent) :
+editGroup::editGroup(QMap<QString, QStringList> *groups, const QString &gp, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::editGroup)
 {
-    this->groups = group_item::loadData();
+    this->groups = groups;
     QMap<QString, QStringList> books = Book::loadBooks();
     QStringList data;
 
@@ -16,9 +16,9 @@ editGroup::editGroup(const QString &gp, QWidget *parent) :
         data << it.key() + " : " + it.value().at(0) + " (" + it.value().at(1) + ")";
     ui->listWidget->insertItems(0, data);
 
-    for (int i = 0; i < groups.value(gp).size(); ++i)
+    for (int i = 0; i < groups->value(gp).size(); ++i)
     {
-        QList <QListWidgetItem *> items = ui->listWidget->findItems(groups.value(gp).at(i), Qt::MatchExactly);
+        QList <QListWidgetItem *> items = ui->listWidget->findItems(groups->value(gp).at(i), Qt::MatchExactly);
         for (const auto &it : items)
             it->setSelected(true);
     }

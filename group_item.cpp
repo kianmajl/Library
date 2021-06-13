@@ -26,7 +26,7 @@ QMap<QString, QStringList> group_item::loadData()
     return data;
 }
 
-bool group_item::saveChanges(QMap<QString, QStringList> &data)
+bool group_item::saveChanges(QMap<QString, QStringList> *data)
 {
     QFile groupdb(GROUP_FILE);
 
@@ -34,7 +34,7 @@ bool group_item::saveChanges(QMap<QString, QStringList> &data)
         return false;
 
     QTextStream out(&groupdb);
-    for (auto it = data.constBegin(); it != data.constEnd(); ++it)
+    for (auto it = data->constBegin(); it != data->constEnd(); ++it)
         out << it.key() << SEP_DATA << it.value().join(SEP_DATA) << "\n";
 
     groupdb.close();
