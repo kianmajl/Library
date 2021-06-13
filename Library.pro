@@ -10,6 +10,7 @@ CONFIG += c++11
 
 SOURCES += \
     addbook.cpp \
+    addgroup.cpp \
     authentication.cpp \
     book.cpp \
     book_item.cpp \
@@ -19,6 +20,7 @@ SOURCES += \
     edit_user_data.cpp \
     edit_user_profile.cpp \
     editbook.cpp \
+    group_item.cpp \
     groupbooks.cpp \
     inbox.cpp \
     issuedbooks_admin.cpp \
@@ -32,6 +34,7 @@ SOURCES += \
 
 HEADERS += \
     addbook.h \
+    addgroup.h \
     authentication.h \
     book.h \
     book_item.h \
@@ -41,6 +44,7 @@ HEADERS += \
     edit_user_data.h \
     edit_user_profile.h \
     editbook.h \
+    group_item.h \
     groupbooks.h \
     inbox.h \
     issuedbooks_admin.h \
@@ -53,6 +57,7 @@ HEADERS += \
 
 FORMS += \
     addbook.ui \
+    addgroup.ui \
     authentication.ui \
     booklist_admin.ui \
     booklist_user.ui \

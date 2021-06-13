@@ -6,6 +6,7 @@
 #include <QFile>
 #include <QTextStream>
 #include <QCompleter>
+#include "addgroup.h"
 
 namespace Ui {
 class groupBooks;
@@ -24,6 +25,8 @@ public:
 
 private slots:
     void on_pushButton_backtodash_clicked();
+
+    void on_pushButton_add_clicked();
 
 private:
     Ui::groupBooks *ui;

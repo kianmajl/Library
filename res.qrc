@@ -21,5 +21,6 @@
         <file>icons/hand-over.png</file>
         <file>icons/return.png</file>
         <file>icons/calendar.png</file>
+        <file>icons/add_group.png</file>
     </qresource>
 </RCC>

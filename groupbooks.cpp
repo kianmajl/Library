@@ -39,3 +39,10 @@ void groupBooks::on_pushButton_backtodash_clicked()
     this->close();
     admin_dash->show();
 }
+
+void groupBooks::on_pushButton_add_clicked()
+{
+    addGroup * ag = new addGroup();
+    ag->setWindowFlags(Qt::Window | Qt::WindowCloseButtonHint);
+    ag->show();
+}

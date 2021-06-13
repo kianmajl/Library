@@ -119,9 +119,9 @@ color: rgb(255, 255, 255);</string>
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>140</y>
+     <y>130</y>
      <width>411</width>
-     <height>291</height>
+     <height>301</height>
     </rect>
    </property>
    <layout class="QFormLayout" name="formLayout">

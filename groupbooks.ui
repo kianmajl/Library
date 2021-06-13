@@ -34,6 +34,14 @@ QPushButton
 QPushButton:hover
 {
 	background-color: rgb(242, 204, 143);
+}
+QPushButton#pushButton_refresh
+{
+	background-color: rgb(129, 178, 154);
+}
+QPushButton#pushButton_refresh:hover
+{
+	background-color: rgb(242, 204, 143);
 }</string>
   </property>
   <widget class="QFrame" name="frame_top">
@@ -161,26 +169,13 @@ font: 25 7pt &quot;IRANYekan Light&quot;;</string>
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>500</y>
+     <y>510</y>
      <width>751</width>
-     <height>71</height>
+     <height>61</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
-     <widget class="QPushButton" name="pushButton_add">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="text">
-       <string>&amp;Add</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="1">
+    <item row="0" column="2">
      <widget class="QPushButton" name="pushButton_edit">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -193,7 +188,7 @@ font: 25 7pt &quot;IRANYekan Light&quot;;</string>
       </property>
      </widget>
     </item>
-    <item row="0" column="2">
+    <item row="0" column="3">
      <widget class="QPushButton" name="pushButton_delete">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -203,6 +198,32 @@ font: 25 7pt &quot;IRANYekan Light&quot;;</string>
       </property>
       <property name="text">
        <string>&amp;Delete</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QPushButton" name="pushButton_add">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="text">
+       <string>&amp;Add</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QPushButton" name="pushButton_refresh">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="text">
+       <string>&amp;Refresh</string>
       </property>
      </widget>
     </item>
