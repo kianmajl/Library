@@ -64,6 +64,10 @@ int groupBooks::LoadData()
         ui->treeWidget->addTopLevelItem(group_name);
     }
 
+    QCompleter *completer = new QCompleter(groups.keys(), this);
+    completer->setCaseSensitivity(Qt::CaseInsensitive);
+    ui->lineEdit->setCompleter(completer);
+
     ui->label->setText("Group Books List | " + QString::number(groups.size()) + " Records Loaded");
     return groups.size();
 }
@@ -93,10 +97,14 @@ void groupBooks::on_pushButton_refresh_clicked()
 
 void groupBooks::on_lineEdit_textChanged(const QString &arg1)
 {
-    QList<QTreeWidgetItem *> items = ui->treeWidget->findItems(arg1, Qt::MatchStartsWith);
+    if (arg1 == "")
+        ui->treeWidget->clearSelection();
 
-    for (int i = 0; i < items.size(); ++i)
+    else
     {
-        items.at(i)->setBackground(0, QBrush(QColor(255, 0, 0)));
+        QList<QTreeWidgetItem *> items = ui->treeWidget->findItems(arg1, Qt::MatchStartsWith);
+
+        for (int i = 0; i < items.size(); ++i)
+            ui->treeWidget->setCurrentItem(items.at(i));
     }
 }

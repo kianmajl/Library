@@ -21,12 +21,29 @@ addGroup::~addGroup()
 void addGroup::on_pushButton_add_clicked()
 {
     QMap<QString, QStringList> data = group_item::loadData();
+
+    if (data.contains(ui->lineEdit_gptitle->text()))
+    {
+        int ret = QMessageBox::warning(nullptr, "Error", "This ISBN Already Exists\nDo you want to edit this book?", QMessageBox::Yes | QMessageBox::No);
+
+        if (ret == QMessageBox::Yes)
+        {
+            this->close();
+            delete this;
+        }
+
+        else
+            ui->lineEdit_gptitle->clear();
+
+        return;
+    }
+
     QList<QListWidgetItem *> books = ui->listWidget->selectedItems();
 
     for (int i = 0; i < books.size(); ++i)
     {
         QStringList tmp = books.at(i)->text().split(":");
-        data[ui->lineEdit_gptitle->text()] << tmp[0].trimmed();
+        data[ui->lineEdit_gptitle->text()] << tmp.at(0).trimmed();
     }
 
     if (group_item::saveChanges(data))

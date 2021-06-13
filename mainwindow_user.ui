@@ -224,7 +224,7 @@ color: rgb(255, 255, 255);</string>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_viewplist">
+          <widget class="QPushButton" name="pushButton_viewgplist">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
              <horstretch>0</horstretch>
@@ -232,7 +232,7 @@ color: rgb(255, 255, 255);</string>
             </sizepolicy>
            </property>
            <property name="text">
-            <string>View Personalized List</string>
+            <string>View Group List</string>
            </property>
           </widget>
          </item>

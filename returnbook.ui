@@ -224,9 +224,6 @@ font: 25 7pt &quot;IRANYekan Light&quot;;</string>
      <height>311</height>
     </rect>
    </property>
-   <property name="alternatingRowColors">
-    <bool>true</bool>
-   </property>
    <property name="selectionMode">
     <enum>QAbstractItemView::SingleSelection</enum>
    </property>
