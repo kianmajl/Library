@@ -11,7 +11,7 @@ class Book
 {
 public:
     Book();
-    static bool saveChanges(QMap<QString, QStringList> &data);
+    static bool saveChanges(QMap<QString, QStringList> *data);
     static QMap<QString, QStringList> loadBooks();
     static int numBooks();
 

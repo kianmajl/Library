@@ -1,7 +1,7 @@
 #include "returnbook.h"
 #include "ui_returnbook.h"
 
-returnBook::returnBook(Ui::MainWindow_user *ui_user_dash, QString user, QWidget *user_dash, QWidget *parent) :
+returnBook::returnBook(Ui::MainWindow_user *ui_user_dash, const QString &user, QWidget *user_dash, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::returnBook)
 {

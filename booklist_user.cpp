@@ -1,7 +1,7 @@
 #include "booklist_user.h"
 #include "ui_booklist_user.h"
 
-booklist_user::booklist_user(QString user, Ui::MainWindow_user *ui_user_dash, QWidget *dash, QWidget *parent) :
+booklist_user::booklist_user(const QString &user, Ui::MainWindow_user *ui_user_dash, QWidget *dash, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::booklist_user)
 {
@@ -151,8 +151,8 @@ void booklist_user::on_pushButton_issue_clicked()
     issuedbooksdb.insert(qMakePair(key, user), QDate::currentDate());
     booksdb[key][6] = QString::number(booksdb.value(key).at(6).toInt() - 1);
     book_item::saveChanges_issuedBooks(issuedbooksdb);
-    book_item::saveChanges(booksdb);
-    QMessageBox::information(nullptr, "Issued Successfully", "Book Issued Successfully\nDate: " + QDate::currentDate().toString("dddd, MMMM dd, yyyy"));
+    book_item::saveChanges(&booksdb);
+    QMessageBox::information(nullptr, "Issued Successfully", "Book Issued Successfully\nIssue Date: " + QDate::currentDate().toString("dddd, MMMM dd, yyyy") + "\nExpiry Date: " + QDate::currentDate().addDays(MAX_DAYS).toString("dddd, MMMM dd, yyyy"));
     loadData();
     this->change = true;
 }

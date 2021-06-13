@@ -89,7 +89,7 @@ void BookList_Admin::on_pushButton_refresh_clicked()
 
 void BookList_Admin::on_pushButton_add_clicked()
 {
-    addBook * ab = new addBook();
+    addBook * ab = new addBook(&this->booksdb);
     ab->setWindowFlags(Qt::Window | Qt::WindowCloseButtonHint);
     ab->show();
     this->change = true;
@@ -109,7 +109,7 @@ void BookList_Admin::on_pushButton_delete_clicked()
     {
         booksdb.remove(key);
         book_item::deleteBooks(key);
-        Book::saveChanges(booksdb);
+        Book::saveChanges(&booksdb);
         loadData();
         this->change = true;
     }
@@ -173,7 +173,7 @@ void BookList_Admin::on_pushButton_edit_clicked()
     }
 
     QString key = ui->tableWidget->selectedItems().at(0)->text(); //ISBN
-    editBook * eb = new editBook(key);
+    editBook * eb = new editBook(&this->booksdb, key);
     eb->setWindowFlags(Qt::Window | Qt::WindowCloseButtonHint);
     eb->show();
 }

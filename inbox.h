@@ -22,8 +22,8 @@ class inbox : public QWidget
     Q_OBJECT
 
 public:
-    explicit inbox(Ui::MainWindow *ui_admindash, QString user, bool isAdmin, QWidget *dash, QWidget *parent = nullptr);
-    explicit inbox(Ui::MainWindow_user *ui_userdash, QString user, bool isAdmin, QWidget *dash, QWidget *parent = nullptr);
+    explicit inbox(Ui::MainWindow *ui_admindash, const QString &user, const bool &isAdmin, QWidget *dash, QWidget *parent = nullptr);
+    explicit inbox(Ui::MainWindow_user *ui_userdash, const QString &user, const bool &isAdmin, QWidget *dash, QWidget *parent = nullptr);
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
     int LoadData();

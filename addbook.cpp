@@ -1,11 +1,11 @@
 #include "addbook.h"
 #include "ui_addbook.h"
 
-addBook::addBook(QWidget *parent) :
+addBook::addBook(QMap<QString, QStringList> *data, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::addBook)
 {
-    this->data = Book::loadBooks();
+    this->data = data;
     ui->setupUi(this);
 }
 
@@ -16,7 +16,7 @@ addBook::~addBook()
 
 void addBook::on_pushButton_save_clicked()
 {
-    if (data.contains(ui->lineEdit_isbn->text()))
+    if (data->contains(ui->lineEdit_isbn->text()))
     {
         int ret = QMessageBox::warning(nullptr, "Error", "This ISBN Already Exists\nDo you want to edit this book?", QMessageBox::Yes | QMessageBox::No);
 
@@ -35,12 +35,16 @@ void addBook::on_pushButton_save_clicked()
         return;
     }
 
-    data[ui->lineEdit_isbn->text()] << ui->lineEdit_title->text() << ui->lineEdit_author->text()
+    QStringList qsl;
+    qsl << ui->lineEdit_title->text() << ui->lineEdit_author->text()
                                     << ui->lineEdit_subject->text() << ui->lineEdit_publisher->text()
                                     << ui->lineEdit_language->text() << ui->spinBox_numpages->text()
                                     << ui->spinBox_available->text();
+
+    data->insert(ui->lineEdit_isbn->text(), qsl);
     if (Book::saveChanges(data))
         QMessageBox::information(nullptr, "Added Successfully", ui->lineEdit_title->text() + " Added Successfully\nPlease Refresh The Table");
+
     this->close();
     delete this;
 }

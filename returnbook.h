@@ -17,7 +17,7 @@ class returnBook : public QWidget
     Q_OBJECT
 
 public:
-    explicit returnBook(Ui::MainWindow_user *ui_user_dash, QString user, QWidget *user_dash, QWidget *parent = nullptr);
+    explicit returnBook(Ui::MainWindow_user *ui_user_dash, const QString &user, QWidget *user_dash, QWidget *parent = nullptr);
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
     int loadData();

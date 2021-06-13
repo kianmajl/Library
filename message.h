@@ -10,15 +10,15 @@ class Message
 {
 public:
     void send();
-    void setSubject(QString subject);
-    void setText(QString text);
-    Message(QString sender, QString receiver);
+    void setSubject(const QString &subject);
+    void setText(const QString &text);
+    Message(const QString &sender, const QString &receiver);
     QString toString();
     static QMap<QString, QStringList> loadMessages();
     static bool saveChanges(QMap<QString, QStringList> &data);
-    static void deleteMessages(QString username);
-    static int numUnreadMessages(QString username);
-    static bool isSend(QString date, QString receiver, QString book_isbn = "", QString sender = "SYSTEM");
+    static void deleteMessages(const QString &username);
+    static int numUnreadMessages(const QString &username);
+    static bool isSend(const QString &date, const QString &receiver, QString book_isbn = "", QString sender = "SYSTEM");
 
 private:
     QString code;

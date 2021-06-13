@@ -15,7 +15,7 @@ class editBook : public QWidget
     Q_OBJECT
 
 public:
-    explicit editBook(QString isbn, QWidget *parent = nullptr);
+    explicit editBook(QMap<QString, QStringList> * bookdb, const QString &isbn, QWidget *parent = nullptr);
     ~editBook();
 
 private slots:
@@ -24,7 +24,7 @@ private slots:
 private:
     Ui::editBook *ui;
     QString isbn;
-    QMap<QString, QStringList> bookdb;
+    QMap<QString, QStringList> *bookdb;
 };
 
 #endif // EDITBOOK_H

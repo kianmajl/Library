@@ -14,7 +14,7 @@ class outbox : public QWidget
     Q_OBJECT
 
 public:
-    explicit outbox(QWidget *dash, QString user, QWidget *parent = nullptr);
+    explicit outbox(QWidget *dash, const QString &user, QWidget *parent = nullptr);
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
     int loadData();

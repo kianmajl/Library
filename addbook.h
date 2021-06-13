@@ -15,7 +15,7 @@ class addBook : public QWidget
     Q_OBJECT
 
 public:
-    explicit addBook(QWidget *parent = nullptr);
+    explicit addBook(QMap<QString, QStringList> * data, QWidget *parent = nullptr);
     ~addBook();
 
 private slots:
@@ -23,7 +23,7 @@ private slots:
 
 private:
     Ui::addBook *ui;
-    QMap<QString, QStringList> data;
+    QMap<QString, QStringList> * data;
 };
 
 #endif // ADDBOOK_H

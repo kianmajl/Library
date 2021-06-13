@@ -7,14 +7,14 @@ Book::Book()
 {
 }
 
-bool Book::saveChanges(QMap<QString, QStringList> &data)
+bool Book::saveChanges(QMap<QString, QStringList> *data)
 {
     QFile bookdb(BOOK_FILE);
     if (!bookdb.open(QIODevice::WriteOnly | QIODevice::Text))
         return false;
     QTextStream out(&bookdb);
 
-    for (auto it = data.constBegin(); it != data.constEnd(); ++it)
+    for (auto it = data->constBegin(); it != data->constEnd(); ++it)
         out << it.key() << SEP_DATA << it.value().join(SEP_DATA) << "\n";
 
     bookdb.close();

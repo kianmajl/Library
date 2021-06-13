@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QMessageBox>
+#include "editgroup.h"
 #include "book.h"
 #include "group_item.h"
 

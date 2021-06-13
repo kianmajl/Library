@@ -1,7 +1,7 @@
 #include "outbox.h"
 #include "ui_outbox.h"
 
-outbox::outbox(QWidget *dash, QString user, QWidget *parent) :
+outbox::outbox(QWidget *dash, const QString &user, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::outbox)
 {

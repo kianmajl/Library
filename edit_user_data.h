@@ -18,7 +18,7 @@ class Edit_User_Data : public QWidget
     Q_OBJECT
 
 public:
-    Edit_User_Data(QString user_selected, bool admin, QWidget *parent = nullptr);
+    Edit_User_Data(const QString &user_selected, const bool &admin, QWidget *parent = nullptr);
     ~Edit_User_Data();
 
 private slots:

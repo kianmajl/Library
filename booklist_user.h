@@ -18,7 +18,7 @@ class booklist_user : public QWidget
     Q_OBJECT
 
 public:
-    explicit booklist_user(QString user, Ui::MainWindow_user *ui_user_dash, QWidget *dash, QWidget *parent = nullptr);
+    explicit booklist_user(const QString &user, Ui::MainWindow_user *ui_user_dash, QWidget *dash, QWidget *parent = nullptr);
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
     int loadData();

@@ -1,7 +1,7 @@
 #include "inbox.h"
 #include "ui_inbox.h"
 
-inbox::inbox(Ui::MainWindow *ui_admindash, QString user, bool isAdmin, QWidget *dash, QWidget *parent) :
+inbox::inbox(Ui::MainWindow *ui_admindash, const QString &user, const bool &isAdmin, QWidget *dash, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::inbox)
 {
@@ -16,7 +16,7 @@ inbox::inbox(Ui::MainWindow *ui_admindash, QString user, bool isAdmin, QWidget *
     this->LoadData();
 }
 
-inbox::inbox(Ui::MainWindow_user *ui_userdash, QString user, bool isAdmin, QWidget *dash, QWidget *parent) :
+inbox::inbox(Ui::MainWindow_user *ui_userdash, const QString &user, const bool &isAdmin, QWidget *dash, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::inbox)
 {

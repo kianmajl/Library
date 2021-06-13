@@ -3,7 +3,7 @@
 #define USER_FILE "userdb.txt"
 #define SEP_DATA ","
 
-QString User::Login(QString user, QString hashed_pass)
+QString User::Login(const QString &user, const QString &hashed_pass)
 {
     QFile user_data(USER_FILE);
 
@@ -28,7 +28,7 @@ QString User::Login(QString user, QString hashed_pass)
     return "Invalid Username or Password";
 }
 
-QString User::Register(QString user, QString hashed_pass, bool sex, bool isAdmin)
+QString User::Register(const QString &user, const QString &hashed_pass, const bool &sex, bool isAdmin)
 {
     QFile user_data(USER_FILE);
 
@@ -108,7 +108,7 @@ bool User::SaveUsers(QMap<QString, QStringList> &data)
     return true;
 }
 
-User::User(QString username, QString password, bool sex, bool admin)
+User::User(const QString &username, const QString &password, const bool &sex, const bool &admin)
 {
     this->username = username;
     this->password = password;

@@ -15,17 +15,17 @@ void Message::send()
     message.close();
 }
 
-void Message::setSubject(QString subject)
+void Message::setSubject(const QString &subject)
 {
     this->subject = subject;
 }
 
-void Message::setText(QString text)
+void Message::setText(const QString &text)
 {
     this->text = text;
 }
 
-Message::Message(QString sender, QString receiver)
+Message::Message(const QString &sender, const QString &receiver)
 {
     this->code = QDateTime::currentDateTime().toString("yyyyMMddhhmmsszzz");
     this->isRead = false;
@@ -78,7 +78,7 @@ bool Message::saveChanges(QMap<QString, QStringList> &data)
     return true;
 }
 
-void Message::deleteMessages(QString username)
+void Message::deleteMessages(const QString &username)
 {
     QMap<QString, QStringList> msgdb = loadMessages();
 
@@ -92,7 +92,7 @@ void Message::deleteMessages(QString username)
     saveChanges(msgdb);
 }
 
-int Message::numUnreadMessages(QString username)
+int Message::numUnreadMessages(const QString &username)
 {
     int cnt = 0;
     QFile message(MESSAGE_FILE);
@@ -117,7 +117,7 @@ int Message::numUnreadMessages(QString username)
     return cnt;
 }
 
-bool Message::isSend(QString date, QString receiver, QString book_isbn, QString sender)
+bool Message::isSend(const QString &date, const QString &receiver, QString book_isbn, QString sender)
 {
     QMap<QString, QStringList> msgdb = loadMessages();
 

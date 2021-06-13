@@ -1,7 +1,7 @@
 #include "edit_user_data.h"
 #include "ui_edit_user_data.h"
 
-Edit_User_Data::Edit_User_Data(QString user_selected, bool admin, QWidget *parent) :
+Edit_User_Data::Edit_User_Data(const QString &user_selected, const bool &admin, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Edit_User_Data)
 {

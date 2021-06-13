@@ -20,6 +20,7 @@ SOURCES += \
     edit_user_data.cpp \
     edit_user_profile.cpp \
     editbook.cpp \
+    editgroup.cpp \
     group_item.cpp \
     groupbooks.cpp \
     inbox.cpp \
@@ -44,6 +45,7 @@ HEADERS += \
     edit_user_data.h \
     edit_user_profile.h \
     editbook.h \
+    editgroup.h \
     group_item.h \
     groupbooks.h \
     inbox.h \
@@ -65,6 +67,7 @@ FORMS += \
     edit_user_data.ui \
     edit_user_profile.ui \
     editbook.ui \
+    editgroup.ui \
     groupbooks.ui \
     inbox.ui \
     issuedbooks_admin.ui \

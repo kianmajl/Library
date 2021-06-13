@@ -10,12 +10,12 @@
 class User
 {
 public:
-    static QString Login(QString user, QString hashed_pass);
-    static QString Register(QString user, QString hashed_pass, bool sex, bool isAdmin = false);
+    static QString Login(const QString &user, const QString &hashed_pass);
+    static QString Register(const QString &user, const QString &hashed_pass, const bool &sex, bool isAdmin = false);
     static int LoadedData();
     static QMap<QString, QStringList> LoadUsers();
     static bool SaveUsers(QMap<QString, QStringList> &data);
-    User(QString username, QString password, bool sex, bool admin);
+    User(const QString &username, const QString &password, const bool &sex, const bool &admin);
     QString toString();
 
 private:

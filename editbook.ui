@@ -10,6 +10,18 @@
     <height>480</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>480</width>
+    <height>480</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>480</width>
+    <height>480</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>Edit Book</string>
   </property>
@@ -119,9 +131,9 @@ color: rgb(255, 255, 255);</string>
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>140</y>
+     <y>130</y>
      <width>411</width>
-     <height>291</height>
+     <height>301</height>
     </rect>
    </property>
    <layout class="QFormLayout" name="formLayout">
