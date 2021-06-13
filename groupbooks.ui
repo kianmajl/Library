@@ -238,11 +238,12 @@ font: 25 7pt &quot;IRANYekan Light&quot;;</string>
      <height>311</height>
     </rect>
    </property>
-   <column>
-    <property name="text">
-     <string notr="true">1</string>
-    </property>
-   </column>
+   <property name="sortingEnabled">
+    <bool>true</bool>
+   </property>
+   <property name="animated">
+    <bool>true</bool>
+   </property>
   </widget>
  </widget>
  <resources>

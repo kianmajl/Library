@@ -54,14 +54,48 @@ int issuedBooks_admin::loadData()
 
     // Add to table
     {
+        QDate currentDate = QDate::currentDate();
         int j = 0;
+
         for (auto i = issuedbooksdb.constBegin(); i != issuedbooksdb.constEnd(); ++i)
         {
+            QDate expire_date = i.value().addDays(MAX_DAYS);
+            qint64 d = currentDate.daysTo(expire_date);
             ui->tableWidget->insertRow(ui->tableWidget->rowCount());
-            ui->tableWidget->setItem(j, 0, new QTableWidgetItem(i.key().first));
-            ui->tableWidget->setItem(j, 1, new QTableWidgetItem(i.key().second));
-            ui->tableWidget->setItem(j, 2, new QTableWidgetItem(i.value().toString("dddd, MMMM dd, yyyy")));
-            ui->tableWidget->setItem(j, 3, new QTableWidgetItem(i.value().addDays(MAX_DAYS).toString("dddd, MMMM dd, yyyy")));
+
+            QTableWidgetItem * isbn = new QTableWidgetItem();
+            isbn->setText(i.key().first);
+
+            QTableWidgetItem * user = new QTableWidgetItem();
+            user->setText(i.key().second);
+
+            QTableWidgetItem * issue_date = new QTableWidgetItem();
+            issue_date->setText(i.value().toString("dddd, MMMM dd, yyyy"));
+
+            QTableWidgetItem * ex_date = new QTableWidgetItem();
+            ex_date->setText(i.value().addDays(MAX_DAYS).toString("dddd, MMMM dd, yyyy"));
+
+            ui->tableWidget->setItem(j, 0, isbn);
+            ui->tableWidget->setItem(j, 1, user);
+            ui->tableWidget->setItem(j, 2, issue_date);
+            ui->tableWidget->setItem(j, 3, ex_date);
+
+            if (d < 4 && d > -1)
+            {
+                isbn->setBackground(QBrush(QColor(236, 180, 91)));
+                user->setBackground(QBrush(QColor(236, 180, 91)));
+                issue_date->setBackground(QBrush(QColor(236, 180, 91)));
+                ex_date->setBackground(QBrush(QColor(236, 180, 91)));
+            }
+
+            else if (d < 0)
+            {
+                isbn->setBackground(QBrush(QColor(216, 85, 49)));
+                user->setBackground(QBrush(QColor(216, 85, 49)));
+                issue_date->setBackground(QBrush(QColor(216, 85, 49)));
+                ex_date->setBackground(QBrush(QColor(216, 85, 49)));
+            }
+
             ++j;
         }
     }

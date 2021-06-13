@@ -46,6 +46,18 @@ int groupBooks::LoadData()
                 QTreeWidgetItem * author = new QTreeWidgetItem();
                 author->setText(0, "Author: " + books.value(it.value().at(i)).at(1));
                 book_name->addChild(author);
+                QTreeWidgetItem * publisher = new QTreeWidgetItem();
+                publisher->setText(0, "Publisher: " + books.value(it.value().at(i)).at(3));
+                book_name->addChild(publisher);
+                QTreeWidgetItem * lang = new QTreeWidgetItem();
+                lang->setText(0, "Language: " + books.value(it.value().at(i)).at(4));
+                book_name->addChild(lang);
+                QTreeWidgetItem * nump = new QTreeWidgetItem();
+                nump->setText(0, "Number of Pages: " + books.value(it.value().at(i)).at(5));
+                book_name->addChild(nump);
+                QTreeWidgetItem * available = new QTreeWidgetItem();
+                available->setText(0, "Number of Available: " + books.value(it.value().at(i)).at(6));
+                book_name->addChild(available);
             }
             group_name->addChild(book_name);
         }
@@ -77,4 +89,14 @@ void groupBooks::on_pushButton_add_clicked()
 void groupBooks::on_pushButton_refresh_clicked()
 {
     this->LoadData();
+}
+
+void groupBooks::on_lineEdit_textChanged(const QString &arg1)
+{
+    QList<QTreeWidgetItem *> items = ui->treeWidget->findItems(arg1, Qt::MatchStartsWith);
+
+    for (int i = 0; i < items.size(); ++i)
+    {
+        items.at(i)->setBackground(0, QBrush(QColor(255, 0, 0)));
+    }
 }

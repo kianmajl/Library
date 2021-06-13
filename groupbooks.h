@@ -31,6 +31,8 @@ private slots:
 
     void on_pushButton_refresh_clicked();
 
+    void on_lineEdit_textChanged(const QString &arg1);
+
 private:
     Ui::groupBooks *ui;
     QWidget *dash; // pointer of dashboard

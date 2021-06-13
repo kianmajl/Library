@@ -73,17 +73,52 @@ int returnBook::loadData()
 
     // Add to table
     {
+        QDate currentDate = QDate::currentDate();
+
         for (auto i = issuedbooksdb.constBegin(); i != issuedbooksdb.constEnd(); ++i)
         {
             if (i.key().second == user)
             {
+                QDate expire_date = i.value().addDays(MAX_DAYS);
+                qint64 d = currentDate.daysTo(expire_date);
                 int k;
                 ui->tableWidget->insertRow(ui->tableWidget->rowCount());
-                ui->tableWidget->setItem(j, 0, new QTableWidgetItem(i.key().first));
+
+                QTableWidgetItem * isbn = new QTableWidgetItem();
+                isbn->setText(i.key().first);
+                ui->tableWidget->setItem(j, 0, isbn);
+                if (d < 4 && d > -1)
+                    isbn->setBackground(QBrush(QColor(236, 180, 91)));
+                else if (d < 0)
+                    isbn->setBackground(QBrush(QColor(216, 85, 49)));
+
                 for (k = 0; k < booksdb.value(i.key().first).size() - 1; ++k)
-                    ui->tableWidget->setItem(j, k + 1, new QTableWidgetItem(booksdb.value(i.key().first).at(k)));
-                ui->tableWidget->setItem(j, ++k, new QTableWidgetItem(i.value().toString("dddd, MMMM dd, yyyy")));
-                ui->tableWidget->setItem(j, ++k, new QTableWidgetItem(i.value().addDays(MAX_DAYS).toString("dddd, MMMM dd, yyyy")));
+                {
+                    QTableWidgetItem * data = new QTableWidgetItem();
+                    data->setText(booksdb.value(i.key().first).at(k));
+                    ui->tableWidget->setItem(j, k + 1, data);
+                    if (d < 4 && d > -1)
+                        data->setBackground(QBrush(QColor(236, 180, 91)));
+                    else if (d < 0)
+                        data->setBackground(QBrush(QColor(216, 85, 49)));
+                }
+
+                QTableWidgetItem * issue_date = new QTableWidgetItem();
+                issue_date->setText(i.value().toString("dddd, MMMM dd, yyyy"));
+                QTableWidgetItem * ex_date = new QTableWidgetItem();
+                ex_date->setText(i.value().addDays(MAX_DAYS).toString("dddd, MMMM dd, yyyy"));
+                ui->tableWidget->setItem(j, ++k, issue_date);
+                ui->tableWidget->setItem(j, ++k, ex_date);
+                if (d < 4 && d > -1)
+                {
+                    issue_date->setBackground(QBrush(QColor(236, 180, 91)));
+                    ex_date->setBackground(QBrush(QColor(236, 180, 91)));
+                }
+                else if (d < 0)
+                {
+                    issue_date->setBackground(QBrush(QColor(216, 85, 49)));
+                    ex_date->setBackground(QBrush(QColor(216, 85, 49)));
+                }
                 ++j;
             }
         }
