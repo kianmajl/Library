@@ -155,7 +155,7 @@ font: 25 7pt &quot;IRANYekan Light&quot;;</string>
     <bool>true</bool>
    </property>
    <attribute name="horizontalHeaderDefaultSectionSize">
-    <number>185</number>
+    <number>183</number>
    </attribute>
    <column>
     <property name="text">
