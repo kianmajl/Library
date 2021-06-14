@@ -40,3 +40,20 @@ bool group_item::saveChanges(QMap<QString, QStringList> *data)
     groupdb.close();
     return true;
 }
+
+void group_item::deleteBook(const QString &isbn)
+{
+    QMap<QString, QStringList> data = loadData();
+
+    for (auto it = data.constBegin(); it != data.constEnd(); ++it)
+    {
+        if (it.value().contains(isbn))
+        {
+            QStringList tmp = it.value();
+            tmp.removeOne(isbn);
+            data.insert(it.key(), tmp);
+        }
+    }
+
+    saveChanges(&data);
+}

@@ -1,14 +1,15 @@
 #include "addgroup.h"
 #include "ui_addgroup.h"
 
-addGroup::addGroup(QWidget *parent) :
+addGroup::addGroup(QMap<QString, QStringList> *groups, QMap<QString, QStringList> *books, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::addGroup)
 {
-    QMap<QString, QStringList> books = Book::loadBooks();
+    this->books = books;
+    this->groups = groups;
     QStringList data;
     ui->setupUi(this);
-    for (auto it = books.constBegin(); it != books.constEnd(); ++it)
+    for (auto it = books->constBegin(); it != books->constEnd(); ++it)
         data << it.key() + " : " + it.value().at(0) + " (" + it.value().at(1) + ")";
     ui->listWidget->insertItems(0, data);
 }
@@ -20,9 +21,7 @@ addGroup::~addGroup()
 
 void addGroup::on_pushButton_add_clicked()
 {
-    QMap<QString, QStringList> data = group_item::loadData();
-
-    if (data.contains(ui->lineEdit_gptitle->text()))
+    if (groups->contains(ui->lineEdit_gptitle->text()))
     {
         int ret = QMessageBox::warning(nullptr, "Error", "This ISBN Already Exists\nDo you want to edit this book?", QMessageBox::Yes | QMessageBox::No);
 
@@ -40,13 +39,16 @@ void addGroup::on_pushButton_add_clicked()
 
     QList<QListWidgetItem *> books = ui->listWidget->selectedItems();
 
+    QStringList add;
     for (int i = 0; i < books.size(); ++i)
     {
         QStringList tmp = books.at(i)->text().split(":");
-        data[ui->lineEdit_gptitle->text()] << tmp.at(0).trimmed();
+        add << tmp.at(0).trimmed();
     }
 
-    if (group_item::saveChanges(data))
+    groups->insert(ui->lineEdit_gptitle->text(), add);
+
+    if (group_item::saveChanges(groups))
         QMessageBox::information(nullptr, "Added Successfully", ui->lineEdit_gptitle->text() + " Added Successfully\nPlease Refresh The Table");
 
     this->close();

@@ -26,7 +26,7 @@ void groupBooks::mouseMoveEvent(QMouseEvent *event)
 
 int groupBooks::LoadData()
 {
-    QMap<QString, QStringList> books = Book::loadBooks();
+    books = Book::loadBooks();
     this->groups = group_item::loadData();
     ui->treeWidget->clear();
     ui->treeWidget->setHeaderLabel("Groups");
@@ -85,7 +85,7 @@ void groupBooks::on_pushButton_backtodash_clicked()
 
 void groupBooks::on_pushButton_add_clicked()
 {
-    addGroup * ag = new addGroup();
+    addGroup * ag = new addGroup(&this->groups, &this->books);
     ag->setWindowFlags(Qt::Window | Qt::WindowCloseButtonHint);
     ag->show();
 }

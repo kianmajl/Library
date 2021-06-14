@@ -16,7 +16,7 @@ class addGroup : public QWidget
     Q_OBJECT
 
 public:
-    explicit addGroup(QWidget *parent = nullptr);
+    explicit addGroup(QMap<QString, QStringList> *groups, QMap<QString, QStringList> *books, QWidget *parent = nullptr);
     ~addGroup();
 
 private slots:
@@ -24,6 +24,8 @@ private slots:
 
 private:
     Ui::addGroup *ui;
+    QMap<QString, QStringList> *groups;
+    QMap<QString, QStringList> *books;
 };
 
 #endif // ADDGROUP_H

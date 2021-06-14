@@ -55,7 +55,7 @@ int Edit_User_profile::LoadData()
 
 bool Edit_User_profile::saveChanges()
 {
-    return User::SaveUsers(user_data);
+    return User::SaveUsers(&user_data);
 }
 
 Edit_User_profile::~Edit_User_profile()
@@ -110,7 +110,7 @@ void Edit_User_profile::on_pushButton_edit_clicked()
         return;
     }
     this->change = true;
-    Edit_User_Data *eud = new Edit_User_Data(ui->tableWidget->selectedItems().at(0)->text(), true);
+    Edit_User_Data *eud = new Edit_User_Data(&this->user_data,ui->tableWidget->selectedItems().at(0)->text(), true);
     eud->setWindowFlags(Qt::Window | Qt::WindowCloseButtonHint);
     eud->show();
 }

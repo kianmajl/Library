@@ -94,7 +94,7 @@ QMap<QString, QStringList> User::LoadUsers()
     return user_data;
 }
 
-bool User::SaveUsers(QMap<QString, QStringList> &data)
+bool User::SaveUsers(QMap<QString, QStringList> *data)
 {
     QFile userfile(USER_FILE);
 
@@ -102,7 +102,7 @@ bool User::SaveUsers(QMap<QString, QStringList> &data)
         return false;
 
     QTextStream out(&userfile);
-    for (auto it = data.constBegin(); it != data.constEnd(); ++it)
+    for (auto it = data->constBegin(); it != data->constEnd(); ++it)
         out << it.key() << SEP_DATA << it.value().join(SEP_DATA) << "\n";
     userfile.close();
     return true;

@@ -38,6 +38,7 @@ private:
     QWidget *dash; // pointer of dashboard
     QPointF oldPos; // for draggable
     QMap<QString, QStringList> groups;
+    QMap<QString, QStringList> books;
 };
 
 #endif // GROUPBOOKS_H

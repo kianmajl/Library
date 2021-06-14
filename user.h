@@ -14,7 +14,7 @@ public:
     static QString Register(const QString &user, const QString &hashed_pass, const bool &sex, bool isAdmin = false);
     static int LoadedData();
     static QMap<QString, QStringList> LoadUsers();
-    static bool SaveUsers(QMap<QString, QStringList> &data);
+    static bool SaveUsers(QMap<QString, QStringList> *data);
     User(const QString &username, const QString &password, const bool &sex, const bool &admin);
     QString toString();
 

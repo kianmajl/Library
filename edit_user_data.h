@@ -18,6 +18,7 @@ class Edit_User_Data : public QWidget
     Q_OBJECT
 
 public:
+    Edit_User_Data(QMap<QString, QStringList> *data, const QString &user_selected, const bool &admin, QWidget *parent = nullptr);
     Edit_User_Data(const QString &user_selected, const bool &admin, QWidget *parent = nullptr);
     ~Edit_User_Data();
 
@@ -27,7 +28,8 @@ private slots:
 private:
     Ui::Edit_User_Data *ui;
     QString user_selected;
-    QMap<QString, QStringList> data;
+    QMap<QString, QStringList> *data;
+    QMap<QString, QStringList> users; // for user panel -> change password
     bool admin;
 };
 

@@ -109,6 +109,7 @@ void BookList_Admin::on_pushButton_delete_clicked()
     {
         booksdb.remove(key);
         book_item::deleteBooks(key);
+        group_item::deleteBook(key);
         Book::saveChanges(&booksdb);
         loadData();
         this->change = true;

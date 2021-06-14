@@ -15,7 +15,7 @@ editBook::editBook(QMap<QString, QStringList> * bookdb, const QString &isbn, QWi
     ui->lineEdit_subject->setText(bookdb->value(isbn).at(3));
     ui->lineEdit_language->setText(bookdb->value(isbn).at(4));
     ui->spinBox_numpages->setValue(bookdb->value(isbn).at(5).toInt());
-    ui->spinBox_numpages->setValue(bookdb->value(isbn).at(6).toInt());
+    ui->spinBox_available->setValue(bookdb->value(isbn).at(6).toInt());
 }
 
 editBook::~editBook()

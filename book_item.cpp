@@ -41,7 +41,7 @@ bool book_item::saveChanges_issuedBooks(QMap<QPair<QString, QString>, QDate> &da
     return true;
 }
 
-void book_item::sendMessage(QString user)
+void book_item::sendMessage(const QString &user)
 {
     QDate currentDate = QDate::currentDate();
     QMap<QPair<QString, QString>, QDate> data = loadData_issuedBooks();
@@ -90,7 +90,7 @@ int book_item::numIssued()
     return cnt;
 }
 
-int book_item::numIssued(QString user)
+int book_item::numIssued(const QString &user)
 {
     int cnt = 0;
     QFile reserve_file(RESERVE_FILE);
@@ -110,7 +110,7 @@ int book_item::numIssued(QString user)
     return cnt;
 }
 
-void book_item::deleteBooks(QString isbn)
+void book_item::deleteBooks(const QString &isbn)
 {
     QMap<QPair<QString, QString>, QDate> data = loadData_issuedBooks();
 
@@ -125,7 +125,7 @@ void book_item::deleteBooks(QString isbn)
     saveChanges_issuedBooks(data);
 }
 
-void book_item::deleteUsers(QString user)
+void book_item::deleteUsers(const QString &user)
 {
     QMap<QPair<QString, QString>, QDate> data = loadData_issuedBooks();
 

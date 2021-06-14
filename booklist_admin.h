@@ -2,6 +2,7 @@
 #define BOOKLIST_ADMIN_H
 
 #include "book_item.h"
+#include "group_item.h"
 #include "addbook.h"
 #include "editbook.h"
 #include "ui_mainwindow.h"
