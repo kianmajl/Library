@@ -10,6 +10,7 @@
 #include "outbox.h"
 #include "booklist_user.h"
 #include "returnbook.h"
+#include "groupbooks.h"
 #include <QMainWindow>
 #include <QMouseEvent>
 #include <QDate>
@@ -44,6 +45,8 @@ private slots:
     void on_pushButton_viewlist_clicked();
 
     void on_pushButton_returnbook_clicked();
+
+    void on_pushButton_viewgplist_clicked();
 
 private:
     Ui::MainWindow_user *ui;

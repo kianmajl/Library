@@ -3,12 +3,20 @@
 
 #define GROUP_FILE "groupdb.txt"
 
-groupBooks::groupBooks(QWidget *dash, QWidget *parent) :
+groupBooks::groupBooks(QWidget *dash, bool isAdmin, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::groupBooks)
 {
     this->dash = dash;
     ui->setupUi(this);
+
+    if (!isAdmin)
+    {
+        ui->pushButton_add->hide();
+        ui->pushButton_delete->hide();
+        ui->pushButton_edit->hide();
+    }
+
     this->LoadData();
 }
 
@@ -29,6 +37,7 @@ int groupBooks::LoadData()
     books = Book::loadBooks();
     this->groups = group_item::loadData();
     ui->treeWidget->clear();
+    ui->lineEdit->clear();
     ui->treeWidget->setHeaderLabel("Groups");
 
     for (auto it = groups.constBegin(); it != groups.constEnd(); ++it)

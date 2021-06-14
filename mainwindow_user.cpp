@@ -6,6 +6,7 @@
 #define OUTBOX_FORM "outbox"
 #define BOOK_LIST_FORM "booklist"
 #define RETURN_BOOK_FORM "returnb"
+#define GROUP_LIST_FORM "grouplist"
 
 MainWindow_user::MainWindow_user(QWidget *auth, QString user_logged_in, bool sex, QWidget *parent) :
     QMainWindow(parent),
@@ -138,4 +139,18 @@ void MainWindow_user::on_pushButton_returnbook_clicked()
         reb_list = rb;
     }
     reb_list->show();
+}
+
+void MainWindow_user::on_pushButton_viewgplist_clicked()
+{
+    this->hide();
+    QWidget * gp_list = searchForms(GROUP_LIST_FORM);
+    if (!gp_list)
+    {
+        groupBooks *gp = new groupBooks(this, false);
+        gp->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+        forms.append(qMakePair(GROUP_LIST_FORM, gp));
+        gp_list = gp;
+    }
+    gp_list->show();
 }

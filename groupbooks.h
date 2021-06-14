@@ -18,7 +18,7 @@ class groupBooks : public QWidget
     Q_OBJECT
 
 public:
-    explicit groupBooks(QWidget *dash, QWidget *parent = nullptr);
+    explicit groupBooks(QWidget *dash, bool isAdmin = true, QWidget *parent = nullptr);
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
     int LoadData();
