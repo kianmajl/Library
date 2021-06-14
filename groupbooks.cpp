@@ -38,6 +38,7 @@ int groupBooks::LoadData()
         for (int i = 0; i < it.value().size(); ++i)
         {
             QTreeWidgetItem * book_name = new QTreeWidgetItem();
+            book_name->setFlags(Qt::ItemIsSelectable);
             book_name->setText(0, books.value(it.value().at(i)).at(0));
             {
                 QTreeWidgetItem * isbn = new QTreeWidgetItem();
@@ -59,8 +60,13 @@ int groupBooks::LoadData()
                 available->setText(0, "Number of Available: " + books.value(it.value().at(i)).at(6));
                 book_name->addChild(available);
             }
+
+            for (int i = 0; i < book_name->childCount(); ++i)
+                book_name->child(i)->setFlags(Qt::ItemIsSelectable);
+
             group_name->addChild(book_name);
         }
+
         ui->treeWidget->addTopLevelItem(group_name);
     }
 
@@ -106,5 +112,36 @@ void groupBooks::on_lineEdit_textChanged(const QString &arg1)
 
         for (int i = 0; i < items.size(); ++i)
             ui->treeWidget->setCurrentItem(items.at(i));
+    }
+}
+
+void groupBooks::on_pushButton_edit_clicked()
+{
+    if (!ui->treeWidget->selectedItems().size())
+    {
+        QMessageBox::critical(nullptr, "No Item Selected", "Please Select an Item to edit");
+        return;
+    }
+
+    editGroup * eg = new editGroup(&this->groups, ui->treeWidget->selectedItems().at(0)->text(0));
+    eg->setWindowFlags(Qt::Window | Qt::WindowCloseButtonHint);
+    eg->show();
+}
+
+void groupBooks::on_pushButton_delete_clicked()
+{
+    if (!ui->treeWidget->selectedItems().size())
+    {
+        QMessageBox::critical(nullptr, "No Item Selected", "Please Select an Item to delete");
+        return;
+    }
+
+    QString key = ui->treeWidget->selectedItems().at(0)->text(0); //group_title
+    int ret = QMessageBox::warning(nullptr, "Confirm Delete Group", "Are you sure you want to delete group : " + key + " ?", QMessageBox::Yes | QMessageBox::No);
+    if (ret == QMessageBox::Yes)
+    {
+        this->groups.remove(key);
+        group_item::saveChanges(&groups);
+        LoadData();
     }
 }

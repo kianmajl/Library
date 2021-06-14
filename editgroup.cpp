@@ -18,7 +18,7 @@ editGroup::editGroup(QMap<QString, QStringList> *groups, const QString &gp, QWid
 
     for (int i = 0; i < groups->value(gp).size(); ++i)
     {
-        QList <QListWidgetItem *> items = ui->listWidget->findItems(groups->value(gp).at(i), Qt::MatchExactly);
+        QList <QListWidgetItem *> items = ui->listWidget->findItems(groups->value(gp).at(i), Qt::MatchStartsWith);
         for (const auto &it : items)
             it->setSelected(true);
     }
@@ -27,4 +27,24 @@ editGroup::editGroup(QMap<QString, QStringList> *groups, const QString &gp, QWid
 editGroup::~editGroup()
 {
     delete ui;
+}
+
+void editGroup::on_pushButton_save_clicked()
+{
+    QList<QListWidgetItem *> books = ui->listWidget->selectedItems();
+
+    QStringList add;
+    for (int i = 0; i < books.size(); ++i)
+    {
+        QStringList tmp = books.at(i)->text().split(":");
+        add << tmp.at(0).trimmed();
+    }
+
+    groups->insert(ui->lineEdit_gptitle->text(), add);
+
+    if (group_item::saveChanges(groups))
+        QMessageBox::information(nullptr, "Edited Successfully", ui->lineEdit_gptitle->text() + " Edited Successfully\nPlease Refresh The Table");
+
+    this->close();
+    delete this;
 }

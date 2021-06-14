@@ -244,6 +244,11 @@ font: 25 7pt &quot;IRANYekan Light&quot;;</string>
    <property name="animated">
     <bool>true</bool>
    </property>
+   <column>
+    <property name="text">
+     <string notr="true">1</string>
+    </property>
+   </column>
   </widget>
  </widget>
  <resources>

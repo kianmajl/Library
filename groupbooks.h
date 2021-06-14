@@ -33,6 +33,10 @@ private slots:
 
     void on_lineEdit_textChanged(const QString &arg1);
 
+    void on_pushButton_edit_clicked();
+
+    void on_pushButton_delete_clicked();
+
 private:
     Ui::groupBooks *ui;
     QWidget *dash; // pointer of dashboard
