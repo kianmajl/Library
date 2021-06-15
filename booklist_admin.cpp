@@ -140,7 +140,7 @@ void BookList_Admin::on_lineEdit_search_textChanged(const QString &arg1)
                     ui->tableWidget->hideRow(i);
             }
         }
-        else
+        else // for "All" :)
         {
             for (int i = 0; i < ui->tableWidget->rowCount(); ++i)
                 ui->tableWidget->hideRow(i);
@@ -162,7 +162,7 @@ void BookList_Admin::on_comboBox_search_currentIndexChanged(int index)
     if (index)
         ui->lineEdit_search->setCompleter(completer.at(index - 1));
     else
-        ui->lineEdit_search->setCompleter(0);
+        ui->lineEdit_search->setCompleter(0); // for "All"
 }
 
 void BookList_Admin::on_pushButton_edit_clicked()

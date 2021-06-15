@@ -9,7 +9,7 @@ addGroup::addGroup(QMap<QString, QStringList> *groups, QMap<QString, QStringList
     this->groups = groups;
     QStringList data;
     ui->setupUi(this);
-    for (auto it = books->constBegin(); it != books->constEnd(); ++it)
+    for (auto it = books->constBegin(); it != books->constEnd(); ++it) // fill books list
         data << it.key() + " : " + it.value().at(0) + " (" + it.value().at(1) + ")";
     ui->listWidget->insertItems(0, data);
 }
@@ -39,7 +39,7 @@ void addGroup::on_pushButton_add_clicked()
 
     QList<QListWidgetItem *> books = ui->listWidget->selectedItems();
 
-    QStringList add;
+    QStringList add; // ISBN's data
     for (int i = 0; i < books.size(); ++i)
     {
         QStringList tmp = books.at(i)->text().split(":");

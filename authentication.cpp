@@ -31,21 +31,21 @@ void authentication::on_pushButton_signin_clicked()
 
     QString login_res = (username.length() && password.length()) ? User::Login(username, hashed_pass) : "Please complete the form";
 
-    if (login_res == "ok_admin_m")
+    if (login_res == "ok_admin_m") // admin_male
     {
         MainWindow * mw_admin = new MainWindow(this, username, false);
         this->close();
         mw_admin->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
         mw_admin->show();
     }
-    else if (login_res == "ok_admin_f")
+    else if (login_res == "ok_admin_f") // admin_female
     {
         MainWindow * mw_admin = new MainWindow(this, username, true);
         this->close();
         mw_admin->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
         mw_admin->show();
     }
-    else if (login_res == "ok_m")
+    else if (login_res == "ok_m") // user_male
     {
         book_item::sendMessage(username);
         MainWindow_user * mw_user = new MainWindow_user(this, username, false);
@@ -53,7 +53,7 @@ void authentication::on_pushButton_signin_clicked()
         mw_user->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
         mw_user->show();
     }
-    else if (login_res == "ok_f")
+    else if (login_res == "ok_f") // user_female
     {
         book_item::sendMessage(username);
         MainWindow_user * mw_user = new MainWindow_user(this, username, true);
@@ -88,5 +88,7 @@ void authentication::on_pushButton_signup_clicked()
         QMessageBox::critical(nullptr, "Register Failed", register_res);
         ui->lineEdit_user->clear();
         ui->lineEdit_pass->clear();
+        ui->radioButton_female->setChecked(false);
+        ui->radioButton_male->setChecked(false);
     }
 }

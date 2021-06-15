@@ -88,9 +88,9 @@ int returnBook::loadData()
                 isbn->setText(i.key().first);
                 ui->tableWidget->setItem(j, 0, isbn);
                 if (d < 4 && d > -1)
-                    isbn->setBackground(QBrush(QColor(236, 180, 91)));
+                    isbn->setBackground(QBrush(QColor(236, 180, 91))); // Yellow Color
                 else if (d < 0)
-                    isbn->setBackground(QBrush(QColor(216, 85, 49)));
+                    isbn->setBackground(QBrush(QColor(216, 85, 49))); // Red Color
 
                 for (k = 0; k < booksdb.value(i.key().first).size() - 1; ++k)
                 {

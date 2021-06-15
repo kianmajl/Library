@@ -34,7 +34,7 @@ int outbox::loadData()
     // Add to table
     QMapIterator<QString, QStringList> i(messagedb);
     i.toBack();
-    while (i.hasPrevious())
+    while (i.hasPrevious()) // Print Newest First (:
     {
         i.previous();
         if (i.value().at(0) == user)
