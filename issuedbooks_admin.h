@@ -4,6 +4,7 @@
 #include <QCompleter>
 #include <QWidget>
 #include <QMessageBox>
+#include <QMouseEvent>
 #include "book_item.h"
 #include "ui_mainwindow.h"
 
@@ -17,6 +18,8 @@ class issuedBooks_admin : public QWidget
 
 public:
     explicit issuedBooks_admin(Ui::MainWindow *ui_admin_dash, QWidget *dash, QWidget *parent = nullptr);
+    void mousePressEvent(QMouseEvent *event);
+    void mouseMoveEvent(QMouseEvent *event);
     int loadData();
     ~issuedBooks_admin();
 
@@ -37,6 +40,7 @@ private:
     QWidget *admin_dash;
     QMap<QPair<QString, QString>, QDate> issuedbooksdb;
     QVector<QCompleter *> completer;
+    QPointF oldPos; // for draggable
     bool change;
 };
 

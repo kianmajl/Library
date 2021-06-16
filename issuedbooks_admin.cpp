@@ -12,6 +12,18 @@ issuedBooks_admin::issuedBooks_admin(Ui::MainWindow *ui_admin_dash, QWidget *das
     this->loadData();
 }
 
+void issuedBooks_admin::mousePressEvent(QMouseEvent *event)
+{
+    oldPos = event->globalPosition();
+}
+
+void issuedBooks_admin::mouseMoveEvent(QMouseEvent *event)
+{
+    const QPointF delta = event->globalPosition() - oldPos;
+    move(x()+delta.x(), y()+delta.y());
+    oldPos = event->globalPosition();
+}
+
 int issuedBooks_admin::loadData()
 {
     this->issuedbooksdb = book_item::loadData_issuedBooks();
