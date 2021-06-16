@@ -15,10 +15,11 @@ MainWindow_user::MainWindow_user(QWidget *auth, QString user_logged_in, bool sex
     forms.append(qMakePair(AUTHENTICATION_FORM, auth));
     ui->setupUi(this);
     this->user = user_logged_in;
+    this->numIssued = book_item::numIssued(user);
     ui->label_username->setText("Hi " + this->user);
     ui->label->setText("User Dashboard | " + QDate::currentDate().toString("dddd, MMMM dd, yyyy"));
     ui->frame_2->setStyleSheet((sex) ? "image: url(:/icons/icons/reading.png);" : "image: url(:/icons/icons/reading-m.png);");
-    ui->pushButton_totalbissued->setText("Total Books Issued : " + QString::number(book_item::numIssued(user)));
+    ui->pushButton_totalbissued->setText("Total Books Issued : " + QString::number(numIssued));
     int unread_messages = Message::numUnreadMessages(user);
     if (unread_messages)
         ui->statusbar->showMessage("You Have " + QString::number(unread_messages) + " Unread Messages");
@@ -115,16 +116,28 @@ void MainWindow_user::on_pushButton_outbox_clicked()
 
 void MainWindow_user::on_pushButton_viewlist_clicked()
 {
-    this->hide();
-    QWidget *ba_list = searchForms(BOOK_LIST_FORM);
-    if (!ba_list)
+    this->numIssued = book_item::numIssued(user);
+
+    if (numIssued >= MAX_ISSUED_BOOKS)
     {
-        booklist_user *blu = new booklist_user(user, ui, this);
-        blu->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
-        forms.append(qMakePair(BOOK_LIST_FORM, blu));
-        ba_list = blu;
+        int ret = QMessageBox::warning(nullptr, "Issued Books", "You can not issue more than " + QString::number(MAX_ISSUED_BOOKS) + " books\nDo you want to return your books ?", QMessageBox::Yes | QMessageBox::No);
+        if (ret == QMessageBox::Yes)
+            on_pushButton_returnbook_clicked();
     }
-    ba_list->show();
+
+    else
+    {
+        this->hide();
+        QWidget *ba_list = searchForms(BOOK_LIST_FORM);
+        if (!ba_list)
+        {
+            booklist_user *blu = new booklist_user(user, ui, this);
+            blu->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+            forms.append(qMakePair(BOOK_LIST_FORM, blu));
+            ba_list = blu;
+        }
+        ba_list->show();
+    }
 }
 
 void MainWindow_user::on_pushButton_returnbook_clicked()

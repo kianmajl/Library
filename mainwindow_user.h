@@ -15,6 +15,8 @@
 #include <QMouseEvent>
 #include <QDate>
 
+#define MAX_ISSUED_BOOKS 5
+
 namespace Ui {
 class MainWindow_user;
 }
@@ -53,6 +55,7 @@ private:
     QVector<QPair<QString, QWidget *>> forms;
     QPointF oldPos; // for draggable
     QString user; // logged in user
+    int numIssued;
 };
 
 #endif // MAINWINDOW_USER_H

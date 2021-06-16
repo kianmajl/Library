@@ -151,10 +151,11 @@ void booklist_user::on_pushButton_issue_clicked()
     issuedbooksdb.insert(qMakePair(key, user), QDate::currentDate());
     booksdb[key][6] = QString::number(booksdb.value(key).at(6).toInt() - 1);
     book_item::saveChanges_issuedBooks(issuedbooksdb);
-    book_item::saveChanges(&booksdb);
-    QMessageBox::information(nullptr, "Issued Successfully", "Book Issued Successfully\nIssue Date: " + QDate::currentDate().toString("dddd, MMMM dd, yyyy") + "\nExpiry Date: " + QDate::currentDate().addDays(MAX_DAYS).toString("dddd, MMMM dd, yyyy"));
+    if(book_item::saveChanges(&booksdb))
+        QMessageBox::information(nullptr, "Issued Successfully", "Book Issued Successfully\nIssue Date: " + QDate::currentDate().toString("dddd, MMMM dd, yyyy") + "\nExpiry Date: " + QDate::currentDate().addDays(MAX_DAYS).toString("dddd, MMMM dd, yyyy"));
     loadData();
     this->change = true;
+    on_pushButton_backtodash_clicked();
 }
 
 void booklist_user::on_pushButton_refresh_clicked()
