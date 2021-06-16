@@ -10,6 +10,7 @@ booklist_user::booklist_user(const QString &user, Ui::MainWindow_user *ui_user_d
     this->user = user;
     this->ui_user_dash = ui_user_dash;
     ui->setupUi(this);
+    ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
     this->loadData();
 }
 

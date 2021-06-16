@@ -10,6 +10,7 @@ returnBook::returnBook(Ui::MainWindow_user *ui_user_dash, const QString &user, Q
     this->ui_user_dash = ui_user_dash;
     this->change = false;
     ui->setupUi(this);
+    ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
     this->loadData();
 }
 

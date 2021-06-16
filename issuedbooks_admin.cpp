@@ -9,6 +9,7 @@ issuedBooks_admin::issuedBooks_admin(Ui::MainWindow *ui_admin_dash, QWidget *das
     this->admin_dash = dash;
     this->ui_admin_dash = ui_admin_dash;
     ui->setupUi(this);
+    ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
     this->loadData();
 }
 
