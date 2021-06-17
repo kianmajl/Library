@@ -16,6 +16,7 @@ public:
     static void sendMessage(const QString &user);
     static int numIssued();
     static int numIssued(const QString &user);
+    static bool haveExpire(const QString &user); // if user have a book that it expiry date was passed !
     static void deleteBooks(const QString &isbn); // delete issue records of deleted book
     static void deleteUsers(const QString &user); // delete issue records of deleted user
 

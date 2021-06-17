@@ -1,3 +1,6 @@
+// Github Repository : https://github.com/kianmajl/Library
+// by: Kian Majlessi
+
 #include "authentication.h"
 
 #include <QApplication>

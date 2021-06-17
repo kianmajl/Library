@@ -110,6 +110,21 @@ int book_item::numIssued(const QString &user)
     return cnt;
 }
 
+bool book_item::haveExpire(const QString &user)
+{
+    QDate current = QDate::currentDate();
+    QMap<QPair<QString, QString>, QDate> data = loadData_issuedBooks();
+
+    for (auto it = data.constBegin(); it != data.constEnd(); ++it)
+    {
+        QDate exp = it.value().addDays(MAX_DAYS);
+        if (it.key().second == user && current.daysTo(exp) < 0)
+            return true;
+    }
+
+    return false;
+}
+
 void book_item::deleteBooks(const QString &isbn)
 {
     QMap<QPair<QString, QString>, QDate> data = loadData_issuedBooks();
