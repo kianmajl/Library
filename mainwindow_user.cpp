@@ -119,7 +119,7 @@ void MainWindow_user::on_pushButton_viewlist_clicked()
 
     if (book_item::haveExpire(user))
     {
-        int ret = QMessageBox::warning(nullptr, "Issued Books", "You have a book that it expiry date is passed\nPlease return it first");
+        int ret = QMessageBox::warning(nullptr, "Issued Books", "You have a book that it's expire date is passed\nPlease return it first");
         if (ret == QMessageBox::Ok)
             on_pushButton_returnbook_clicked();
         return;
