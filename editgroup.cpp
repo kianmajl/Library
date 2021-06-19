@@ -33,6 +33,12 @@ void editGroup::on_pushButton_save_clicked()
 {
     QList<QListWidgetItem *> books = ui->listWidget->selectedItems();
 
+    if (!books.size())
+    {
+        QMessageBox::critical(nullptr, "No Book Selected", "Please Select at least 1 book to add to this group");
+        return;
+    }
+
     QStringList add;
     for (int i = 0; i < books.size(); ++i)
     {
