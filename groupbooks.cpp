@@ -128,7 +128,7 @@ void groupBooks::on_pushButton_edit_clicked()
 {
     if (!ui->treeWidget->selectedItems().size())
     {
-        QMessageBox::critical(nullptr, "No Item Selected", "Please Select an Item to edit");
+        QMessageBox::critical(nullptr, "No Item Selected", "Please select an item to edit");
         return;
     }
 
@@ -141,12 +141,12 @@ void groupBooks::on_pushButton_delete_clicked()
 {
     if (!ui->treeWidget->selectedItems().size())
     {
-        QMessageBox::critical(nullptr, "No Item Selected", "Please Select an Item to delete");
+        QMessageBox::critical(nullptr, "No Item Selected", "Please select an item to delete");
         return;
     }
 
     QString key = ui->treeWidget->selectedItems().at(0)->text(0); //group_title
-    int ret = QMessageBox::warning(nullptr, "Confirm Delete Group", "Are you sure you want to delete group : " + key + " ?", QMessageBox::Yes | QMessageBox::No);
+    int ret = QMessageBox::warning(nullptr, "Confirm Delete Group", "Are you sure you want to delete group <" + key + ">?", QMessageBox::Yes | QMessageBox::No);
     if (ret == QMessageBox::Yes)
     {
         this->groups.remove(key);

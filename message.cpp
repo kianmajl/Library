@@ -11,7 +11,7 @@ void Message::send()
     if (!message.open(QIODevice::Append | QIODevice::Text))
         return;
 
-    out << toString();
+    out << this->toString();
     message.close();
 }
 

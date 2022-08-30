@@ -19,7 +19,7 @@ MainWindow_user::MainWindow_user(QWidget *auth, QString user_logged_in, bool sex
     ui->label_username->setText("Hi " + this->user);
     ui->label->setText("User Dashboard | " + QDate::currentDate().toString("dddd, MMMM dd, yyyy"));
     ui->frame_2->setStyleSheet((sex) ? "image: url(:/icons/icons/reading.png);" : "image: url(:/icons/icons/reading-m.png);");
-    ui->pushButton_totalbissued->setText("Total Books Issued : " + QString::number(numIssued));
+    ui->pushButton_totalbissued->setText("Total Books Issued: " + QString::number(numIssued));
     int unread_messages = Message::numUnreadMessages(user);
     if (unread_messages)
         ui->statusbar->showMessage("You Have " + QString::number(unread_messages) + " Unread Messages");
@@ -119,7 +119,7 @@ void MainWindow_user::on_pushButton_viewlist_clicked()
 
     if (book_item::haveExpire(user))
     {
-        int ret = QMessageBox::warning(nullptr, "Issued Books", "You have a book that it's expire date is passed\nPlease return it first");
+        int ret = QMessageBox::warning(nullptr, "Issued Books", "You have a book whose expiration date is passed\nPlease return it first");
         if (ret == QMessageBox::Ok)
             on_pushButton_returnbook_clicked();
         return;
@@ -129,7 +129,7 @@ void MainWindow_user::on_pushButton_viewlist_clicked()
 
     if (numIssued >= MAX_ISSUED_BOOKS)
     {
-        int ret = QMessageBox::warning(nullptr, "Issued Books", "You can not issue more than " + QString::number(MAX_ISSUED_BOOKS) + " books\nDo you want to return your books ?", QMessageBox::Yes | QMessageBox::No);
+        int ret = QMessageBox::warning(nullptr, "Issued Books", "You can not issue more than " + QString::number(MAX_ISSUED_BOOKS) + " books\nDo you want to return your books?", QMessageBox::Yes | QMessageBox::No);
         if (ret == QMessageBox::Yes)
             on_pushButton_returnbook_clicked();
     }

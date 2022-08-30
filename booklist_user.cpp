@@ -134,7 +134,7 @@ void booklist_user::on_pushButton_backtodash_clicked()
     this->hide();
     if (change)
     {
-        ui_user_dash->pushButton_totalbissued->setText("Total Books Issued : " + QString::number(book_item::numIssued(user)));
+        ui_user_dash->pushButton_totalbissued->setText("Total Books Issued: " + QString::number(book_item::numIssued(user)));
         this->change = false;
     }
     user_dash->show();
@@ -144,7 +144,7 @@ void booklist_user::on_pushButton_issue_clicked()
 {
     if (!ui->tableWidget->selectedItems().size())
     {
-        QMessageBox::critical(nullptr, "No Item Selected", "Please Select an Item to issue");
+        QMessageBox::critical(nullptr, "No Item Selected", "Please select an item to issue");
         return;
     }
 

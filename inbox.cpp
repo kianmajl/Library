@@ -123,7 +123,7 @@ void inbox::on_pushButton_delete_clicked()
 {
     if (!ui->tableWidget->selectedItems().size())
     {
-        QMessageBox::critical(nullptr, "No Item Selected", "Please Select an Item to delete");
+        QMessageBox::critical(nullptr, "No Item Selected", "Please select an item to delete");
         return;
     }
     QString code = QDateTime::fromString(ui->tableWidget->selectedItems().at(0)->text(), "dd MMMM yyyy hh:mm:ss.zzz").toString("yyyyMMddhhmmsszzz");
@@ -139,7 +139,7 @@ void inbox::on_pushButton_asread_clicked()
 {
     if (!ui->tableWidget->selectedItems().size())
     {
-        QMessageBox::critical(nullptr, "No Item Selected", "Please Select an Item to mark as read");
+        QMessageBox::critical(nullptr, "No Item Selected", "Please select an item to mark as read");
         return;
     }
     QString code = QDateTime::fromString(ui->tableWidget->selectedItems().at(0)->text(), "dd MMMM yyyy hh:mm:ss.zzz").toString("yyyyMMddhhmmsszzz");
@@ -153,7 +153,7 @@ void inbox::on_pushButton_reply_clicked()
 {
     if (!ui->tableWidget->selectedItems().size())
     {
-        QMessageBox::critical(nullptr, "No Item Selected", "Please Select an Item to reply");
+        QMessageBox::critical(nullptr, "No Item Selected", "Please select an item to reply");
         return;
     }
     QString code = QDateTime::fromString(ui->tableWidget->selectedItems().at(0)->text(), "dd MMMM yyyy hh:mm:ss.zzz").toString("yyyyMMddhhmmsszzz");
@@ -165,7 +165,7 @@ void inbox::on_pushButton_reply_clicked()
         cmp->show();
     }
     else
-        QMessageBox::warning(nullptr, "SYSTEM", "You can not send message to SYSTEM !");
+        QMessageBox::warning(nullptr, "SYSTEM", "You can not send message to SYSTEM!");
     on_pushButton_asread_clicked();
 }
 
@@ -173,7 +173,7 @@ void inbox::on_pushButton_forward_clicked()
 {
     if (!ui->tableWidget->selectedItems().size())
     {
-        QMessageBox::critical(nullptr, "No Item Selected", "Please Select an Item to forward");
+        QMessageBox::critical(nullptr, "No Item Selected", "Please select an item to forward");
         return;
     }
     QString code = QDateTime::fromString(ui->tableWidget->selectedItems().at(0)->text(), "dd MMMM yyyy hh:mm:ss.zzz").toString("yyyyMMddhhmmsszzz");

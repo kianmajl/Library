@@ -18,7 +18,7 @@ void addBook::on_pushButton_save_clicked()
 {
     if (data->contains(ui->lineEdit_isbn->text()))
     {
-        int ret = QMessageBox::warning(nullptr, "Error", "This ISBN Already Exists\nDo you want to edit this book?", QMessageBox::Yes | QMessageBox::No);
+        int ret = QMessageBox::warning(nullptr, "Error", "This ISBN already exists!\nDo you want to edit this book?", QMessageBox::Yes | QMessageBox::No);
 
         if (ret == QMessageBox::Yes)
         {
@@ -43,7 +43,7 @@ void addBook::on_pushButton_save_clicked()
 
     data->insert(ui->lineEdit_isbn->text(), qsl);
     if (Book::saveChanges(data))
-        QMessageBox::information(nullptr, "Added Successfully", ui->lineEdit_title->text() + " Added Successfully\nPlease Refresh The Table");
+        QMessageBox::information(nullptr, "Added Successfully", ui->lineEdit_title->text() + " was successfully added\nPlease Refresh The Table");
 
     this->close();
     delete this;

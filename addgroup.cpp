@@ -23,7 +23,7 @@ void addGroup::on_pushButton_add_clicked()
 {
     if (groups->contains(ui->lineEdit_gptitle->text()))
     {
-        int ret = QMessageBox::warning(nullptr, "Error", "This Group Already Exists\nDo you want to edit this group?", QMessageBox::Yes | QMessageBox::No);
+        int ret = QMessageBox::warning(nullptr, "Error", "This group already exists\nDo you want to edit this group?", QMessageBox::Yes | QMessageBox::No);
 
         if (ret == QMessageBox::Yes)
         {
@@ -45,7 +45,7 @@ void addGroup::on_pushButton_add_clicked()
 
     if (!books.size())
     {
-        QMessageBox::critical(nullptr, "No Book Selected", "Please Select at least 1 book to add to this group");
+        QMessageBox::critical(nullptr, "No Book Selected", "Please select at least 1 book to add to this group");
         return;
     }
 
@@ -59,7 +59,7 @@ void addGroup::on_pushButton_add_clicked()
     groups->insert(ui->lineEdit_gptitle->text(), add);
 
     if (group_item::saveChanges(groups))
-        QMessageBox::information(nullptr, "Added Successfully", ui->lineEdit_gptitle->text() + " Added Successfully\nPlease Refresh The Table");
+        QMessageBox::information(nullptr, "Added Successfully", ui->lineEdit_gptitle->text() + " was successfully added\nPlease Refresh The Table");
 
     this->close();
     delete this;

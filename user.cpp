@@ -8,7 +8,7 @@ QString User::Login(const QString &user, const QString &hashed_pass)
     QFile user_data(USER_FILE);
 
     if (!user_data.open(QIODevice::ReadOnly | QIODevice::Text))
-        return "No Users Record Found !";
+        return "No Users Record Found!";
 
     QTextStream in(&user_data);
     while (!in.atEnd())
@@ -42,12 +42,12 @@ QString User::Register(const QString &user, const QString &hashed_pass, const bo
         if (data.at(2).toInt() && isAdmin) // Check for is Admin exists
         {
             user_data.close();
-            return "The admin already exists !";
+            return "The admin already exists!";
         }
         if (data.at(0) == user) // Check for duplicate username
         {
             user_data.close();
-            return "This username already exists !";
+            return "This username already exists!";
         }
     }
 

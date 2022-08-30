@@ -47,23 +47,12 @@ void Compose::on_pushButton_clicked()
 {
     if (!ui->lineEdit_reciver->text().length())
     {
-        QMessageBox::critical(nullptr, "Reciver is Empty", "The Reciver field can not be empty");
-        return;
-    }
-    if (!ui->plainTextEdit->toPlainText().length())
-    {
-        QMessageBox::critical(nullptr, "Body is Empty", "Please Write something :/");
-        return;
-    }
-    if (ui->lineEdit_reciver->text() == ui->lineEdit_sender->text())
-    {
-        QMessageBox::warning(nullptr, "Wrong Reciver", "Reciver is equal to Sender !!");
-        ui->lineEdit_reciver->clear();
+        QMessageBox::critical(nullptr, "Reciver is Empty", "Reciver field can not be empty");
         return;
     }
     if (!users.contains(ui->lineEdit_reciver->text()))
     {
-        QMessageBox::critical(nullptr, "Wrong Reciver", "This Reciver dosen't exists !");
+        QMessageBox::critical(nullptr, "Wrong Reciver", "User <" + ui->lineEdit_reciver->text() + "> dosen't exists!");
         ui->lineEdit_reciver->clear();
         return;
     }

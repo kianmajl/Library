@@ -3,6 +3,7 @@
 #define RESERVE_FILE "reservedb.txt"
 #define SEP_DATA ","
 #define DATE_FORMAT "yyyyMMdd"
+#define DAYS_TO_EXPIRE 4
 
 book_item::book_item()
 {
@@ -52,19 +53,19 @@ void book_item::sendMessage(const QString &user)
         {
             QDate expire_date = it.value().addDays(MAX_DAYS);
             qint64 d = currentDate.daysTo(expire_date);
-            if (d < 4 && d > -1 && !Message::isSend(currentDate.toString(DATE_FORMAT), user, it.key().first))
+            if (d < DAYS_TO_EXPIRE && d > -1 && !Message::isSend(currentDate.toString(DATE_FORMAT), user, it.key().first))
             {
                 Message ex_date_close("SYSTEM", user);
-                ex_date_close.setSubject("Expiration Date is close");
-                ex_date_close.setText("Hi " + user + ";\nOnly " + QString::number(d) + " days left to expire date of " + it.key().first);
+                ex_date_close.setSubject("The expiration date is close");
+                ex_date_close.setText("Hi Dear " + user + ";\nOnly " + QString::number(d) + " days left to the expiry date of " + it.key().first);
                 ex_date_close.send();
             }
 
             else if (d < 0 && !Message::isSend(currentDate.toString(DATE_FORMAT), user, it.key().first))
             {
                 Message ex_date_close("SYSTEM", user);
-                ex_date_close.setSubject("Expiry date has passed");
-                ex_date_close.setText("Hi " + user + ";\nExpiry date of " + it.key().first + " has passed\nPlease Return it !!!!");
+                ex_date_close.setSubject("The expiry date has passed");
+                ex_date_close.setText("Hi Dear " + user + ";\nThe expiry date of " + it.key().first + " has passed.\nPlease return it as soon as possible.");
                 ex_date_close.send();
             }
         }

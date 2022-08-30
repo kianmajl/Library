@@ -19,9 +19,9 @@ MainWindow::MainWindow(QWidget *auth, QString user_logged_in, bool sex, QWidget 
     ui->label_username->setText("Hi " + this->user);
     ui->label->setText("Admin Dashboard | " + QDate::currentDate().toString("dddd, MMMM dd, yyyy"));
     ui->frame_2->setStyleSheet((sex) ? "image: url(:/icons/icons/librarian.png);" : "image: url(:/icons/icons/librarian-m.png);");
-    ui->pushButton_totaluser->setText("Total Users : " + QString::number(User::LoadedData()));
-    ui->pushButton_totalb->setText("Total Books : " + QString::number(Book::numBooks()));
-    ui->pushButton_totalbissued->setText("Total Books Issued : " + QString::number(book_item::numIssued()));
+    ui->pushButton_totaluser->setText("Total Users: " + QString::number(User::LoadedData()));
+    ui->pushButton_totalb->setText("Total Books: " + QString::number(Book::numBooks()));
+    ui->pushButton_totalbissued->setText("Total Books Issued: " + QString::number(book_item::numIssued()));
     int unread_messages = Message::numUnreadMessages(user);
     if (unread_messages)
         ui->statusbar->showMessage("You Have " + QString::number(unread_messages) + " Unread Messages");

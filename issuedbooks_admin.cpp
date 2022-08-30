@@ -182,7 +182,7 @@ void issuedBooks_admin::on_pushButton_backtodash_clicked()
     this->hide();
     if (change)
     {
-        ui_admin_dash->pushButton_totalbissued->setText("Total Books Issued : " + QString::number(issuedbooksdb.size()));
+        ui_admin_dash->pushButton_totalbissued->setText("Total Books Issued: " + QString::number(issuedbooksdb.size()));
         change = false;
     }
     this->admin_dash->show();
@@ -194,7 +194,7 @@ void issuedBooks_admin::on_pushButton_return_clicked()
     QMap<QString, QStringList> booksdb = book_item::loadBooks();
     if (!ui->tableWidget->selectedItems().size())
     {
-        QMessageBox::critical(nullptr, "No Item Selected", "Please Select an Item to return");
+        QMessageBox::critical(nullptr, "No Item Selected", "Please select an item to return");
         return;
     }
 

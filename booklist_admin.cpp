@@ -76,7 +76,7 @@ void BookList_Admin::on_pushButton_backtodash_clicked()
     this->hide();
     if (change)
     {
-        this->ui_admindash->pushButton_totalb->setText("Total Books : " + QString::number(this->booksdb.size()));
+        this->ui_admindash->pushButton_totalb->setText("Total Books: " + QString::number(this->booksdb.size()));
         this->change = false;
     }
     admin_dash->show();
@@ -99,12 +99,12 @@ void BookList_Admin::on_pushButton_delete_clicked()
 {
     if (!ui->tableWidget->selectedItems().size())
     {
-        QMessageBox::critical(nullptr, "No Item Selected", "Please Select an Item to delete");
+        QMessageBox::critical(nullptr, "No Item Selected", "Please select an item to delete");
         return;
     }
 
     QString key = ui->tableWidget->selectedItems().at(0)->text(); //ISBN
-    int ret = QMessageBox::warning(nullptr, "Confirm Delete Book", "Are you sure you want to delete book : " + booksdb.value(key).at(0) + " ?", QMessageBox::Yes | QMessageBox::No);
+    int ret = QMessageBox::warning(nullptr, "Confirm Delete Book", "Are you sure you want to delete <" + booksdb.value(key).at(0) + ">?", QMessageBox::Yes | QMessageBox::No);
     if (ret == QMessageBox::Yes)
     {
         booksdb.remove(key);
@@ -140,7 +140,7 @@ void BookList_Admin::on_lineEdit_search_textChanged(const QString &arg1)
                     ui->tableWidget->hideRow(i);
             }
         }
-        else // for "All" :)
+        else // for "All"
         {
             for (int i = 0; i < ui->tableWidget->rowCount(); ++i)
                 ui->tableWidget->hideRow(i);
@@ -169,7 +169,7 @@ void BookList_Admin::on_pushButton_edit_clicked()
 {
     if (!ui->tableWidget->selectedItems().size())
     {
-        QMessageBox::critical(nullptr, "No Item Selected", "Please Select an Item to edit");
+        QMessageBox::critical(nullptr, "No Item Selected", "Please select an item to edit");
         return;
     }
 

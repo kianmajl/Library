@@ -70,7 +70,7 @@ void Edit_User_profile::on_pushButton_backtodash_clicked()
     {
         this->user_data = User::LoadUsers();
         QString user_admin = uiMainWindow->label_username->text().remove(0, 3);
-        uiMainWindow->pushButton_totaluser->setText("Total Users : " + QString::number(user_data.size()));
+        uiMainWindow->pushButton_totaluser->setText("Total Users: " + QString::number(user_data.size()));
         uiMainWindow->frame_2->setStyleSheet((user_data[user_admin].at(1).toInt()) ? "image: url(:/icons/icons/librarian.png);" : "image: url(:/icons/icons/librarian-m.png);");
         this->change = false;
     }
@@ -106,7 +106,7 @@ void Edit_User_profile::on_pushButton_edit_clicked()
 {
     if (!ui->tableWidget->selectedItems().size())
     {
-        QMessageBox::critical(nullptr, "No Item Selected", "Please Select an Item to edit");
+        QMessageBox::critical(nullptr, "No Item Selected", "Please select an item to edit");
         return;
     }
     this->change = true;
@@ -119,16 +119,16 @@ void Edit_User_profile::on_pushButton_delete_clicked()
 {
     if (!ui->tableWidget->selectedItems().size())
     {
-        QMessageBox::critical(nullptr, "No Item Selected", "Please Select an Item to delete");
+        QMessageBox::critical(nullptr, "No Item Selected", "Please select an item to delete");
         return;
     }
     QString user = ui->tableWidget->selectedItems().at(0)->text();
     if (user_data[user].at(2).toInt()) // check user isAdmin
     {
-        QMessageBox::critical(nullptr, "Error", "You can not delete admin users");
+        QMessageBox::critical(nullptr, "Error", "You can not delete admin users!");
         return;
     }
-    int ret = QMessageBox::warning(nullptr, "Confirm Delete User", "Are you sure you want to delete user : " + user + " ?", QMessageBox::Yes | QMessageBox::No);
+    int ret = QMessageBox::warning(nullptr, "Confirm Delete User", "Are you sure you want to delete user <" + user + ">?", QMessageBox::Yes | QMessageBox::No);
     if (ret == QMessageBox::Yes)
     {
         user_data.remove(user);

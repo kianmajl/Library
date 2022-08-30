@@ -35,7 +35,7 @@ void editGroup::on_pushButton_save_clicked()
 
     if (!books.size())
     {
-        QMessageBox::critical(nullptr, "No Book Selected", "Please Select at least 1 book to add to this group");
+        QMessageBox::critical(nullptr, "No Book Selected", "Please select at least 1 book to add to this group");
         return;
     }
 

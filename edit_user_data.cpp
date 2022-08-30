@@ -63,7 +63,7 @@ void Edit_User_Data::on_pushButton_save_clicked()
 
     if (!pass.length())
     {
-        QMessageBox::critical(nullptr, "Password is Empty", "Password Can not be empty !!!!");
+        QMessageBox::critical(nullptr, "Password is Empty", "Password can not be empty!");
         return;
     }
 
