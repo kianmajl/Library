@@ -6,7 +6,7 @@ It is provided users with a user-friendly GUI and a login system with two types 
 
 For running and modifying this project you should have installed Qt Creator, Then open `Library.pro` and build the project. 
 
-Also, you can use the executable file from here.
+Also, you can use the executable file from [here](https://github.com/kianmajl/Library/releases).
 ## Examples of use
 
 - Login/Signup
@@ -14,7 +14,7 @@ Also, you can use the executable file from here.
     After running the program, you will see the authentication form.
     You can signup/login with your username and password.
         
-    The program has an default admin user with this credential:
+    The program has a default admin user with this credential:
     ```
     username: admin
     password: admin
